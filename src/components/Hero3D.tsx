@@ -1,5 +1,3 @@
-import heroVideo from "@/assets/hero-livin.mp4.asset.json";
-
 /**
  * Cinematic hero: a premium generated film of a gift box opening,
  * the LIVIN' bottle rising, and a golden mist spraying. Autoplays,
@@ -9,7 +7,7 @@ export function Hero3D() {
   return (
     <div className="absolute inset-0 overflow-hidden">
       <video
-        src={heroVideo.url}
+        src="/hero-livin.mp4"
         autoPlay
         loop
         muted
