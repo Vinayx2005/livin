@@ -25,9 +25,6 @@ export function SiteNav() {
           : "bg-gradient-to-b from-navy-deep/70 to-transparent"
       }`}
     >
-      <div className="hidden md:block text-[10px] uppercase tracking-[0.3em] text-gold/80">
-        Est. MMXXIV
-      </div>
       <Link
         to="/"
         className="font-display italic text-2xl md:text-3xl tracking-[0.15em] text-gold-shimmer"

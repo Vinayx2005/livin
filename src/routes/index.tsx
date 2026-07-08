@@ -71,7 +71,7 @@ function Home() {
             transition={{ duration: 1, delay: 0.2 }}
             className="text-gold uppercase tracking-[0.5em] text-[10px] md:text-xs mb-6"
           >
-            The House of LIVIN'
+            The House of Livin'
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -79,7 +79,7 @@ function Home() {
             transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="font-display text-6xl md:text-8xl lg:text-[10rem] leading-[0.9] tracking-tight text-ivory"
           >
-            Oud <span className="italic text-gold-shimmer">Royale</span>
+            Worth <span className="italic text-gold-shimmer">Gifting</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -87,7 +87,7 @@ function Home() {
             transition={{ duration: 1.2, delay: 0.9 }}
             className="mt-6 text-ivory/70 tracking-[0.35em] uppercase text-[10px] md:text-xs"
           >
-            The Rare Essence of Sovereignty
+            Because some gifts become memories.
           </motion.p>
         </div>
 
