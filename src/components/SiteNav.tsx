@@ -1,18 +1,19 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, ShoppingBag, X } from "lucide-react";
+import { useCart } from "@/lib/cart";
 
 const links = [
-  { to: "/collections", label: "Collections" },
-  { to: "/gifting", label: "Gifting" },
-  { to: "/story", label: "Story" },
+  { to: "/collections", label: "Gifting Collection" },
+  { to: "/story", label: "Livin' Story" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
 export function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { count } = useCart();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -57,7 +58,7 @@ export function SiteNav() {
         </Link>
 
         {/* Desktop links */}
-        <div className="hidden md:flex gap-4 md:gap-8 text-[10px] md:text-[11px] uppercase tracking-[0.2em]">
+        <div className="hidden md:flex items-center gap-4 md:gap-8 text-[10px] md:text-[11px] uppercase tracking-[0.2em]">
           {links.map((l) => (
             <Link
               key={l.to}
@@ -68,18 +69,46 @@ export function SiteNav() {
               {l.label}
             </Link>
           ))}
+          <Link
+            to="/cart"
+            aria-label={count > 0 ? `Cart (${count})` : "Cart"}
+            className="relative text-ivory/80 hover:text-gold transition-colors duration-300"
+            activeProps={{ className: "text-gold" }}
+          >
+            <ShoppingBag size={18} strokeWidth={1.25} />
+            {count > 0 && (
+              <span className="absolute -top-2 -right-2 min-w-[16px] h-[16px] px-1 rounded-full bg-gold text-navy-deep text-[9px] font-medium tracking-normal flex items-center justify-center leading-none">
+                {count}
+              </span>
+            )}
+          </Link>
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          type="button"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((o) => !o)}
-          className="md:hidden text-gold/90 hover:text-gold p-1 -mr-1"
-        >
-          {open ? <X size={22} strokeWidth={1.25} /> : <Menu size={22} strokeWidth={1.25} />}
-        </button>
+        {/* Mobile: cart + hamburger */}
+        <div className="md:hidden flex items-center gap-4">
+          <Link
+            to="/cart"
+            aria-label={count > 0 ? `Cart (${count})` : "Cart"}
+            onClick={() => setOpen(false)}
+            className="relative text-gold/90 hover:text-gold p-1"
+          >
+            <ShoppingBag size={20} strokeWidth={1.25} />
+            {count > 0 && (
+              <span className="absolute top-0 right-0 min-w-[16px] h-[16px] px-1 rounded-full bg-gold text-navy-deep text-[9px] font-medium tracking-normal flex items-center justify-center leading-none">
+                {count}
+              </span>
+            )}
+          </Link>
+          <button
+            type="button"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((o) => !o)}
+            className="text-gold/90 hover:text-gold p-1 -mr-1"
+          >
+            {open ? <X size={22} strokeWidth={1.25} /> : <Menu size={22} strokeWidth={1.25} />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile overlay */}

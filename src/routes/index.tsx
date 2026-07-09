@@ -2,51 +2,13 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Hero3D } from "@/components/Hero3D";
 import { Reveal } from "@/components/Reveal";
+import { collections } from "@/data/collections";
 
-import cambodi from "@/assets/collection-cambodi.jpg";
-import gold from "@/assets/collection-gold.jpg";
-import noir from "@/assets/collection-noir.jpg";
 import gifting from "@/assets/gifting-ritual.jpg";
 
 export const Route = createFileRoute("/")({
   component: Home,
 });
-
-const collections = [
-  {
-    slug: "midnight-cambodi",
-    name: "Midnight Cambodi",
-    tag: "Intense · Resinous",
-    image: cambodi,
-    notes: {
-      top: "Saffron, Pink Pepper",
-      heart: "Taif Rose, Leather",
-      base: "Cambodi Oud, Amber",
-    },
-  },
-  {
-    slug: "imperial-gold",
-    name: "Imperial Gold",
-    tag: "Bright · Opulent",
-    image: gold,
-    notes: {
-      top: "Bergamot, Cardamom",
-      heart: "Jasmine Sambac",
-      base: "White Oud, Musk",
-    },
-  },
-  {
-    slug: "noir-royale",
-    name: "Noir Royale",
-    tag: "Smoky · Eternal",
-    image: noir,
-    notes: {
-      top: "Incense, Black Plum",
-      heart: "Violet Leaf, Cedar",
-      base: "Aged Oud, Patchouli",
-    },
-  },
-];
 
 function Home() {
   return (
@@ -89,6 +51,19 @@ function Home() {
           >
             Because some gifts become memories.
           </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 1.2 }}
+            className="mt-10"
+          >
+            <Link
+              to="/collections"
+              className="pointer-events-auto inline-block px-10 py-4 border border-gold/50 text-gold text-[10px] uppercase tracking-[0.35em] hover:bg-gold hover:text-navy-deep transition-colors"
+            >
+              Explore Collection
+            </Link>
+          </motion.div>
         </div>
 
         {/* scroll cue */}
@@ -113,17 +88,149 @@ function Home() {
       <section className="max-w-4xl mx-auto px-6 text-center pb-32">
         <Reveal>
           <h2 className="font-display italic text-4xl md:text-5xl mb-10 text-gold-shimmer">
-            The House of LIVIN'
+            Best gifts are remembered
           </h2>
         </Reveal>
         <Reveal delay={0.15}>
           <p className="font-display text-2xl md:text-3xl leading-relaxed text-ivory/85 text-pretty">
-            Rooted in the ancient heritage of the desert, we curate the most
-            profound resins of the world. Each bottle is a vessel of history — a
-            symphony of liquid gold distilled for those who understand that true
-            luxury is found in the hush of the reveal.
+            Every Livin' experience is thoughtfully curated to help you express
+            love, gratitude, and celebration in a way that stays long after the
+            moment has passed.
           </p>
         </Reveal>
+      </section>
+
+      {/* ORNAMENTAL DIVIDER */}
+      <div className="flex items-center justify-center px-12 pb-20">
+        <div className="ornament-line flex-1 opacity-30" />
+        <div className="mx-8 text-gold">
+          <div className="size-2 rotate-45 border border-gold" />
+        </div>
+        <div className="ornament-line flex-1 opacity-30" />
+      </div>
+
+      {/* WHY LIVIN' EXISTS */}
+      <section className="max-w-3xl mx-auto px-6 text-center pb-40">
+        <Reveal>
+          <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
+            Our Purpose
+          </p>
+          <h2 className="font-display italic text-4xl md:text-6xl text-ivory leading-[1.05] mb-12">
+            Why Livin' Exists
+          </h2>
+        </Reveal>
+        <Reveal delay={0.12}>
+          <p className="font-display text-xl md:text-2xl italic text-gold-shimmer leading-relaxed mb-10 text-pretty">
+            Most gifts end when they're opened. We wanted ours to begin there.
+          </p>
+        </Reveal>
+        <Reveal delay={0.2}>
+          <div className="space-y-8 font-display text-lg md:text-xl text-ivory/80 leading-relaxed text-pretty">
+            <p>
+              Livin' was born from one simple belief. People rarely remember the
+              price of a gift. They remember how someone made them feel.
+            </p>
+            <p>
+              That's why every Livin' experience is designed with thoughtful
+              details, from elegant presentation to heartfelt messages, so your
+              gift becomes more than something they receive.
+            </p>
+            <p className="text-gold-shimmer italic">
+              It becomes something they feel.
+            </p>
+          </div>
+        </Reveal>
+        <Reveal delay={0.3}>
+          <div className="mt-14">
+            <Link
+              to="/story"
+              className="inline-block px-10 py-4 border border-gold/50 text-gold text-[10px] uppercase tracking-[0.35em] hover:bg-gold hover:text-navy-deep transition-colors"
+            >
+              Read Our Story
+            </Link>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* THE LIVIN' EXPERIENCE */}
+      <section className="max-w-7xl mx-auto px-6 md:px-10 pb-40">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-center">
+          <div>
+            <Reveal>
+              <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
+                Our Craft
+              </p>
+              <h2 className="font-display italic text-4xl md:text-6xl text-ivory leading-[1.05] mb-14">
+                The Livin' Experience
+              </h2>
+            </Reveal>
+            <div className="space-y-8">
+              {[
+                {
+                  label: "Thoughtfully Curated",
+                  body: "Every element is chosen with intention.",
+                },
+                {
+                  label: "Personalized",
+                  body: "Because no meaningful relationship is generic.",
+                },
+                {
+                  label: "Emotion First",
+                  body: "The fragrance complements the story. It never replaces it.",
+                },
+                {
+                  label: "Designed to be Remembered",
+                  body: "The experience continues long after the ribbon is untied.",
+                },
+              ].map((item, i) => (
+                <Reveal key={item.label} delay={0.1 + i * 0.08}>
+                  <div className="flex gap-6 border-t border-gold/15 pt-6">
+                    <span className="font-display italic text-xl text-gold-shimmer shrink-0 tabular-nums pt-1">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3 className="font-display italic text-2xl md:text-3xl text-ivory mb-2">
+                        {item.label}
+                      </h3>
+                      <p className="text-base md:text-lg text-ivory/70 leading-relaxed font-light">
+                        {item.body}
+                      </p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+
+          {/* Placeholder photo */}
+          <Reveal delay={0.2}>
+            <div
+              className="relative overflow-hidden aspect-[4/5] glass-card"
+              role="img"
+              aria-label="Placeholder for Livin' experience photograph"
+            >
+              <div
+                className="absolute inset-0"
+                aria-hidden="true"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at 50% 40%, rgba(201,162,76,0.14) 0%, rgba(10,23,51,0.6) 55%, rgba(5,10,25,0.85) 100%)",
+                }}
+              />
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 text-gold/60">
+                <div className="size-16 border border-gold/30 rounded-full flex items-center justify-center">
+                  <div className="size-2 rotate-45 border border-gold/50" />
+                </div>
+                <p className="text-[10px] uppercase tracking-[0.5em] text-gold/70">
+                  Photograph
+                </p>
+                <p className="text-[9px] uppercase tracking-[0.3em] text-ivory/40">
+                  Placeholder — to be replaced
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
       </section>
 
       {/* SIGNATURE COLLECTIONS */}
@@ -136,7 +243,7 @@ function Home() {
                   The Collection
                 </p>
                 <h3 className="font-display text-4xl md:text-6xl italic text-ivory">
-                  Signature Fragrances
+                  Featured Collections
                 </h3>
               </div>
               <Link
@@ -151,8 +258,10 @@ function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {collections.map((c, i) => (
               <Reveal key={c.slug} delay={i * 0.12}>
-                <article
-                  className={`glass-card p-8 flex flex-col gap-8 transition-all duration-500 hover:-translate-y-2 hover:border-gold/40 ${
+                <Link
+                  to="/collections/$slug"
+                  params={{ slug: c.slug }}
+                  className={`group glass-card p-8 flex flex-col gap-8 transition-all duration-500 hover:-translate-y-2 hover:border-gold/40 ${
                     i === 1 ? "md:mt-16" : ""
                   }`}
                 >
@@ -163,7 +272,7 @@ function Home() {
                       width={800}
                       height={1000}
                       loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                     />
                   </div>
                   <div>
@@ -173,62 +282,75 @@ function Home() {
                     <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-5">
                       {c.tag}
                     </p>
-                    <div className="text-sm text-ivory/70 space-y-1 font-light">
+                    <div className="text-sm text-ivory/70 space-y-1 font-light mb-6">
                       <p>
-                        <span className="text-gold/70">Top —</span> {c.notes.top}
+                        <span className="text-gold/70">Top —</span>{" "}
+                        {c.layers.top}
                       </p>
                       <p>
                         <span className="text-gold/70">Heart —</span>{" "}
-                        {c.notes.heart}
+                        {c.layers.heart}
                       </p>
                       <p>
                         <span className="text-gold/70">Base —</span>{" "}
-                        {c.notes.base}
+                        {c.layers.base}
                       </p>
                     </div>
+                    <div className="flex items-center justify-between pt-4 border-t border-gold/15">
+                      <span className="font-display text-xl text-gold-shimmer">
+                        {c.price}
+                      </span>
+                      <span className="text-[10px] uppercase tracking-[0.3em] text-gold/80 group-hover:text-gold transition-colors">
+                        Discover →
+                      </span>
+                    </div>
                   </div>
-                </article>
+                </Link>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* GIFTING BAND */}
-      <section className="bg-gold text-navy-deep overflow-hidden relative">
-        <div className="py-14 border-y border-navy-deep/10">
-          <div className="flex whitespace-nowrap animate-marquee gap-16 will-change-transform">
-            {[...Array(2)].map((_, k) => (
-              <div key={k} className="flex gap-16">
-                <span className="font-display italic text-4xl md:text-5xl">
-                  Bespoke Gifting
-                </span>
-                <span className="text-gold">◆</span>
-                <span className="font-display italic text-4xl md:text-5xl">
-                  Corporate Personalisation
-                </span>
-                <span className="text-gold">◆</span>
-                <span className="font-display italic text-4xl md:text-5xl">
-                  The Royal Reveal
-                </span>
-                <span className="text-gold">◆</span>
-                <span className="font-display italic text-4xl md:text-5xl">
-                  Silk Ribbon Wrapping
-                </span>
-                <span className="text-gold">◆</span>
-              </div>
-            ))}
+      {/* ORNAMENTAL DIVIDER */}
+      <div className="py-20 flex items-center justify-center px-12">
+        <div className="ornament-line flex-1 opacity-30" />
+        <div className="mx-8 text-gold">
+          <div className="size-2 rotate-45 border border-gold" />
+        </div>
+        <div className="ornament-line flex-1 opacity-30" />
+      </div>
+
+      {/* OUR PROMISE */}
+      <section className="max-w-4xl mx-auto px-6 text-center pb-32">
+        <Reveal>
+          <h2 className="font-display italic text-4xl md:text-5xl mb-10 text-gold-shimmer">
+            Our Promise
+          </h2>
+        </Reveal>
+        <Reveal delay={0.15}>
+          <div className="font-display text-2xl md:text-3xl leading-relaxed text-ivory/85 text-pretty space-y-6">
+            <p>
+              We don't believe expensive gifts create meaningful moments.
+              Thoughtful ones do. That's why every Livin' experience begins
+              with one question.
+            </p>
+            <p className="italic">
+              &ldquo;How do you want them to feel?&rdquo;
+            </p>
+            <p>Everything else follows.</p>
           </div>
-        </div>
-        <div className="text-center py-14">
-          <Link
-            to="/gifting"
-            className="inline-block px-12 py-4 border border-navy-deep/30 hover:bg-navy-deep hover:text-gold transition-all duration-500 uppercase text-[10px] tracking-[0.4em]"
-          >
-            Inquire for Gifting
-          </Link>
-        </div>
+        </Reveal>
       </section>
+
+      {/* ORNAMENTAL DIVIDER */}
+      <div className="pb-20 flex items-center justify-center px-12">
+        <div className="ornament-line flex-1 opacity-30" />
+        <div className="mx-8 text-gold">
+          <div className="size-2 rotate-45 border border-gold" />
+        </div>
+        <div className="ornament-line flex-1 opacity-30" />
+      </div>
 
       {/* STORY TEASER */}
       <section className="max-w-7xl mx-auto px-6 md:px-10 py-40 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -250,18 +372,17 @@ function Home() {
               The Ritual
             </p>
             <h3 className="font-display italic text-4xl md:text-5xl text-ivory leading-tight mb-8">
-              Presentation is a Performance
+              More Than a Gift. A Moment to Hold On To.
             </h3>
             <p className="text-ivory/70 leading-relaxed font-light mb-10 max-w-md">
-              Every LIVIN' gift arrives in a hand-crafted lacquer box, cushioned
-              in silk and accompanied by a wax-sealed note. Because the scent is
-              only half the story.
+              Every meaningful relationship deserves to be celebrated. Whenever
+              you're ready, we'll help you create a moment worth remembering.
             </p>
             <Link
-              to="/story"
+              to="/collections"
               className="inline-block px-10 py-4 border border-gold/50 text-gold text-[10px] uppercase tracking-[0.3em] hover:bg-gold hover:text-navy-deep transition-colors"
             >
-              Read Our Story
+              Explore Collections
             </Link>
           </div>
         </Reveal>

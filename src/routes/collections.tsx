@@ -1,8 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
-import cambodi from "@/assets/collection-cambodi.jpg";
-import gold from "@/assets/collection-gold.jpg";
-import noir from "@/assets/collection-noir.jpg";
+import { collections } from "@/data/collections";
 
 export const Route = createFileRoute("/collections")({
   head: () => ({
@@ -26,116 +24,76 @@ export const Route = createFileRoute("/collections")({
   component: CollectionsPage,
 });
 
-const items = [
-  {
-    name: "Midnight Cambodi",
-    tag: "Intense · Resinous",
-    price: "£420",
-    image: cambodi,
-    story:
-      "A grand, moonlit interpretation of Cambodian oud aged in ancient cedar barrels for eighteen seasons.",
-    notes: ["Saffron", "Pink Pepper", "Taif Rose", "Leather", "Cambodi Oud", "Amber"],
-  },
-  {
-    name: "Imperial Gold",
-    tag: "Bright · Opulent",
-    price: "£380",
-    image: gold,
-    story:
-      "A crown of citrus and white flowers laid upon a bed of white oud — an homage to the golden hours of a royal court.",
-    notes: ["Bergamot", "Cardamom", "Jasmine Sambac", "White Oud", "Musk", "Sandalwood"],
-  },
-  {
-    name: "Noir Royale",
-    tag: "Smoky · Eternal",
-    price: "£460",
-    image: noir,
-    story:
-      "Aged oud drawn from the deepest resin veins, wrapped in incense smoke and violet leaf.",
-    notes: ["Incense", "Black Plum", "Violet Leaf", "Cedar", "Aged Oud", "Patchouli"],
-  },
-];
-
 function CollectionsPage() {
   return (
     <main className="pt-32 pb-40">
-      <section className="max-w-6xl mx-auto px-6 md:px-10 text-center pb-24">
+      <section className="max-w-4xl mx-auto px-6 md:px-10 text-center pb-24">
         <Reveal>
-          <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
-            The Reserve
-          </p>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <h1 className="font-display text-6xl md:text-8xl italic text-ivory leading-[0.95]">
-            The Collection
+          <h1 className="font-display text-5xl md:text-7xl italic text-ivory leading-[1.05]">
+            Every Gift Begins with Someone
           </h1>
         </Reveal>
-        <Reveal delay={0.2}>
-          <p className="mt-8 max-w-2xl mx-auto font-display text-xl md:text-2xl text-ivory/70 leading-relaxed">
-            Three signatures. One heritage. Each vessel a chapter in the long
-            history of oud.
-          </p>
+        <Reveal delay={0.15}>
+          <div className="mt-10 max-w-2xl mx-auto space-y-6 font-display text-xl md:text-2xl text-ivory/75 leading-relaxed text-pretty">
+            <p>Before choosing, think about the person.</p>
+            <p>
+              The person you want to celebrate, thank, surprise, encourage, or
+              simply remind that they're loved.
+            </p>
+            <p>
+              Each experience is designed with meaningful details, elegant
+              presentation, and carefully selected fragrances, allowing every
+              gift to become more personal from the very first moment it's
+              opened.
+            </p>
+            <p className="italic text-gold-shimmer">
+              Explore the collection that feels right for your story.
+            </p>
+          </div>
         </Reveal>
       </section>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10 space-y-32">
-        {items.map((item, i) => (
-          <Reveal key={item.name}>
-            <article
-              className={`grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center ${
-                i % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""
-              }`}
-            >
-              <div className="overflow-hidden aspect-[4/5] glass-card p-4">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  width={800}
-                  height={1000}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div>
-                <p className="text-[10px] uppercase tracking-[0.4em] text-gold mb-4">
-                  {item.tag}
-                </p>
-                <h2 className="font-display italic text-5xl md:text-6xl text-ivory mb-6">
-                  {item.name}
-                </h2>
-                <p className="text-ivory/70 leading-relaxed font-light mb-10 max-w-md">
-                  {item.story}
-                </p>
-                <div className="mb-10">
-                  <p className="text-[10px] uppercase tracking-[0.3em] text-gold/80 mb-4">
-                    Notes
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+          {collections.map((item, i) => (
+            <Reveal key={item.slug} delay={i * 0.1}>
+              <Link
+                to="/collections/$slug"
+                params={{ slug: item.slug }}
+                className={`group glass-card p-6 flex flex-col gap-6 transition-all duration-500 hover:-translate-y-2 hover:border-gold/40 ${
+                  i === 1 ? "md:mt-14" : ""
+                }`}
+              >
+                <div className="overflow-hidden aspect-[3/4] bg-navy">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    width={800}
+                    height={1000}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                  />
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-3">
+                    {item.tag}
                   </p>
-                  <div className="flex flex-wrap gap-2">
-                    {item.notes.map((n) => (
-                      <span
-                        key={n}
-                        className="text-xs px-3 py-1.5 border border-gold/25 text-ivory/80 rounded-full"
-                      >
-                        {n}
-                      </span>
-                    ))}
+                  <h2 className="font-display italic text-3xl md:text-4xl text-ivory mb-4">
+                    {item.name}
+                  </h2>
+                  <div className="flex items-center justify-between mt-6 pt-6 border-t border-gold/15">
+                    <span className="font-display text-2xl text-gold-shimmer">
+                      {item.price}
+                    </span>
+                    <span className="text-[10px] uppercase tracking-[0.3em] text-gold/80 group-hover:text-gold transition-colors">
+                      Discover →
+                    </span>
                   </div>
                 </div>
-                <div className="flex items-center gap-8">
-                  <span className="font-display text-3xl text-gold-shimmer">
-                    {item.price}
-                  </span>
-                  <Link
-                    to="/contact"
-                    className="px-8 py-3 border border-gold/50 text-gold text-[10px] uppercase tracking-[0.3em] hover:bg-gold hover:text-navy-deep transition-colors"
-                  >
-                    Enquire
-                  </Link>
-                </div>
-              </div>
-            </article>
-          </Reveal>
-        ))}
+              </Link>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </main>
   );

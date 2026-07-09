@@ -1,21 +1,28 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { Instagram } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Concierge — LIVIN' Oud Royale" },
+      { title: "Contact — LIVIN'" },
       {
         name: "description",
         content:
-          "Enquire with the LIVIN' Oud Royale concierge — bespoke gifting, corporate editions and private fragrance appointments.",
+          "Reach the Livin' team — about an order, delivery, or one of our collections.",
       },
-      { property: "og:title", content: "Concierge — LIVIN' Oud Royale" },
+      { property: "og:title", content: "Contact — LIVIN'" },
       {
         property: "og:description",
         content:
-          "Reach the LIVIN' concierge — for bespoke gifting, corporate editions and private appointments.",
+          "Get in touch with the Livin' team by email or WhatsApp.",
       },
       { property: "og:url", content: "/contact" },
     ],
@@ -31,39 +38,57 @@ function ContactPage() {
       <section className="max-w-6xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-20">
         <Reveal>
           <div>
-            <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
-              Concierge
-            </p>
             <h1 className="font-display italic text-5xl md:text-7xl text-ivory leading-[0.95] mb-8">
-              A Private Audience
+              Have a question?
             </h1>
-            <p className="font-display text-xl md:text-2xl text-ivory/75 leading-relaxed mb-12">
-              Share the occasion. Our concierge will respond within one working
-              day with a curated proposal.
-            </p>
+            <div className="font-display text-xl md:text-2xl text-ivory/75 leading-relaxed mb-12 space-y-4">
+              <p>
+                About an order, delivery, or one of our collections?
+              </p>
+              <p className="italic text-gold-shimmer">
+                Our team is here to help.
+              </p>
+            </div>
             <div className="space-y-6 text-sm text-ivory/80 font-light">
               <div>
                 <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-2">
                   Email
                 </p>
                 <a
-                  href="mailto:concierge@livinoud.com"
+                  href="mailto:hello@livin.com"
                   className="hover:text-gold transition-colors"
                 >
-                  concierge@livinoud.com
+                  hello@livin.com
                 </a>
               </div>
               <div>
                 <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-2">
-                  Ateliers
+                  WhatsApp
                 </p>
-                <p>London · Dubai · Paris</p>
+                <a
+                  href="https://wa.me/917075314435"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-gold transition-colors"
+                >
+                  +91 70753 14435
+                </a>
               </div>
               <div>
-                <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-2">
-                  Private Line
+                <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-3">
+                  Social
                 </p>
-                <p>+44 20 7946 0000</p>
+                <div className="flex items-center gap-4">
+                  <a
+                    href="https://instagram.com/livin.gifting"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Livin' on Instagram"
+                    className="inline-flex items-center justify-center size-10 rounded-full border border-gold/30 text-gold/80 hover:text-gold hover:border-gold hover:bg-gold/5 transition-colors"
+                  >
+                    <Instagram size={18} strokeWidth={1.25} />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -84,14 +109,19 @@ function ContactPage() {
                   Thank you
                 </h3>
                 <p className="text-ivory/70 font-light">
-                  Our concierge will be in touch within one working day.
+                  Our team will be in touch within one working day.
                 </p>
               </div>
             ) : (
               <>
                 <Field label="Full Name" name="name" />
                 <Field label="Email" name="email" type="email" />
-                <Field label="Occasion" name="occasion" placeholder="Gifting · Corporate · Private" />
+                <Field
+                  label="Contact Number"
+                  name="phone"
+                  type="tel"
+                  placeholder="+91 —"
+                />
                 <div>
                   <label className="text-[10px] uppercase tracking-[0.3em] text-gold block mb-3">
                     Message
@@ -105,16 +135,74 @@ function ContactPage() {
                   type="submit"
                   className="mt-4 w-full py-4 border border-gold bg-gold/5 text-gold text-[10px] uppercase tracking-[0.4em] hover:bg-gold hover:text-navy-deep transition-colors"
                 >
-                  Request Consultation
+                  Send Message
                 </button>
               </>
             )}
           </form>
         </Reveal>
       </section>
+
+      {/* ORNAMENTAL DIVIDER */}
+      <div className="max-w-6xl mx-auto py-24 flex items-center justify-center px-12">
+        <div className="ornament-line flex-1 opacity-30" />
+        <div className="mx-8 text-gold">
+          <div className="size-2 rotate-45 border border-gold" />
+        </div>
+        <div className="ornament-line flex-1 opacity-30" />
+      </div>
+
+      {/* FAQ */}
+      <section className="max-w-3xl mx-auto px-6 md:px-10">
+        <Reveal>
+          <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6 text-center">
+            Answers
+          </p>
+          <h2 className="font-display italic text-4xl md:text-5xl text-ivory leading-tight mb-14 text-center">
+            Frequently Asked Questions
+          </h2>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <Accordion type="single" collapsible className="w-full">
+            {faqs.map((faq, i) => (
+              <AccordionItem
+                key={faq.q}
+                value={`item-${i}`}
+                className="border-b border-gold/15"
+              >
+                <AccordionTrigger className="font-display text-xl md:text-2xl text-ivory hover:no-underline hover:text-gold-shimmer py-6 text-left [&>svg]:text-gold [&>svg]:h-5 [&>svg]:w-5">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-base md:text-lg text-ivory/75 leading-relaxed font-light pb-8 pr-8">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </Reveal>
+      </section>
     </main>
   );
 }
+
+const faqs = [
+  {
+    q: "Where do you deliver?",
+    a: "We currently deliver across India.",
+  },
+  {
+    q: "How long does delivery take?",
+    a: "Orders are typically delivered within 5–7 business days.",
+  },
+  {
+    q: "Can I add a personalized gift note?",
+    a: "Yes. Every order can include a heartfelt personalized message to make your gift even more meaningful.",
+  },
+  {
+    q: "Do you accept returns?",
+    a: "We currently do not accept returns. If your order arrives damaged, we'll gladly assist you with a replacement.",
+  },
+];
 
 function Field({
   label,

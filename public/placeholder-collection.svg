@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="42%" r="60%">
+      <stop offset="0%" stop-color="#c9a24c" stop-opacity="0.18"/>
+      <stop offset="55%" stop-color="#0a1733" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#050a19" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="1000" fill="#0a1733"/>
+  <rect width="800" height="1000" fill="url(#glow)"/>
+  <g transform="translate(400 460)" fill="none" stroke="#c9a24c" stroke-opacity="0.55">
+    <circle r="54" stroke-width="1"/>
+    <g transform="rotate(45)">
+      <rect x="-8" y="-8" width="16" height="16" stroke-width="1"/>
+    </g>
+  </g>
+  <text x="400" y="580" text-anchor="middle" fill="#c9a24c" fill-opacity="0.75" font-family="Georgia, 'Times New Roman', serif" font-size="20" letter-spacing="10">PHOTOGRAPH</text>
+  <text x="400" y="618" text-anchor="middle" fill="#f0e9d6" fill-opacity="0.45" font-family="Georgia, 'Times New Roman', serif" font-size="12" letter-spacing="4">PLACEHOLDER</text>
+</svg>
