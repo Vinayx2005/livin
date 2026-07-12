@@ -119,10 +119,10 @@ function CollectionDetailPage() {
               <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
                 {item.tag}
               </p>
-              <h1 className="font-display italic text-5xl md:text-7xl text-ivory leading-[0.95] mb-8">
+              <h1 className="font-display italic text-5xl md:text-7xl text-navy-deep leading-[0.95] mb-8">
                 {item.name}
               </h1>
-              <p className="font-display text-xl md:text-2xl text-ivory/75 leading-relaxed mb-10 max-w-md">
+              <p className="font-display text-xl md:text-2xl text-navy-deep/75 leading-relaxed mb-10 max-w-md">
                 {item.story}
               </p>
               <div className="mb-10">
@@ -133,14 +133,14 @@ function CollectionDetailPage() {
                   <button
                     type="button"
                     onClick={handleBuy}
-                    className="flex-1 px-8 py-4 bg-gold text-navy-deep text-[10px] uppercase tracking-[0.3em] hover:bg-gold-shimmer transition-colors"
+                    className="flex-1 px-8 py-4 bg-navy-deep text-white text-[10px] uppercase tracking-[0.3em] hover:bg-navy transition-colors"
                   >
                     Buy Now
                   </button>
                   <button
                     type="button"
                     onClick={handleAdd}
-                    className="flex-1 px-8 py-4 border border-gold/50 text-gold text-[10px] uppercase tracking-[0.3em] hover:bg-gold/10 transition-colors flex items-center justify-center gap-2"
+                    className="flex-1 px-8 py-4 border border-navy-deep/40 text-navy-deep text-[10px] uppercase tracking-[0.3em] hover:bg-navy-deep hover:text-white transition-colors flex items-center justify-center gap-2"
                   >
                     {justAdded ? (
                       <>
@@ -169,12 +169,12 @@ function CollectionDetailPage() {
       {/* The Story Behind This Collection */}
       <section className="max-w-3xl mx-auto px-6 md:px-10 text-center pb-24">
         <Reveal>
-          <h2 className="font-display italic text-3xl md:text-5xl text-ivory leading-tight mb-12">
+          <h2 className="font-display italic text-3xl md:text-5xl text-navy-deep leading-tight mb-12">
             The Story Behind This Collection
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
-          <div className="space-y-6 font-display text-lg md:text-xl text-ivory/80 leading-relaxed text-pretty">
+          <div className="space-y-6 font-display text-lg md:text-xl text-navy-deep/80 leading-relaxed text-pretty">
             <p>
               A meaningful gift is never about the product alone. It's about
               the pause before it's opened. The anticipation of discovering
@@ -205,32 +205,17 @@ function CollectionDetailPage() {
       {/* What's Included */}
       <section className="max-w-6xl mx-auto px-6 md:px-10 pb-40">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-          {/* Left: placeholder photo (bigger) */}
+          {/* Left: contents photo */}
           <Reveal>
-            <div
-              className="relative overflow-hidden aspect-[4/5] glass-card"
-              role="img"
-              aria-label="Placeholder for the collection contents photograph"
-            >
-              <div
-                className="absolute inset-0"
-                aria-hidden="true"
-                style={{
-                  background:
-                    "radial-gradient(ellipse at 50% 40%, rgba(201,162,76,0.14) 0%, rgba(10,23,51,0.6) 55%, rgba(5,10,25,0.85) 100%)",
-                }}
+            <div className="relative overflow-hidden aspect-[4/5] glass-card">
+              <img
+                src="/livin-flatlay.jpg"
+                alt="Everything included in a Livin' collection — gold wrapping, velvet pouch, and thank-you card"
+                width={1200}
+                height={1500}
+                loading="lazy"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 text-gold/60">
-                <div className="size-16 border border-gold/30 rounded-full flex items-center justify-center">
-                  <div className="size-2 rotate-45 border border-gold/50" />
-                </div>
-                <p className="text-[10px] uppercase tracking-[0.5em] text-gold/70">
-                  Photograph
-                </p>
-                <p className="text-[9px] uppercase tracking-[0.3em] text-ivory/40">
-                  Placeholder — to be replaced
-                </p>
-              </div>
             </div>
           </Reveal>
 
@@ -240,12 +225,12 @@ function CollectionDetailPage() {
               <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
                 The Experience
               </p>
-              <h2 className="font-display italic text-4xl md:text-5xl text-ivory leading-tight mb-8">
+              <h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-8">
                 What's Included
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="font-display text-lg md:text-xl text-ivory/80 leading-relaxed mb-8">
+              <p className="font-display text-lg md:text-xl text-navy-deep/80 leading-relaxed mb-8">
                 Every Livin' collection is thoughtfully curated to create a
                 complete gifting experience.
               </p>
@@ -264,7 +249,7 @@ function CollectionDetailPage() {
                 ].map((it) => (
                   <li
                     key={it}
-                    className="flex items-start gap-4 text-base md:text-lg text-ivory/85 font-light"
+                    className="flex items-start gap-4 text-base md:text-lg text-navy-deep/85 font-display font-light"
                   >
                     <span
                       aria-hidden="true"
@@ -303,12 +288,12 @@ function CollectionDetailPage() {
               <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
                 Your Words
               </p>
-              <h2 className="font-display italic text-4xl md:text-5xl text-ivory leading-tight mb-10">
+              <h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-10">
                 Make It Personal
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
-              <div className="space-y-6 font-display text-lg md:text-xl text-ivory/80 leading-relaxed text-pretty">
+              <div className="space-y-6 font-display text-lg md:text-xl text-navy-deep/80 leading-relaxed text-pretty">
                 <p>
                   Some of the most meaningful gifts are remembered because
                   they carry a part of the person who gave them.
@@ -331,7 +316,7 @@ function CollectionDetailPage() {
                 className="relative overflow-hidden aspect-[4/5] p-8 md:p-10"
                 style={{
                   background:
-                    "linear-gradient(135deg, rgba(240,233,214,0.06) 0%, rgba(201,162,76,0.04) 100%)",
+                    "linear-gradient(135deg, #ffffff 0%, #f5eedc 100%)",
                   border: "1px solid rgba(201,162,76,0.25)",
                 }}
               >
@@ -339,18 +324,18 @@ function CollectionDetailPage() {
                   <p className="text-[9px] uppercase tracking-[0.5em] text-gold/70 mb-6">
                     A note from you
                   </p>
-                  <div className="flex-1 space-y-4 font-display italic text-ivory/40 text-lg md:text-xl leading-loose">
+                  <div className="flex-1 space-y-4 font-display italic text-navy-deep/40 text-lg md:text-xl leading-loose">
                     <p>
                       &ldquo;For every quiet moment we've shared, every
                       celebration still to come…&rdquo;
                     </p>
-                    <p className="text-ivory/30">— your handwritten words —</p>
+                    <p className="text-navy-deep/30">— your handwritten words —</p>
                   </div>
                   <div className="mt-8 pt-6 border-t border-gold/15 flex items-center justify-between">
                     <p className="text-[9px] uppercase tracking-[0.4em] text-gold/60">
                       Sealed for
                     </p>
-                    <p className="font-display italic text-ivory/60 text-lg">
+                    <p className="font-display italic text-navy-deep/60 text-lg">
                       Someone dear
                     </p>
                   </div>
@@ -382,12 +367,12 @@ function CollectionDetailPage() {
           <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6 text-center">
             Specifications
           </p>
-          <h2 className="font-display italic text-4xl md:text-5xl text-ivory leading-tight mb-10 text-center">
+          <h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-10 text-center">
             Fragrance Details
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
-          <div className="max-w-2xl mx-auto space-y-6 font-display text-lg md:text-xl text-ivory/80 leading-relaxed text-pretty text-center mb-14">
+          <div className="max-w-2xl mx-auto space-y-6 font-display text-lg md:text-xl text-navy-deep/80 leading-relaxed text-pretty text-center mb-14">
             <p>
               Every fragrance in our collections is carefully chosen for its
               character, craftsmanship, and lasting impression.
@@ -424,7 +409,7 @@ function CollectionDetailPage() {
                 <dt className="text-[10px] uppercase tracking-[0.4em] text-gold/80">
                   {spec.label}
                 </dt>
-                <dd className="font-display text-lg md:text-xl text-ivory/90 leading-relaxed">
+                <dd className="font-display text-lg md:text-xl text-navy-deep/90 leading-relaxed">
                   {spec.value}
                 </dd>
               </div>
@@ -448,12 +433,12 @@ function CollectionDetailPage() {
           <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
             The Ritual
           </p>
-          <h2 className="font-display italic text-4xl md:text-5xl text-ivory leading-tight mb-14">
+          <h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-14">
             The Livin' Experience
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
-          <div className="space-y-8 font-display text-xl md:text-2xl text-ivory/85 leading-relaxed text-pretty">
+          <div className="space-y-8 font-display text-xl md:text-2xl text-navy-deep/85 leading-relaxed text-pretty">
             <p>
               At Livin', the experience begins long before the fragrance is
               discovered.
@@ -491,7 +476,7 @@ function CollectionDetailPage() {
           <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6 text-center">
             Answers
           </p>
-          <h2 className="font-display italic text-4xl md:text-5xl text-ivory leading-tight mb-14 text-center">
+          <h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-14 text-center">
             Frequently Asked Questions
           </h2>
         </Reveal>
@@ -503,10 +488,10 @@ function CollectionDetailPage() {
                 value={`item-${i}`}
                 className="border-b border-gold/15"
               >
-                <AccordionTrigger className="font-display text-xl md:text-2xl text-ivory hover:no-underline hover:text-gold-shimmer py-6 text-left [&>svg]:text-gold [&>svg]:h-5 [&>svg]:w-5">
+                <AccordionTrigger className="font-display text-xl md:text-2xl text-navy-deep hover:no-underline hover:text-gold-shimmer py-6 text-left [&>svg]:text-gold [&>svg]:h-5 [&>svg]:w-5">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-base md:text-lg text-ivory/75 leading-relaxed font-light pb-8 pr-8">
+                <AccordionContent className="text-base md:text-lg text-navy-deep/75 leading-relaxed font-display font-light pb-8 pr-8">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>
@@ -532,7 +517,7 @@ function CollectionDetailPage() {
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
-          <div className="space-y-6 font-display text-xl md:text-2xl text-ivory/80 leading-relaxed text-pretty mb-14">
+          <div className="space-y-6 font-display text-xl md:text-2xl text-navy-deep/80 leading-relaxed text-pretty mb-14">
             <p>
               The most meaningful gifts aren't remembered because they were
               expensive.
@@ -550,7 +535,7 @@ function CollectionDetailPage() {
           <button
             type="button"
             onClick={handleAdd}
-            className="inline-flex items-center gap-2 px-12 py-5 bg-gold text-navy-deep text-[11px] uppercase tracking-[0.4em] hover:bg-gold-shimmer transition-colors"
+            className="inline-flex items-center gap-2 px-12 py-5 bg-navy-deep text-white text-[11px] uppercase tracking-[0.4em] hover:bg-navy transition-colors"
           >
             {justAdded ? (
               <>
@@ -570,7 +555,7 @@ function CollectionDetailPage() {
             <p className="text-[10px] uppercase tracking-[0.4em] text-gold mb-4 text-center">
               Also of the House
             </p>
-            <h2 className="font-display italic text-3xl md:text-5xl text-ivory text-center mb-16">
+            <h2 className="font-display italic text-3xl md:text-5xl text-navy-deep text-center mb-16">
               Other Signatures
             </h2>
           </Reveal>
@@ -582,7 +567,7 @@ function CollectionDetailPage() {
                   params={{ slug: o.slug }}
                   className="group glass-card p-6 flex flex-col gap-6 transition-all duration-500 hover:-translate-y-2 hover:border-gold/40"
                 >
-                  <div className="overflow-hidden aspect-[3/4] bg-navy">
+                  <div className="overflow-hidden aspect-[3/4] bg-ivory">
                     <img
                       src={o.image}
                       alt={o.name}
@@ -596,7 +581,7 @@ function CollectionDetailPage() {
                     <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-3">
                       {o.tag}
                     </p>
-                    <h3 className="font-display italic text-3xl text-ivory mb-4">
+                    <h3 className="font-display italic text-3xl text-navy-deep mb-4">
                       {o.name}
                     </h3>
                     <div className="flex items-center justify-between mt-4 pt-4 border-t border-gold/15">
@@ -625,15 +610,15 @@ function NotFoundPage() {
         <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
           Not Found
         </p>
-        <h1 className="font-display italic text-5xl md:text-7xl text-ivory leading-[0.95] mb-8">
+        <h1 className="font-display italic text-5xl md:text-7xl text-navy-deep leading-[0.95] mb-8">
           A Silent Vessel
         </h1>
-        <p className="font-display text-xl md:text-2xl text-ivory/70 leading-relaxed mb-12">
+        <p className="font-display text-xl md:text-2xl text-navy-deep/70 leading-relaxed mb-12">
           We couldn't find that signature. It may have been renamed or moved.
         </p>
         <Link
           to="/collections"
-          className="inline-block px-10 py-4 border border-gold/50 text-gold text-[10px] uppercase tracking-[0.3em] hover:bg-gold hover:text-navy-deep transition-colors"
+          className="inline-block px-10 py-4 border border-navy-deep/40 text-navy-deep text-[10px] uppercase tracking-[0.3em] hover:bg-navy-deep hover:text-white transition-colors"
         >
           View the Collection
         </Link>

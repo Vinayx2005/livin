@@ -42,13 +42,14 @@ export function SiteNav() {
 
   return (
     <>
-      <nav
-        className={`fixed top-0 z-50 w-full px-6 md:px-10 py-5 flex justify-between items-center transition-all duration-500 ${
-          scrolled
-            ? "bg-navy-deep/85 backdrop-blur-md border-b border-gold/10"
-            : "bg-gradient-to-b from-navy-deep/70 to-transparent"
-        }`}
-      >
+      <div className="fixed top-0 z-50 w-full">
+        <nav
+          className={`w-full px-6 md:px-10 py-5 flex justify-between items-center bg-white transition-shadow duration-500 ${
+            scrolled
+              ? "shadow-[0_2px_20px_rgba(15,31,61,0.08)] border-b border-gold/15"
+              : "border-b border-gold/10"
+          }`}
+        >
         <Link
           to="/"
           className="font-display italic text-2xl md:text-3xl tracking-[0.15em] text-gold-shimmer"
@@ -63,7 +64,7 @@ export function SiteNav() {
             <Link
               key={l.to}
               to={l.to}
-              className="text-ivory/80 hover:text-gold transition-colors duration-300"
+              className="text-navy-deep/80 hover:text-gold transition-colors duration-300"
               activeProps={{ className: "text-gold" }}
             >
               {l.label}
@@ -72,7 +73,7 @@ export function SiteNav() {
           <Link
             to="/cart"
             aria-label={count > 0 ? `Cart (${count})` : "Cart"}
-            className="relative text-ivory/80 hover:text-gold transition-colors duration-300"
+            className="relative text-navy-deep/80 hover:text-gold transition-colors duration-300"
             activeProps={{ className: "text-gold" }}
           >
             <ShoppingBag size={18} strokeWidth={1.25} />
@@ -109,7 +110,22 @@ export function SiteNav() {
             {open ? <X size={22} strokeWidth={1.25} /> : <Menu size={22} strokeWidth={1.25} />}
           </button>
         </div>
-      </nav>
+        </nav>
+
+        {/* Announcement bar — sits just below the header */}
+        <div className="w-full bg-navy-deep text-ivory/90 text-[10px] md:text-[11px] tracking-[0.15em]">
+          <div className="max-w-7xl mx-auto px-6 md:px-10 py-2.5 flex items-center justify-center gap-6 md:gap-12">
+            <span className="flex items-center gap-2">
+              <span className="text-gold">◆</span>
+              Complimentary gift wrapping on every order
+            </span>
+            <span className="hidden md:flex items-center gap-2">
+              <span className="text-gold">◆</span>
+              Free shipping on orders above ₹2,999
+            </span>
+          </div>
+        </div>
+      </div>
 
       {/* Mobile overlay */}
       <AnimatePresence>
@@ -119,7 +135,7 @@ export function SiteNav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden fixed inset-0 z-40 bg-navy-deep/95 backdrop-blur-lg flex flex-col items-center justify-center gap-10 px-8"
+            className="md:hidden fixed inset-0 z-40 bg-ivory/95 backdrop-blur-lg flex flex-col items-center justify-center gap-10 px-8"
           >
             <ul className="flex flex-col items-center gap-8 text-center">
               {links.map((l, i) => (
@@ -136,7 +152,7 @@ export function SiteNav() {
                   <Link
                     to={l.to}
                     onClick={() => setOpen(false)}
-                    className="font-display italic text-4xl text-ivory hover:text-gold-shimmer transition-colors"
+                    className="font-display italic text-4xl text-navy-deep hover:text-gold-shimmer transition-colors"
                     activeProps={{ className: "text-gold-shimmer" }}
                   >
                     {l.label}

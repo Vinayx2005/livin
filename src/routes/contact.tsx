@@ -38,10 +38,10 @@ function ContactPage() {
       <section className="max-w-6xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-20">
         <Reveal>
           <div>
-            <h1 className="font-display italic text-5xl md:text-7xl text-ivory leading-[0.95] mb-8">
+            <h1 className="font-display italic text-5xl md:text-7xl text-navy-deep leading-[0.95] mb-8">
               Have a question?
             </h1>
-            <div className="font-display text-xl md:text-2xl text-ivory/75 leading-relaxed mb-12 space-y-4">
+            <div className="font-display text-xl md:text-2xl text-navy-deep/75 leading-relaxed mb-12 space-y-4">
               <p>
                 About an order, delivery, or one of our collections?
               </p>
@@ -49,7 +49,7 @@ function ContactPage() {
                 Our team is here to help.
               </p>
             </div>
-            <div className="space-y-6 text-sm text-ivory/80 font-light">
+            <div className="space-y-6 text-sm text-navy-deep/80 font-display font-light">
               <div>
                 <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-2">
                   Email
@@ -105,10 +105,10 @@ function ContactPage() {
             {sent ? (
               <div className="py-16 text-center">
                 <div className="text-gold text-4xl mb-6">◆</div>
-                <h3 className="font-display italic text-3xl text-ivory mb-4">
+                <h3 className="font-display italic text-3xl text-navy-deep mb-4">
                   Thank you
                 </h3>
-                <p className="text-ivory/70 font-light">
+                <p className="text-navy-deep/70 font-display font-light">
                   Our team will be in touch within one working day.
                 </p>
               </div>
@@ -128,12 +128,12 @@ function ContactPage() {
                   </label>
                   <textarea
                     rows={5}
-                    className="w-full bg-transparent border-b border-gold/25 focus:border-gold text-ivory pb-3 outline-none transition-colors font-light"
+                    className="w-full bg-transparent border-b border-gold/25 focus:border-gold text-navy-deep pb-3 outline-none transition-colors font-light"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="mt-4 w-full py-4 border border-gold bg-gold/5 text-gold text-[10px] uppercase tracking-[0.4em] hover:bg-gold hover:text-navy-deep transition-colors"
+                  className="mt-4 w-full py-4 bg-navy-deep text-white text-[10px] uppercase tracking-[0.4em] hover:bg-navy transition-colors"
                 >
                   Send Message
                 </button>
@@ -158,7 +158,7 @@ function ContactPage() {
           <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6 text-center">
             Answers
           </p>
-          <h2 className="font-display italic text-4xl md:text-5xl text-ivory leading-tight mb-14 text-center">
+          <h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-14 text-center">
             Frequently Asked Questions
           </h2>
         </Reveal>
@@ -170,10 +170,10 @@ function ContactPage() {
                 value={`item-${i}`}
                 className="border-b border-gold/15"
               >
-                <AccordionTrigger className="font-display text-xl md:text-2xl text-ivory hover:no-underline hover:text-gold-shimmer py-6 text-left [&>svg]:text-gold [&>svg]:h-5 [&>svg]:w-5">
+                <AccordionTrigger className="font-display text-xl md:text-2xl text-navy-deep hover:no-underline hover:text-gold-shimmer py-6 text-left [&>svg]:text-gold [&>svg]:h-5 [&>svg]:w-5">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-base md:text-lg text-ivory/75 leading-relaxed font-light pb-8 pr-8">
+                <AccordionContent className="text-base md:text-lg text-navy-deep/75 leading-relaxed font-display font-light pb-8 pr-8">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>
@@ -228,7 +228,7 @@ function Field({
         name={name}
         type={type}
         placeholder={placeholder}
-        className="w-full bg-transparent border-b border-gold/25 focus:border-gold text-ivory pb-3 outline-none transition-colors font-light placeholder:text-ivory/30"
+        className="w-full bg-transparent border-b border-gold/25 focus:border-gold text-navy-deep pb-3 outline-none transition-colors font-light placeholder:text-navy-deep/30"
       />
     </div>
   );

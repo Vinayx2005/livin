@@ -31,7 +31,7 @@ function CartPage() {
           <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6 text-center">
             Your Bag
           </p>
-          <h1 className="font-display italic text-5xl md:text-7xl text-ivory leading-[0.95] mb-16 text-center">
+          <h1 className="font-display italic text-5xl md:text-7xl text-navy-deep leading-[0.95] mb-16 text-center">
             A Quiet Ceremony
           </h1>
         </Reveal>
@@ -49,7 +49,7 @@ function CartPage() {
                   <Link
                     to="/collections/$slug"
                     params={{ slug: product.slug }}
-                    className="block overflow-hidden aspect-square bg-navy"
+                    className="block overflow-hidden aspect-square bg-ivory border border-gold/15"
                   >
                     <img
                       src={product.image}
@@ -61,7 +61,7 @@ function CartPage() {
                     <Link
                       to="/collections/$slug"
                       params={{ slug: product.slug }}
-                      className="font-display italic text-xl md:text-2xl text-ivory hover:text-gold-shimmer transition-colors block truncate"
+                      className="font-display italic text-xl md:text-2xl text-navy-deep hover:text-gold-shimmer transition-colors block truncate"
                     >
                       {product.name}
                     </Link>
@@ -81,7 +81,7 @@ function CartPage() {
                     >
                       <Minus size={12} strokeWidth={1.5} />
                     </button>
-                    <span className="text-ivory text-sm w-5 text-center tabular-nums">
+                    <span className="text-navy-deep text-sm w-5 text-center tabular-nums">
                       {item.qty}
                     </span>
                     <button
@@ -101,7 +101,7 @@ function CartPage() {
                       type="button"
                       aria-label={`Remove ${product.name}`}
                       onClick={() => remove(item.slug)}
-                      className="text-ivory/50 hover:text-ivory transition-colors"
+                      className="text-navy-deep/50 hover:text-navy-deep transition-colors"
                     >
                       <X size={16} strokeWidth={1.25} />
                     </button>
@@ -110,7 +110,7 @@ function CartPage() {
                     type="button"
                     aria-label={`Remove ${product.name}`}
                     onClick={() => remove(item.slug)}
-                    className="md:hidden col-start-3 mt-3 text-[10px] uppercase tracking-[0.3em] text-ivory/60 hover:text-ivory text-right"
+                    className="md:hidden col-start-3 mt-3 text-[10px] uppercase tracking-[0.3em] text-navy-deep/60 hover:text-navy-deep text-right"
                   >
                     Remove
                   </button>
@@ -127,19 +127,19 @@ function CartPage() {
                   {formatPrice(subtotal)}
                 </span>
               </div>
-              <p className="text-[10px] uppercase tracking-[0.3em] text-ivory/50">
+              <p className="text-[10px] uppercase tracking-[0.3em] text-navy-deep/50">
                 Shipping & taxes calculated at checkout
               </p>
               <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
                 <Link
                   to="/collections"
-                  className="px-8 py-4 border border-gold/50 text-gold text-[10px] uppercase tracking-[0.3em] hover:bg-gold/10 transition-colors text-center"
+                  className="px-8 py-4 border border-navy-deep/40 text-navy-deep text-[10px] uppercase tracking-[0.3em] hover:bg-navy-deep hover:text-white transition-colors text-center"
                 >
                   Continue Browsing
                 </Link>
                 <Link
                   to="/contact"
-                  className="px-10 py-4 bg-gold text-navy-deep text-[10px] uppercase tracking-[0.3em] hover:bg-gold-shimmer transition-colors text-center"
+                  className="px-10 py-4 bg-navy-deep text-white text-[10px] uppercase tracking-[0.3em] hover:bg-navy transition-colors text-center"
                 >
                   Proceed to Checkout
                 </Link>
@@ -159,13 +159,13 @@ function EmptyBag() {
         <div className="size-20 rounded-full border border-gold/30 flex items-center justify-center">
           <ShoppingBag size={28} strokeWidth={1} className="text-gold/80" />
         </div>
-        <p className="font-display text-xl md:text-2xl text-ivory/75 max-w-md leading-relaxed">
+        <p className="font-display text-xl md:text-2xl text-navy-deep/75 max-w-md leading-relaxed">
           Your bag awaits its first bottle. Choose a signature from the
           collection to begin the reveal.
         </p>
         <Link
           to="/collections"
-          className="inline-block px-10 py-4 border border-gold/50 text-gold text-[10px] uppercase tracking-[0.3em] hover:bg-gold hover:text-navy-deep transition-colors mt-4"
+          className="inline-block px-10 py-4 border border-navy-deep/40 text-navy-deep text-[10px] uppercase tracking-[0.3em] hover:bg-navy-deep hover:text-white transition-colors mt-4"
         >
           Explore the Collection
         </Link>

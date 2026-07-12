@@ -45,12 +45,12 @@ function Chapter({
   return (
     <section className="max-w-3xl mx-auto px-6 md:px-10">
       <Reveal>
-        <h2 className="font-display italic text-3xl md:text-5xl text-ivory leading-tight mb-10 text-center">
+        <h2 className="font-display italic text-3xl md:text-5xl text-navy-deep leading-tight mb-10 text-center">
           {title}
         </h2>
       </Reveal>
       <Reveal delay={0.1}>
-        <div className="space-y-6 font-display text-lg md:text-xl text-ivory/80 leading-relaxed text-pretty">
+        <div className="space-y-6 font-display text-lg md:text-xl text-navy-deep/80 leading-relaxed text-pretty">
           {children}
         </div>
       </Reveal>
@@ -69,12 +69,12 @@ function StoryPage() {
           </p>
         </Reveal>
         <Reveal delay={0.1}>
-          <h1 className="font-display italic text-4xl md:text-6xl lg:text-7xl text-ivory leading-[1.05] mb-12">
+          <h1 className="font-display italic text-4xl md:text-6xl lg:text-7xl text-navy-deep leading-[1.05] mb-12">
             Every Great Story Begins with a Feeling
           </h1>
         </Reveal>
         <Reveal delay={0.2}>
-          <div className="max-w-2xl mx-auto space-y-6 font-display text-xl md:text-2xl text-ivory/80 leading-relaxed text-pretty">
+          <div className="max-w-2xl mx-auto space-y-6 font-display text-xl md:text-2xl text-navy-deep/80 leading-relaxed text-pretty">
             <p>
               Livin' wasn't born in a boardroom, nor did it begin as a business
               idea. It started with a feeling that stayed long after a gift had
@@ -225,12 +225,12 @@ function StoryPage() {
           <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6 text-center">
             A Letter from the Founder
           </p>
-          <h2 className="font-display italic text-3xl md:text-5xl text-ivory leading-tight mb-14 text-center">
+          <h2 className="font-display italic text-3xl md:text-5xl text-navy-deep leading-tight mb-14 text-center">
             To the one who is thinking of someone.
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
-          <div className="space-y-6 font-display text-lg md:text-xl text-ivory/80 leading-relaxed text-pretty">
+          <div className="space-y-6 font-display text-lg md:text-xl text-navy-deep/80 leading-relaxed text-pretty">
             <p>
               If you've found your way here, there's a good chance you're
               thinking about someone who matters deeply to you.
@@ -262,7 +262,7 @@ function StoryPage() {
             <p className="font-display italic text-2xl md:text-3xl text-gold-shimmer mb-2">
               Betha Sai Likitha
             </p>
-            <p className="text-[10px] uppercase tracking-[0.4em] text-ivory/60">
+            <p className="text-[10px] uppercase tracking-[0.4em] text-navy-deep/60">
               Founder, Livin'
             </p>
           </div>

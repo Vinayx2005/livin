@@ -29,12 +29,12 @@ function CollectionsPage() {
     <main className="pt-32 pb-40">
       <section className="max-w-4xl mx-auto px-6 md:px-10 text-center pb-24">
         <Reveal>
-          <h1 className="font-display text-5xl md:text-7xl italic text-ivory leading-[1.05]">
+          <h1 className="font-display text-5xl md:text-7xl italic text-navy-deep leading-[1.05]">
             Every Gift Begins with Someone
           </h1>
         </Reveal>
         <Reveal delay={0.15}>
-          <div className="mt-10 max-w-2xl mx-auto space-y-6 font-display text-xl md:text-2xl text-ivory/75 leading-relaxed text-pretty">
+          <div className="mt-10 max-w-2xl mx-auto space-y-6 font-display text-xl md:text-2xl text-navy-deep/75 leading-relaxed text-pretty">
             <p>Before choosing, think about the person.</p>
             <p>
               The person you want to celebrate, thank, surprise, encourage, or
@@ -64,7 +64,7 @@ function CollectionsPage() {
                   i === 1 ? "md:mt-14" : ""
                 }`}
               >
-                <div className="overflow-hidden aspect-[3/4] bg-navy">
+                <div className="overflow-hidden aspect-[3/4] bg-ivory">
                   <img
                     src={item.image}
                     alt={item.name}
@@ -78,7 +78,7 @@ function CollectionsPage() {
                   <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-3">
                     {item.tag}
                   </p>
-                  <h2 className="font-display italic text-3xl md:text-4xl text-ivory mb-4">
+                  <h2 className="font-display italic text-3xl md:text-4xl text-navy-deep mb-4">
                     {item.name}
                   </h2>
                   <div className="flex items-center justify-between mt-6 pt-6 border-t border-gold/15">

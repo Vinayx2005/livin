@@ -1,4 +1,4 @@
-const PLACEHOLDER_IMAGE = "/placeholder-collection.svg";
+const PLACEHOLDER_IMAGE = "/livin-bottle-box.jpg";
 
 export type Collection = {
   slug: string;

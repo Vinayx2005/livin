@@ -16,19 +16,19 @@ import { SiteFooter } from "../components/SiteFooter";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-navy-deep px-4">
+    <div className="flex min-h-screen items-center justify-center bg-ivory px-4">
       <div className="max-w-md text-center">
         <h1 className="font-display text-8xl text-gold-shimmer italic">404</h1>
-        <h2 className="mt-6 font-display text-2xl text-ivory">
+        <h2 className="mt-6 font-display text-2xl text-navy-deep">
           A page beyond our house
         </h2>
-        <p className="mt-3 text-sm text-ivory/60 font-light">
+        <p className="mt-3 text-sm text-navy-deep/60 font-display font-light">
           The reveal you seek does not exist within these walls.
         </p>
         <div className="mt-8">
           <Link
             to="/"
-            className="inline-flex items-center justify-center border border-gold/40 bg-gold/5 px-8 py-3 text-[10px] uppercase tracking-[0.3em] text-gold hover:bg-gold hover:text-navy-deep transition-colors"
+            className="inline-flex items-center justify-center border border-navy-deep/40 px-8 py-3 text-[10px] uppercase tracking-[0.3em] text-navy-deep hover:bg-navy-deep hover:text-white transition-colors"
           >
             Return Home
           </Link>
@@ -46,12 +46,12 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-navy-deep px-4">
+    <div className="flex min-h-screen items-center justify-center bg-ivory px-4">
       <div className="max-w-md text-center">
-        <h1 className="font-display text-3xl text-ivory italic">
+        <h1 className="font-display text-3xl text-navy-deep italic">
           A moment of silence
         </h1>
-        <p className="mt-3 text-sm text-ivory/60 font-light">
+        <p className="mt-3 text-sm text-navy-deep/60 font-display font-light">
           Something disturbed the reveal. Please try again.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -60,13 +60,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className="border border-gold/40 bg-gold/5 px-8 py-3 text-[10px] uppercase tracking-[0.3em] text-gold hover:bg-gold hover:text-navy-deep transition-colors"
+            className="border border-navy-deep/40 px-8 py-3 text-[10px] uppercase tracking-[0.3em] text-navy-deep hover:bg-navy-deep hover:text-white transition-colors"
           >
             Try again
           </button>
           <a
             href="/"
-            className="border border-ivory/20 px-8 py-3 text-[10px] uppercase tracking-[0.3em] text-ivory/80 hover:border-ivory/60 transition-colors"
+            className="border border-navy-deep/20 px-8 py-3 text-[10px] uppercase tracking-[0.3em] text-navy-deep/80 hover:border-navy-deep/60 transition-colors"
           >
             Go home
           </a>
@@ -88,7 +88,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "LIVIN' Oud Royale — a house of rare oud fragrances and bespoke gifting. Cinematic reveals, hand-crafted flacons, curated for the connoisseur.",
       },
       { name: "author", content: "LIVIN' Oud Royale" },
-      { name: "theme-color", content: "#0a1733" },
+      { name: "theme-color", content: "#ffffff" },
       { property: "og:site_name", content: "LIVIN' Oud Royale" },
       { property: "og:type", content: "website" },
       {
@@ -141,7 +141,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen bg-navy-deep text-ivory">
+      <div className="min-h-screen bg-ivory text-navy-deep">
         <SiteNav />
         <Outlet />
         <SiteFooter />

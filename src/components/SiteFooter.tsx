@@ -8,7 +8,7 @@ export function SiteFooter() {
           <div className="font-display italic text-4xl text-gold-shimmer mb-6">
             LIVIN'
           </div>
-          <p className="max-w-sm text-ivory/50 text-sm leading-relaxed font-light">
+          <p className="max-w-sm text-ivory/50 text-sm leading-relaxed font-display font-light">
             Purveyors of the rarest oud, bottled for the connoisseur. Every
             flacon a private audience with the desert's oldest secret.
           </p>
@@ -17,7 +17,7 @@ export function SiteFooter() {
           <h4 className="text-[10px] uppercase tracking-[0.3em] text-gold">
             House
           </h4>
-          <ul className="space-y-2 text-sm text-ivory/70 font-light">
+          <ul className="space-y-2 text-sm text-ivory/70 font-display font-light">
             <li>
               <Link to="/collections" className="hover:text-gold transition-colors">
                 Collections
@@ -44,7 +44,7 @@ export function SiteFooter() {
           <h4 className="text-[10px] uppercase tracking-[0.3em] text-gold">
             Ateliers
           </h4>
-          <p className="text-sm text-ivory/70 font-light leading-relaxed">
+          <p className="text-sm text-ivory/70 font-display font-light leading-relaxed">
             London
             <br />
             Dubai

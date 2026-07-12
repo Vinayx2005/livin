@@ -48,10 +48,10 @@ function GiftingPage() {
             <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
               The Ritual
             </p>
-            <h1 className="font-display text-6xl md:text-7xl italic text-ivory leading-[0.95] mb-8">
+            <h1 className="font-display text-6xl md:text-7xl italic text-navy-deep leading-[0.95] mb-8">
               The Art of Gifting
             </h1>
-            <p className="font-display text-xl md:text-2xl text-ivory/75 leading-relaxed max-w-md">
+            <p className="font-display text-xl md:text-2xl text-navy-deep/75 leading-relaxed max-w-md">
               Presentation is a performance. Every reveal at LIVIN' is
               choreographed — from the weight of the box to the whisper of silk.
             </p>
@@ -76,10 +76,10 @@ function GiftingPage() {
           <Reveal key={s.title} delay={i * 0.12}>
             <div className="glass-card p-10 h-full">
               <div className="text-gold text-2xl mb-6">◆</div>
-              <h3 className="font-display italic text-3xl text-ivory mb-4">
+              <h3 className="font-display italic text-3xl text-navy-deep mb-4">
                 {s.title}
               </h3>
-              <p className="text-ivory/70 font-light leading-relaxed">
+              <p className="text-navy-deep/70 font-display font-light leading-relaxed">
                 {s.text}
               </p>
             </div>
@@ -92,14 +92,14 @@ function GiftingPage() {
           <h2 className="font-display italic text-4xl md:text-5xl text-gold-shimmer mb-8">
             Speak With Our Concierge
           </h2>
-          <p className="text-ivory/70 leading-relaxed font-light mb-10 max-w-xl mx-auto">
+          <p className="text-navy-deep/70 leading-relaxed font-display font-light mb-10 max-w-xl mx-auto">
             Whether a single reveal or a hundred, our concierge team will orchestrate
             every detail — from packaging to delivery to the whispered card that
             accompanies each vessel.
           </p>
           <Link
             to="/contact"
-            className="inline-block px-12 py-4 border border-gold text-gold text-[10px] uppercase tracking-[0.4em] hover:bg-gold hover:text-navy-deep transition-colors"
+            className="inline-block px-12 py-4 bg-navy-deep text-white text-[10px] uppercase tracking-[0.4em] hover:bg-navy transition-colors"
           >
             Begin Enquiry
           </Link>

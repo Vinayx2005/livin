@@ -34,12 +34,12 @@ export function Hero3D() {
         }}
         aria-hidden
       />
-      {/* Film grain / bottom fade into page */}
+      {/* Film grain / bottom fade into the light page */}
       <div
         className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(10,23,51,0) 0%, rgba(10,23,51,0.85) 70%, #0a1733 100%)",
+            "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 55%, #ffffff 100%)",
         }}
         aria-hidden
       />

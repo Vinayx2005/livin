@@ -1,10 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Hero3D } from "@/components/Hero3D";
+import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { collections } from "@/data/collections";
 
-import gifting from "@/assets/gifting-ritual.jpg";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -13,65 +12,80 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <main>
-      {/* HERO */}
-      <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
-        {/* atmosphere */}
-        <div
-          aria-hidden
-          className="absolute inset-0 z-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse at 50% 55%, rgba(201,162,76,0.18) 0%, rgba(10,23,51,0) 55%)",
-          }}
-        />
-        <Hero3D />
-
-        <div className="relative z-30 text-center px-6 pointer-events-none">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="text-gold uppercase tracking-[0.5em] text-[10px] md:text-xs mb-6"
-          >
-            The House of Livin'
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-6xl md:text-8xl lg:text-[10rem] leading-[0.9] tracking-tight text-ivory"
-          >
-            Worth <span className="italic text-gold-shimmer">Gifting</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.9 }}
-            className="mt-6 text-ivory/70 tracking-[0.35em] uppercase text-[10px] md:text-xs"
-          >
-            Because some gifts become memories.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 1.2 }}
-            className="mt-10"
-          >
-            <Link
-              to="/collections"
-              className="pointer-events-auto inline-block px-10 py-4 border border-gold/50 text-gold text-[10px] uppercase tracking-[0.35em] hover:bg-gold hover:text-navy-deep transition-colors"
+      {/* HERO — editorial composition with a soft slanted feather */}
+      <section
+        className="relative overflow-hidden"
+        style={{ backgroundColor: "#FCFBF8" }}
+      >
+        <div className="relative grid grid-cols-1 md:grid-cols-[minmax(0,44%)_minmax(0,56%)] items-stretch">
+          {/* Left — copy */}
+          <div className="flex items-center order-2 md:order-1 pt-12 md:pt-40 pb-16 md:pb-20 pl-[calc(1.5rem+20px)] md:pl-[calc(2.5rem+20px)] pr-6">
+            <div className="w-full max-w-xl">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-navy-deep"
             >
-              Explore Collection
-            </Link>
-          </motion.div>
-        </div>
+              <span className="md:block">Some gifts are opened.</span>{" "}
+              <span className="md:block">The best ones are</span>{" "}
+              <span className="italic text-gold-shimmer md:block">
+                remembered.
+              </span>
+            </motion.h1>
 
-        {/* scroll cue */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-60 z-30">
-          <div className="w-px h-14 bg-gradient-to-b from-gold to-transparent animate-shimmer" />
-          <span className="text-[9px] uppercase tracking-[0.4em] text-gold/80">
-            Scroll
-          </span>
+            {/* Line + diamond + line divider */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.9, delay: 0.5 }}
+              className="mt-8 mb-8 flex items-center gap-3"
+            >
+              <span className="h-px w-10 bg-gold" />
+              <span className="block size-1.5 rotate-45 border border-gold" />
+              <span className="h-px w-10 bg-gold" />
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.1, delay: 0.55 }}
+              className="max-w-md font-display text-navy-deep/75 leading-relaxed text-lg md:text-xl"
+            >
+              Every Livin' experience is thoughtfully curated to help you
+              express love, gratitude, and celebration in a way that lingers
+              long after the moment has passed.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.1, delay: 0.8 }}
+              className="mt-10"
+            >
+              <Link
+                to="/collections"
+                className="inline-flex items-center gap-3 bg-navy-deep text-white px-10 py-4 text-[11px] uppercase tracking-[0.35em] hover:bg-navy transition-colors"
+              >
+                Explore Collections
+                <ArrowRight size={14} strokeWidth={1.5} />
+              </Link>
+            </motion.div>
+            </div>
+          </div>
+
+          {/* Right — product photo. Mobile: clean image on top. Desktop: slanted feather mask + overlap. */}
+          <div className="order-1 md:order-2 pt-32 md:pt-0 md:h-full [&>*]:md:h-full">
+            <Reveal delay={0.15}>
+              <div className="relative aspect-[4/3] md:aspect-auto md:h-full md:min-h-[620px] w-full md:-ml-24 lg:-ml-32 md:w-[calc(100%+6rem)] lg:w-[calc(100%+8rem)]">
+                <img
+                  src="/livin-bottle-box.jpg"
+                  alt="LIVIN' Oud Royale bottle presented in its navy velvet box with a hand-written gift note"
+                  className="hero-image-mask absolute inset-0 h-full w-full object-cover object-center"
+                />
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -92,7 +106,7 @@ function Home() {
           </h2>
         </Reveal>
         <Reveal delay={0.15}>
-          <p className="font-display text-2xl md:text-3xl leading-relaxed text-ivory/85 text-pretty">
+          <p className="font-display text-2xl md:text-3xl leading-relaxed text-navy-deep/85 text-pretty">
             Every Livin' experience is thoughtfully curated to help you express
             love, gratitude, and celebration in a way that stays long after the
             moment has passed.
@@ -115,17 +129,17 @@ function Home() {
           <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
             Our Purpose
           </p>
-          <h2 className="font-display italic text-4xl md:text-6xl text-ivory leading-[1.05] mb-12">
+          <h2 className="font-display italic text-4xl md:text-6xl text-navy-deep leading-[1.05] mb-12">
             Why Livin' Exists
           </h2>
         </Reveal>
         <Reveal delay={0.12}>
-          <p className="font-display text-xl md:text-2xl italic text-gold-shimmer leading-relaxed mb-10 text-pretty">
+          <p className="font-display text-2xl md:text-3xl italic text-gold-shimmer leading-relaxed mb-10 text-pretty">
             Most gifts end when they're opened. We wanted ours to begin there.
           </p>
         </Reveal>
         <Reveal delay={0.2}>
-          <div className="space-y-8 font-display text-lg md:text-xl text-ivory/80 leading-relaxed text-pretty">
+          <div className="space-y-8 font-display text-2xl md:text-3xl text-navy-deep/80 leading-relaxed text-pretty">
             <p>
               Livin' was born from one simple belief. People rarely remember the
               price of a gift. They remember how someone made them feel.
@@ -144,7 +158,7 @@ function Home() {
           <div className="mt-14">
             <Link
               to="/story"
-              className="inline-block px-10 py-4 border border-gold/50 text-gold text-[10px] uppercase tracking-[0.35em] hover:bg-gold hover:text-navy-deep transition-colors"
+              className="inline-block px-10 py-4 border border-navy-deep/40 text-navy-deep text-[10px] uppercase tracking-[0.35em] hover:bg-navy-deep hover:text-white transition-colors"
             >
               Read Our Story
             </Link>
@@ -160,7 +174,7 @@ function Home() {
               <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
                 Our Craft
               </p>
-              <h2 className="font-display italic text-4xl md:text-6xl text-ivory leading-[1.05] mb-14">
+              <h2 className="font-display italic text-4xl md:text-6xl text-navy-deep leading-[1.05] mb-14">
                 The Livin' Experience
               </h2>
             </Reveal>
@@ -189,10 +203,10 @@ function Home() {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div>
-                      <h3 className="font-display italic text-2xl md:text-3xl text-ivory mb-2">
+                      <h3 className="font-display italic text-2xl md:text-3xl text-navy-deep mb-2">
                         {item.label}
                       </h3>
-                      <p className="text-base md:text-lg text-ivory/70 leading-relaxed font-light">
+                      <p className="font-display text-lg md:text-xl text-navy-deep/70 leading-relaxed">
                         {item.body}
                       </p>
                     </div>
@@ -204,30 +218,15 @@ function Home() {
 
           {/* Placeholder photo */}
           <Reveal delay={0.2}>
-            <div
-              className="relative overflow-hidden aspect-[4/5] glass-card"
-              role="img"
-              aria-label="Placeholder for Livin' experience photograph"
-            >
-              <div
-                className="absolute inset-0"
-                aria-hidden="true"
-                style={{
-                  background:
-                    "radial-gradient(ellipse at 50% 40%, rgba(201,162,76,0.14) 0%, rgba(10,23,51,0.6) 55%, rgba(5,10,25,0.85) 100%)",
-                }}
+            <div className="relative overflow-hidden aspect-[4/5] glass-card">
+              <img
+                src="/livin-flatlay.jpg"
+                alt="The Livin' experience — gold wrapping, velvet pouch, and thank-you card"
+                width={1200}
+                height={1500}
+                loading="lazy"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 text-gold/60">
-                <div className="size-16 border border-gold/30 rounded-full flex items-center justify-center">
-                  <div className="size-2 rotate-45 border border-gold/50" />
-                </div>
-                <p className="text-[10px] uppercase tracking-[0.5em] text-gold/70">
-                  Photograph
-                </p>
-                <p className="text-[9px] uppercase tracking-[0.3em] text-ivory/40">
-                  Placeholder — to be replaced
-                </p>
-              </div>
             </div>
           </Reveal>
         </div>
@@ -242,7 +241,7 @@ function Home() {
                 <p className="text-[10px] uppercase tracking-[0.4em] text-gold mb-4">
                   The Collection
                 </p>
-                <h3 className="font-display text-4xl md:text-6xl italic text-ivory">
+                <h3 className="font-display text-4xl md:text-6xl italic text-navy-deep">
                   Featured Collections
                 </h3>
               </div>
@@ -265,7 +264,7 @@ function Home() {
                     i === 1 ? "md:mt-16" : ""
                   }`}
                 >
-                  <div className="overflow-hidden aspect-[3/4] bg-navy">
+                  <div className="overflow-hidden aspect-[3/4] bg-ivory">
                     <img
                       src={c.image}
                       alt={c.name}
@@ -276,13 +275,13 @@ function Home() {
                     />
                   </div>
                   <div>
-                    <h4 className="font-display text-3xl text-ivory mb-2">
+                    <h4 className="font-display text-3xl text-navy-deep mb-2">
                       {c.name}
                     </h4>
                     <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-5">
                       {c.tag}
                     </p>
-                    <div className="text-sm text-ivory/70 space-y-1 font-light mb-6">
+                    <div className="text-sm text-navy-deep/70 space-y-1 font-display font-light mb-6">
                       <p>
                         <span className="text-gold/70">Top —</span>{" "}
                         {c.layers.top}
@@ -329,7 +328,7 @@ function Home() {
           </h2>
         </Reveal>
         <Reveal delay={0.15}>
-          <div className="font-display text-2xl md:text-3xl leading-relaxed text-ivory/85 text-pretty space-y-6">
+          <div className="font-display text-2xl md:text-3xl leading-relaxed text-navy-deep/85 text-pretty space-y-6">
             <p>
               We don't believe expensive gifts create meaningful moments.
               Thoughtful ones do. That's why every Livin' experience begins
@@ -357,10 +356,10 @@ function Home() {
         <Reveal>
           <div className="overflow-hidden aspect-[4/5]">
             <img
-              src={gifting}
-              alt="The gifting ritual — silk ribbon on a navy velvet box"
+              src="/livin-gift-box.jpg"
+              alt="Livin' navy gift box tied with a gold satin bow"
               width={1200}
-              height={1200}
+              height={1500}
               loading="lazy"
               className="w-full h-full object-cover"
             />
@@ -371,16 +370,16 @@ function Home() {
             <p className="text-[10px] uppercase tracking-[0.4em] text-gold mb-6">
               The Ritual
             </p>
-            <h3 className="font-display italic text-4xl md:text-5xl text-ivory leading-tight mb-8">
+            <h3 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-8">
               More Than a Gift. A Moment to Hold On To.
             </h3>
-            <p className="text-ivory/70 leading-relaxed font-light mb-10 max-w-md">
+            <p className="text-navy-deep/70 leading-relaxed font-display font-light mb-10 max-w-md">
               Every meaningful relationship deserves to be celebrated. Whenever
               you're ready, we'll help you create a moment worth remembering.
             </p>
             <Link
               to="/collections"
-              className="inline-block px-10 py-4 border border-gold/50 text-gold text-[10px] uppercase tracking-[0.3em] hover:bg-gold hover:text-navy-deep transition-colors"
+              className="inline-block px-10 py-4 border border-navy-deep/40 text-navy-deep text-[10px] uppercase tracking-[0.3em] hover:bg-navy-deep hover:text-white transition-colors"
             >
               Explore Collections
             </Link>
