@@ -123,48 +123,6 @@ function Home() {
         <div className="ornament-line flex-1 opacity-30" />
       </div>
 
-      {/* WHY LIVIN' EXISTS */}
-      <section className="max-w-3xl mx-auto px-6 text-center pb-40">
-        <Reveal>
-          <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
-            Our Purpose
-          </p>
-          <h2 className="font-display italic text-4xl md:text-6xl text-navy-deep leading-[1.05] mb-12">
-            Why Livin' Exists
-          </h2>
-        </Reveal>
-        <Reveal delay={0.12}>
-          <p className="font-display text-2xl md:text-3xl italic text-gold-shimmer leading-relaxed mb-10 text-pretty">
-            Most gifts end when they're opened. We wanted ours to begin there.
-          </p>
-        </Reveal>
-        <Reveal delay={0.2}>
-          <div className="space-y-8 font-display text-2xl md:text-3xl text-navy-deep/80 leading-relaxed text-pretty">
-            <p>
-              Livin' was born from one simple belief. People rarely remember the
-              price of a gift. They remember how someone made them feel.
-            </p>
-            <p>
-              That's why every Livin' experience is designed with thoughtful
-              details, from elegant presentation to heartfelt messages, so your
-              gift becomes more than something they receive.
-            </p>
-            <p className="text-gold-shimmer italic">
-              It becomes something they feel.
-            </p>
-          </div>
-        </Reveal>
-        <Reveal delay={0.3}>
-          <div className="mt-14">
-            <Link
-              to="/story"
-              className="inline-block px-10 py-4 border border-navy-deep/40 text-navy-deep text-[10px] uppercase tracking-[0.35em] hover:bg-navy-deep hover:text-white transition-colors"
-            >
-              Read Our Story
-            </Link>
-          </div>
-        </Reveal>
-      </section>
 
       {/* THE LIVIN' EXPERIENCE */}
       <section className="max-w-7xl mx-auto px-6 md:px-10 pb-40">
@@ -367,13 +325,10 @@ function Home() {
         </Reveal>
         <Reveal delay={0.2}>
           <div>
-            <p className="text-[10px] uppercase tracking-[0.4em] text-gold mb-6">
-              The Ritual
-            </p>
             <h3 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-8">
               More Than a Gift. A Moment to Hold On To.
             </h3>
-            <p className="text-navy-deep/70 leading-relaxed font-display font-light mb-10 max-w-md">
+            <p className="text-navy-deep/70 leading-relaxed font-display text-lg md:text-xl mb-10 max-w-md">
               Every meaningful relationship deserves to be celebrated. Whenever
               you're ready, we'll help you create a moment worth remembering.
             </p>
@@ -384,6 +339,50 @@ function Home() {
               Explore Collections
             </Link>
           </div>
+        </Reveal>
+      </section>
+
+      {/* WHY LIVIN' EXISTS — editorial card (entire card is clickable) */}
+      <section className="max-w-6xl mx-auto px-6 md:px-10 pb-40">
+        <Reveal>
+          <Link
+            to="/story"
+            className="group relative block overflow-hidden rounded-2xl shadow-[0_20px_60px_rgba(20,42,92,0.08)] border border-navy-deep/5 transition-shadow duration-500 hover:shadow-[0_28px_80px_rgba(20,42,92,0.15)]"
+            style={{ backgroundColor: "#FCFBF8" }}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 items-stretch">
+              {/* Left — copy */}
+              <div className="flex items-center px-8 md:px-12 lg:px-16 py-12 md:py-16">
+                <div className="max-w-md">
+                  <p className="text-sm uppercase tracking-[0.4em] text-gold mb-6">
+                    Our Story
+                  </p>
+                  <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-navy-deep leading-[1.1] mb-6">
+                    Why Livin' Exists
+                  </h2>
+                  <div className="h-px w-12 bg-gold mb-8" />
+                  <span className="inline-flex items-center gap-3 text-sm uppercase tracking-[0.35em] text-gold group-hover:text-navy-deep transition-colors">
+                    Read the Livin' Story
+                    <ArrowRight
+                      size={16}
+                      strokeWidth={1.5}
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    />
+                  </span>
+                </div>
+              </div>
+
+              {/* Right — photograph */}
+              <div className="relative min-h-[280px] md:min-h-[360px]">
+                <img
+                  src="/livin-flatlay.jpg"
+                  alt="Livin' packaging — gold wrapping, velvet pouch, and a thank-you card"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </Link>
         </Reveal>
       </section>
     </main>

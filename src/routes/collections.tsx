@@ -26,34 +26,56 @@ export const Route = createFileRoute("/collections")({
 
 function CollectionsPage() {
   return (
-    <main className="pt-32 pb-40">
-      <section className="max-w-4xl mx-auto px-6 md:px-10 text-center pb-24">
+    <main className="pt-[calc(5rem+50px)] pb-40">
+      <section className="max-w-7xl mx-auto px-6 md:px-10 pb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+          {/* Left — copy */}
+          <div>
+            <Reveal>
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl italic text-navy-deep leading-[1.05]">
+                Every Gift Begins with Someone
+              </h1>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <div className="mt-10 space-y-6 font-display text-xl md:text-2xl text-navy-deep/75 leading-relaxed text-pretty">
+                <p>
+                  Each experience is designed with meaningful details, elegant
+                  presentation, and carefully selected fragrances, allowing every
+                  gift to become more personal from the very first moment it's
+                  opened.
+                </p>
+                <p className="italic text-gold-shimmer">
+                  Explore the collection that feels right for your story.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Right — photograph */}
+          <Reveal delay={0.2}>
+            <div className="relative overflow-hidden aspect-[4/5] rounded-2xl shadow-[0_20px_60px_rgba(20,42,92,0.12)]">
+              <img
+                src="/livin-bottle-box.jpg"
+                alt="LIVIN' bottle presented in a navy velvet gift box"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Navy invitation banner */}
+      <section className="max-w-7xl mx-auto px-6 md:px-10 pb-24">
         <Reveal>
-          <h1 className="font-display text-5xl md:text-7xl italic text-navy-deep leading-[1.05]">
-            Every Gift Begins with Someone
-          </h1>
-        </Reveal>
-        <Reveal delay={0.15}>
-          <div className="mt-10 max-w-2xl mx-auto space-y-6 font-display text-xl md:text-2xl text-navy-deep/75 leading-relaxed text-pretty">
-            <p>Before choosing, think about the person.</p>
-            <p>
-              The person you want to celebrate, thank, surprise, encourage, or
-              simply remind that they're loved.
-            </p>
-            <p>
-              Each experience is designed with meaningful details, elegant
-              presentation, and carefully selected fragrances, allowing every
-              gift to become more personal from the very first moment it's
-              opened.
-            </p>
-            <p className="italic text-gold-shimmer">
-              Explore the collection that feels right for your story.
-            </p>
+          <div className="relative overflow-hidden rounded-2xl bg-navy-deep px-8 md:px-16 py-16 md:py-24 shadow-[0_20px_60px_rgba(20,42,92,0.15)]">
+            <h2 className="font-display italic text-3xl md:text-4xl text-ivory leading-[1.05] text-center">
+              Before choosing, think about the person.
+            </h2>
           </div>
         </Reveal>
       </section>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+      <div id="collection-grid" className="max-w-7xl mx-auto px-6 md:px-10 scroll-mt-32">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
           {collections.map((item, i) => (
             <Reveal key={item.slug} delay={i * 0.1}>

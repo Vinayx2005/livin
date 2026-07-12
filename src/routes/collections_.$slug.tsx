@@ -89,7 +89,7 @@ function CollectionDetailPage() {
   };
 
   return (
-    <main className="pt-32 pb-40">
+    <main className="pt-[calc(5rem+50px)] pb-40">
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-6 md:px-10 mb-12">
         <Link
@@ -605,7 +605,7 @@ function CollectionDetailPage() {
 
 function NotFoundPage() {
   return (
-    <main className="pt-32 pb-40 min-h-screen">
+    <main className="pt-[calc(5rem+50px)] pb-40 min-h-screen">
       <section className="max-w-3xl mx-auto px-6 md:px-10 text-center">
         <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
           Not Found

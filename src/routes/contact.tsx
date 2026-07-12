@@ -34,7 +34,7 @@ export const Route = createFileRoute("/contact")({
 function ContactPage() {
   const [sent, setSent] = useState(false);
   return (
-    <main className="pt-32 pb-40">
+    <main className="pt-[calc(5rem+50px)] pb-40">
       <section className="max-w-6xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-20">
         <Reveal>
           <div>

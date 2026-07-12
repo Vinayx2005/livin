@@ -25,7 +25,7 @@ function CartPage() {
   const { lines, subtotal, bump, remove, hydrated } = useCart();
 
   return (
-    <main className="pt-32 pb-40 min-h-screen">
+    <main className="pt-[calc(5rem+50px)] pb-40 min-h-screen">
       <section className="max-w-4xl mx-auto px-6 md:px-10">
         <Reveal>
           <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6 text-center">

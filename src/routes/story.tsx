@@ -43,14 +43,14 @@ function Chapter({
   children: React.ReactNode;
 }) {
   return (
-    <section className="max-w-3xl mx-auto px-6 md:px-10">
+    <section className="max-w-3xl mx-auto px-6 md:px-10 text-center">
       <Reveal>
-        <h2 className="font-display italic text-3xl md:text-5xl text-navy-deep leading-tight mb-10 text-center">
+        <h2 className="font-display italic text-3xl md:text-5xl text-navy-deep leading-tight mb-10">
           {title}
         </h2>
       </Reveal>
       <Reveal delay={0.1}>
-        <div className="space-y-6 font-display text-lg md:text-xl text-navy-deep/80 leading-relaxed text-pretty">
+        <div className="space-y-6 font-display text-xl md:text-2xl text-navy-deep/80 leading-relaxed text-pretty">
           {children}
         </div>
       </Reveal>
@@ -60,7 +60,7 @@ function Chapter({
 
 function StoryPage() {
   return (
-    <main className="pt-32 pb-40">
+    <main className="pt-[calc(5rem+50px)] pb-40">
       {/* Hero */}
       <section className="max-w-4xl mx-auto px-6 text-center pb-24">
         <Reveal>
@@ -220,17 +220,17 @@ function StoryPage() {
       <Divider />
 
       {/* A Letter from the Founder */}
-      <section className="max-w-3xl mx-auto px-6 md:px-10">
+      <section className="max-w-3xl mx-auto px-6 md:px-10 text-center">
         <Reveal>
-          <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6 text-center">
+          <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
             A Letter from the Founder
           </p>
-          <h2 className="font-display italic text-3xl md:text-5xl text-navy-deep leading-tight mb-14 text-center">
+          <h2 className="font-display italic text-3xl md:text-5xl text-navy-deep leading-tight mb-14">
             To the one who is thinking of someone.
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
-          <div className="space-y-6 font-display text-lg md:text-xl text-navy-deep/80 leading-relaxed text-pretty">
+          <div className="space-y-6 font-display text-xl md:text-2xl text-navy-deep/80 leading-relaxed text-pretty">
             <p>
               If you've found your way here, there's a good chance you're
               thinking about someone who matters deeply to you.

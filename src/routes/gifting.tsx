@@ -41,7 +41,7 @@ const services = [
 
 function GiftingPage() {
   return (
-    <main className="pt-32 pb-40">
+    <main className="pt-[calc(5rem+50px)] pb-40">
       <section className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <Reveal>
           <div>

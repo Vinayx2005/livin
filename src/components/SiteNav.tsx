@@ -5,6 +5,7 @@ import { Menu, ShoppingBag, X } from "lucide-react";
 import { useCart } from "@/lib/cart";
 
 const links = [
+  { to: "/", label: "Home" },
   { to: "/collections", label: "Gifting Collection" },
   { to: "/story", label: "Livin' Story" },
   { to: "/contact", label: "Contact" },
@@ -52,10 +53,17 @@ export function SiteNav() {
         >
         <Link
           to="/"
-          className="font-display italic text-2xl md:text-3xl tracking-[0.15em] text-gold-shimmer"
+          aria-label="Livin' — home"
+          className="block"
           onClick={() => setOpen(false)}
         >
-          LIVIN'
+          <img
+            src="/livin-logo.png"
+            alt="Livin'"
+            width={280}
+            height={90}
+            className="h-8 md:h-9 lg:h-10 w-auto"
+          />
         </Link>
 
         {/* Desktop links */}
@@ -66,6 +74,7 @@ export function SiteNav() {
               to={l.to}
               className="text-navy-deep/80 hover:text-gold transition-colors duration-300"
               activeProps={{ className: "text-gold" }}
+              activeOptions={l.to === "/" ? { exact: true } : undefined}
             >
               {l.label}
             </Link>
@@ -112,19 +121,6 @@ export function SiteNav() {
         </div>
         </nav>
 
-        {/* Announcement bar — sits just below the header */}
-        <div className="w-full bg-navy-deep text-ivory/90 text-[10px] md:text-[11px] tracking-[0.15em]">
-          <div className="max-w-7xl mx-auto px-6 md:px-10 py-2.5 flex items-center justify-center gap-6 md:gap-12">
-            <span className="flex items-center gap-2">
-              <span className="text-gold">◆</span>
-              Complimentary gift wrapping on every order
-            </span>
-            <span className="hidden md:flex items-center gap-2">
-              <span className="text-gold">◆</span>
-              Free shipping on orders above ₹2,999
-            </span>
-          </div>
-        </div>
       </div>
 
       {/* Mobile overlay */}
