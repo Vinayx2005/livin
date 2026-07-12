@@ -1,0 +1,140 @@
+{
+  "slug": "imperial-gold",
+  "name": "Imperial Gold",
+  "tag": "Bright · Opulent",
+  "price": "₹38,000",
+  "priceValue": 38000,
+  "image": "/livin-bottle-box.jpg",
+  "story": "A crown of citrus and white flowers laid upon a bed of white oud — an homage to the golden hours of a royal court.",
+  "origin": "White oud from the highlands of Assam, married with Sicilian bergamot and Grasse jasmine.",
+  "notes": [
+    "Bergamot",
+    "Cardamom",
+    "Jasmine Sambac",
+    "White Oud",
+    "Musk",
+    "Sandalwood"
+  ],
+  "layers": {
+    "top": "Bergamot, Cardamom",
+    "heart": "Jasmine Sambac",
+    "base": "White Oud, Musk"
+  },
+  "buyNowUrl": "/cart",
+  "storyBehind": {
+    "eyebrow": "The Ritual",
+    "heading": "The Story Behind This Collection",
+    "paragraphs": [
+      "A meaningful gift is never about the product alone. It's about the pause before it's opened. The anticipation of discovering what's inside.",
+      "The smile that appears while reading a heartfelt note. The quiet realization that someone cared enough to make this moment special.",
+      "This collection was created to celebrate those moments. Because long after the fragrance fades, it's the feeling that remains."
+    ],
+    "highlightIndex": 1
+  },
+  "whatsIncluded": {
+    "eyebrow": "The Experience",
+    "heading": "What's Included",
+    "intro": "Every Livin' collection is thoughtfully curated to create a complete gifting experience.",
+    "listLabel": "Inside you'll find",
+    "items": [
+      "A carefully selected luxury fragrance",
+      "Personalized gift note",
+      "Elegant presentation",
+      "Story card",
+      "Signature Livin' experience"
+    ],
+    "closer": "Every detail has been included with intention, ensuring the experience feels as meaningful as the gift itself.",
+    "photo": "/livin-flatlay.jpg"
+  },
+  "makeItPersonal": {
+    "eyebrow": "Your Words",
+    "heading": "Make It Personal",
+    "paragraphs": [
+      "Some of the most meaningful gifts are remembered because they carry a part of the person who gave them.",
+      "Add your own heartfelt message and let your words become part of the experience.",
+      "Because no one can tell your story better than you."
+    ],
+    "highlightIndex": 2,
+    "notePreview": "For every quiet moment we've shared, every celebration still to come…",
+    "noteRecipient": "Someone dear"
+  },
+  "fragranceDetails": {
+    "eyebrow": "Specifications",
+    "heading": "Fragrance Details",
+    "paragraphs": [
+      "Every fragrance in our collections is carefully chosen for its character, craftsmanship, and lasting impression.",
+      "Here you'll find everything you'd like to know, including fragrance family, notes, longevity, and other product specifications.",
+      "These details help you choose the fragrance that best complements the moment you're creating."
+    ],
+    "specs": [
+      {
+        "label": "Family",
+        "value": "Bright · Opulent"
+      },
+      {
+        "label": "Concentration",
+        "value": "Extrait de Parfum"
+      },
+      {
+        "label": "Top Notes",
+        "value": "Bergamot, Cardamom"
+      },
+      {
+        "label": "Heart Notes",
+        "value": "Jasmine Sambac"
+      },
+      {
+        "label": "Base Notes",
+        "value": "White Oud, Musk"
+      },
+      {
+        "label": "Longevity",
+        "value": "8–10 hours"
+      },
+      {
+        "label": "Volume",
+        "value": "50 ml"
+      },
+      {
+        "label": "Origin",
+        "value": "White oud from the highlands of Assam, married with Sicilian bergamot and Grasse jasmine."
+      }
+    ]
+  },
+  "livinExperience": {
+    "eyebrow": "The Ritual",
+    "heading": "The Livin' Experience",
+    "paragraphs": [
+      "At Livin', the experience begins long before the fragrance is discovered.",
+      "From the moment the ribbon is untied to the final note inside the box, every detail is designed with one purpose — to make someone feel genuinely loved.",
+      "Because thoughtful gifting isn't measured by what's inside the bottle."
+    ],
+    "closer": "It's measured by what stays in someone's heart."
+  },
+  "faq": [
+    {
+      "q": "Can I include a personalized message?",
+      "a": "Yes. Every collection allows you to include a heartfelt message that becomes part of the gifting experience."
+    },
+    {
+      "q": "Do you deliver across India?",
+      "a": "Yes. We currently ship across India."
+    },
+    {
+      "q": "How long does delivery take?",
+      "a": "Orders are usually delivered within 5–7 business days."
+    },
+    {
+      "q": "Can I return my order?",
+      "a": "We currently do not offer returns. Replacements are available only for products damaged during transit."
+    }
+  ],
+  "readyToMakeSmile": {
+    "heading": "Ready to Make Someone Smile?",
+    "paragraphs": [
+      "The most meaningful gifts aren't remembered because they were expensive.",
+      "They're remembered because someone took the time to make another person feel truly special."
+    ],
+    "closer": "Whenever you're ready, we'll help you create that moment."
+  }
+}

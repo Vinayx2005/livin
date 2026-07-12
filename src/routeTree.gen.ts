@@ -16,7 +16,10 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CollectionsRouteImport } from './routes/collections'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as CollectionsSlugRouteImport } from './routes/collections_.$slug'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminCollectionsSlugRouteImport } from './routes/admin.collections.$slug'
 
 const StoryRoute = StoryRouteImport.update({
   id: '/story',
@@ -53,9 +56,24 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
   id: '/collections_/$slug',
   path: '/collections/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminCollectionsSlugRoute = AdminCollectionsSlugRouteImport.update({
+  id: '/admin/collections/$slug',
+  path: '/admin/collections/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -67,7 +85,10 @@ export interface FileRoutesByFullPath {
   '/gifting': typeof GiftingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/story': typeof StoryRoute
+  '/admin/login': typeof AdminLoginRoute
   '/collections/$slug': typeof CollectionsSlugRoute
+  '/admin/': typeof AdminIndexRoute
+  '/admin/collections/$slug': typeof AdminCollectionsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -77,7 +98,10 @@ export interface FileRoutesByTo {
   '/gifting': typeof GiftingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/story': typeof StoryRoute
+  '/admin/login': typeof AdminLoginRoute
   '/collections/$slug': typeof CollectionsSlugRoute
+  '/admin': typeof AdminIndexRoute
+  '/admin/collections/$slug': typeof AdminCollectionsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -88,7 +112,10 @@ export interface FileRoutesById {
   '/gifting': typeof GiftingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/story': typeof StoryRoute
+  '/admin/login': typeof AdminLoginRoute
   '/collections_/$slug': typeof CollectionsSlugRoute
+  '/admin/': typeof AdminIndexRoute
+  '/admin/collections/$slug': typeof AdminCollectionsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -100,7 +127,10 @@ export interface FileRouteTypes {
     | '/gifting'
     | '/sitemap.xml'
     | '/story'
+    | '/admin/login'
     | '/collections/$slug'
+    | '/admin/'
+    | '/admin/collections/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -110,7 +140,10 @@ export interface FileRouteTypes {
     | '/gifting'
     | '/sitemap.xml'
     | '/story'
+    | '/admin/login'
     | '/collections/$slug'
+    | '/admin'
+    | '/admin/collections/$slug'
   id:
     | '__root__'
     | '/'
@@ -120,7 +153,10 @@ export interface FileRouteTypes {
     | '/gifting'
     | '/sitemap.xml'
     | '/story'
+    | '/admin/login'
     | '/collections_/$slug'
+    | '/admin/'
+    | '/admin/collections/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -131,7 +167,10 @@ export interface RootRouteChildren {
   GiftingRoute: typeof GiftingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StoryRoute: typeof StoryRoute
+  AdminLoginRoute: typeof AdminLoginRoute
   CollectionsSlugRoute: typeof CollectionsSlugRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+  AdminCollectionsSlugRoute: typeof AdminCollectionsSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -185,11 +224,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/collections_/$slug': {
       id: '/collections_/$slug'
       path: '/collections/$slug'
       fullPath: '/collections/$slug'
       preLoaderRoute: typeof CollectionsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/collections/$slug': {
+      id: '/admin/collections/$slug'
+      path: '/admin/collections/$slug'
+      fullPath: '/admin/collections/$slug'
+      preLoaderRoute: typeof AdminCollectionsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -203,7 +263,10 @@ const rootRouteChildren: RootRouteChildren = {
   GiftingRoute: GiftingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StoryRoute: StoryRoute,
+  AdminLoginRoute: AdminLoginRoute,
   CollectionsSlugRoute: CollectionsSlugRoute,
+  AdminIndexRoute: AdminIndexRoute,
+  AdminCollectionsSlugRoute: AdminCollectionsSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

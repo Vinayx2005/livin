@@ -71,6 +71,11 @@ function CollectionsPage() {
             <h2 className="font-display italic text-3xl md:text-4xl text-ivory leading-[1.05] text-center">
               Before choosing, think about the person.
             </h2>
+            <div className="mt-8 flex items-center justify-center gap-3">
+              <span className="h-px w-14 bg-gold" />
+              <span className="block size-2 rotate-45 border border-gold" />
+              <span className="h-px w-14 bg-gold" />
+            </div>
           </div>
         </Reveal>
       </section>

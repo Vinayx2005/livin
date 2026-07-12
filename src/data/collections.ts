@@ -1,4 +1,61 @@
-const PLACEHOLDER_IMAGE = "/livin-bottle-box.jpg";
+// Content is loaded from ../../content/collections/*.json. Each file is fully
+// editable through the /admin UI, which commits the JSON back to the repo via
+// the GitHub API. Vite watches these globs so changes hot-reload in dev.
+
+const collectionModules = import.meta.glob<{ default: Collection }>(
+  "../../content/collections/*.json",
+  { eager: true },
+);
+
+export type Spec = { label: string; value: string };
+export type FaqEntry = { q: string; a: string };
+
+export type StoryBehind = {
+  eyebrow?: string;
+  heading: string;
+  paragraphs: string[];
+  /** 0-based paragraph index rendered in italic gold accent */
+  highlightIndex?: number;
+};
+
+export type WhatsIncluded = {
+  eyebrow?: string;
+  heading: string;
+  intro: string;
+  listLabel: string;
+  items: string[];
+  closer: string;
+  photo: string;
+};
+
+export type MakeItPersonal = {
+  eyebrow?: string;
+  heading: string;
+  paragraphs: string[];
+  highlightIndex?: number;
+  notePreview: string;
+  noteRecipient: string;
+};
+
+export type FragranceDetails = {
+  eyebrow?: string;
+  heading: string;
+  paragraphs: string[];
+  specs: Spec[];
+};
+
+export type LivinExperience = {
+  eyebrow?: string;
+  heading: string;
+  paragraphs: string[];
+  closer: string;
+};
+
+export type ReadyToMakeSmile = {
+  heading: string;
+  paragraphs: string[];
+  closer: string;
+};
 
 export type Collection = {
   slug: string;
@@ -15,6 +72,14 @@ export type Collection = {
     heart: string;
     base: string;
   };
+  buyNowUrl: string;
+  storyBehind: StoryBehind;
+  whatsIncluded: WhatsIncluded;
+  makeItPersonal: MakeItPersonal;
+  fragranceDetails: FragranceDetails;
+  livinExperience: LivinExperience;
+  faq: FaqEntry[];
+  readyToMakeSmile: ReadyToMakeSmile;
 };
 
 export const CURRENCY_SYMBOL = "₹";
@@ -23,83 +88,77 @@ export function formatPrice(value: number): string {
   return CURRENCY_SYMBOL + value.toLocaleString("en-IN");
 }
 
-export const collections: Collection[] = [
-  {
-    slug: "midnight-cambodi",
-    name: "Midnight Cambodi",
-    tag: "Intense · Resinous",
-    price: "₹42,000",
-    priceValue: 42000,
-    image: PLACEHOLDER_IMAGE,
-    story:
-      "A grand, moonlit interpretation of Cambodian oud aged in ancient cedar barrels for eighteen seasons.",
-    origin:
-      "Wild-harvested from the Pursat highlands and rested in our Dubai atelier before every bottling.",
-    notes: [
-      "Saffron",
-      "Pink Pepper",
-      "Taif Rose",
-      "Leather",
-      "Cambodi Oud",
-      "Amber",
-    ],
-    layers: {
-      top: "Saffron, Pink Pepper",
-      heart: "Taif Rose, Leather",
-      base: "Cambodi Oud, Amber",
+/** Blank template used by the admin when creating a new collection. */
+export function newCollectionTemplate(slug: string): Collection {
+  return {
+    slug,
+    name: "",
+    tag: "",
+    price: "",
+    priceValue: 0,
+    image: "/livin-bottle-box.jpg",
+    story: "",
+    origin: "",
+    notes: [],
+    layers: { top: "", heart: "", base: "" },
+    buyNowUrl: "/cart",
+    storyBehind: {
+      eyebrow: "The Ritual",
+      heading: "The Story Behind This Collection",
+      paragraphs: ["", "", ""],
+      highlightIndex: 1,
     },
-  },
-  {
-    slug: "imperial-gold",
-    name: "Imperial Gold",
-    tag: "Bright · Opulent",
-    price: "₹38,000",
-    priceValue: 38000,
-    image: PLACEHOLDER_IMAGE,
-    story:
-      "A crown of citrus and white flowers laid upon a bed of white oud — an homage to the golden hours of a royal court.",
-    origin:
-      "White oud from the highlands of Assam, married with Sicilian bergamot and Grasse jasmine.",
-    notes: [
-      "Bergamot",
-      "Cardamom",
-      "Jasmine Sambac",
-      "White Oud",
-      "Musk",
-      "Sandalwood",
-    ],
-    layers: {
-      top: "Bergamot, Cardamom",
-      heart: "Jasmine Sambac",
-      base: "White Oud, Musk",
+    whatsIncluded: {
+      eyebrow: "The Experience",
+      heading: "What's Included",
+      intro: "",
+      listLabel: "Inside you'll find",
+      items: [""],
+      closer: "",
+      photo: "/livin-flatlay.jpg",
     },
-  },
-  {
-    slug: "noir-royale",
-    name: "Noir Royale",
-    tag: "Smoky · Eternal",
-    price: "₹46,000",
-    priceValue: 46000,
-    image: PLACEHOLDER_IMAGE,
-    story:
-      "Aged oud drawn from the deepest resin veins, wrapped in incense smoke and violet leaf.",
-    origin:
-      "A decade-aged reserve oud, laid down under Burmese incense and finished with rare Mysore patchouli.",
-    notes: [
-      "Incense",
-      "Black Plum",
-      "Violet Leaf",
-      "Cedar",
-      "Aged Oud",
-      "Patchouli",
-    ],
-    layers: {
-      top: "Incense, Black Plum",
-      heart: "Violet Leaf, Cedar",
-      base: "Aged Oud, Patchouli",
+    makeItPersonal: {
+      eyebrow: "Your Words",
+      heading: "Make It Personal",
+      paragraphs: ["", "", ""],
+      highlightIndex: 2,
+      notePreview: "",
+      noteRecipient: "Someone dear",
     },
-  },
-];
+    fragranceDetails: {
+      eyebrow: "Specifications",
+      heading: "Fragrance Details",
+      paragraphs: ["", "", ""],
+      specs: [
+        { label: "Family", value: "" },
+        { label: "Concentration", value: "" },
+        { label: "Top Notes", value: "" },
+        { label: "Heart Notes", value: "" },
+        { label: "Base Notes", value: "" },
+        { label: "Longevity", value: "" },
+        { label: "Volume", value: "" },
+        { label: "Origin", value: "" },
+      ],
+    },
+    livinExperience: {
+      eyebrow: "The Ritual",
+      heading: "The Livin' Experience",
+      paragraphs: ["", "", ""],
+      closer: "",
+    },
+    faq: [{ q: "", a: "" }],
+    readyToMakeSmile: {
+      heading: "Ready to Make Someone Smile?",
+      paragraphs: ["", ""],
+      closer: "",
+    },
+  };
+}
+
+// Sort collections by name so ordering is stable regardless of file-system order.
+export const collections: Collection[] = Object.values(collectionModules)
+  .map((m) => m.default)
+  .sort((a, b) => a.name.localeCompare(b.name));
 
 export function getCollection(slug: string): Collection | undefined {
   return collections.find((c) => c.slug === slug);
