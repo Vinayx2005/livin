@@ -173,7 +173,7 @@ function ContactPage() {
                 <AccordionTrigger className="font-display text-xl md:text-2xl text-navy-deep hover:no-underline hover:text-gold-shimmer py-6 text-left [&>svg]:text-gold [&>svg]:h-5 [&>svg]:w-5">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-base md:text-lg text-navy-deep/75 leading-relaxed font-display font-light pb-8 pr-8">
+                <AccordionContent className="text-xl md:text-2xl text-navy-deep/75 leading-relaxed font-display pb-8 pr-8">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>

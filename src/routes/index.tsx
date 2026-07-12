@@ -50,7 +50,7 @@ function Home() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.1, delay: 0.55 }}
-              className="max-w-md font-display text-navy-deep/75 leading-relaxed text-lg md:text-xl"
+              className="max-w-md font-display text-navy-deep/75 leading-relaxed text-xl md:text-2xl"
             >
               Every Livin' experience is thoughtfully curated to help you
               express love, gratitude, and celebration in a way that lingers
@@ -164,7 +164,7 @@ function Home() {
                       <h3 className="font-display italic text-2xl md:text-3xl text-navy-deep mb-2">
                         {item.label}
                       </h3>
-                      <p className="font-display text-lg md:text-xl text-navy-deep/70 leading-relaxed">
+                      <p className="font-display text-xl md:text-2xl text-navy-deep/70 leading-relaxed">
                         {item.body}
                       </p>
                     </div>
@@ -328,7 +328,7 @@ function Home() {
             <h3 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-8">
               More Than a Gift. A Moment to Hold On To.
             </h3>
-            <p className="text-navy-deep/70 leading-relaxed font-display text-lg md:text-xl mb-10 max-w-md">
+            <p className="text-navy-deep/70 leading-relaxed font-display text-xl md:text-2xl mb-10 max-w-md">
               Every meaningful relationship deserves to be celebrated. Whenever
               you're ready, we'll help you create a moment worth remembering.
             </p>

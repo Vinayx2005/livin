@@ -19,9 +19,9 @@ export function SiteFooter() {
             height={90}
             className="h-10 md:h-12 w-auto mb-6"
           />
-          <p className="max-w-md text-ivory/70 text-sm md:text-base leading-relaxed font-display">
-            All rights reserved · Made with love, for those who wish to become
-            part of the memories their loved ones hold most dear.
+          <p className="max-w-md text-ivory/70 text-xl md:text-2xl leading-relaxed font-display">
+            Made with love, for those who wish to become part of the memories
+            their loved ones hold most dear.
           </p>
         </div>
 

@@ -174,7 +174,7 @@ function CollectionDetailPage() {
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
-          <div className="space-y-6 font-display text-lg md:text-xl text-navy-deep/80 leading-relaxed text-pretty">
+          <div className="space-y-6 font-display text-xl md:text-2xl text-navy-deep/80 leading-relaxed text-pretty">
             <p>
               A meaningful gift is never about the product alone. It's about
               the pause before it's opened. The anticipation of discovering
@@ -230,7 +230,7 @@ function CollectionDetailPage() {
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="font-display text-lg md:text-xl text-navy-deep/80 leading-relaxed mb-8">
+              <p className="font-display text-xl md:text-2xl text-navy-deep/80 leading-relaxed mb-8">
                 Every Livin' collection is thoughtfully curated to create a
                 complete gifting experience.
               </p>
@@ -249,7 +249,7 @@ function CollectionDetailPage() {
                 ].map((it) => (
                   <li
                     key={it}
-                    className="flex items-start gap-4 text-base md:text-lg text-navy-deep/85 font-display font-light"
+                    className="flex items-start gap-4 text-xl md:text-2xl text-navy-deep/85 font-display"
                   >
                     <span
                       aria-hidden="true"
@@ -261,7 +261,7 @@ function CollectionDetailPage() {
               </ul>
             </Reveal>
             <Reveal delay={0.3}>
-              <p className="font-display italic text-lg md:text-xl text-gold-shimmer leading-relaxed">
+              <p className="font-display italic text-xl md:text-2xl text-gold-shimmer leading-relaxed">
                 Every detail has been included with intention, ensuring the
                 experience feels as meaningful as the gift itself.
               </p>
@@ -293,7 +293,7 @@ function CollectionDetailPage() {
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
-              <div className="space-y-6 font-display text-lg md:text-xl text-navy-deep/80 leading-relaxed text-pretty">
+              <div className="space-y-6 font-display text-xl md:text-2xl text-navy-deep/80 leading-relaxed text-pretty">
                 <p>
                   Some of the most meaningful gifts are remembered because
                   they carry a part of the person who gave them.
@@ -372,7 +372,7 @@ function CollectionDetailPage() {
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
-          <div className="max-w-2xl mx-auto space-y-6 font-display text-lg md:text-xl text-navy-deep/80 leading-relaxed text-pretty text-center mb-14">
+          <div className="max-w-2xl mx-auto space-y-6 font-display text-xl md:text-2xl text-navy-deep/80 leading-relaxed text-pretty text-center mb-14">
             <p>
               Every fragrance in our collections is carefully chosen for its
               character, craftsmanship, and lasting impression.
@@ -409,7 +409,7 @@ function CollectionDetailPage() {
                 <dt className="text-[10px] uppercase tracking-[0.4em] text-gold/80">
                   {spec.label}
                 </dt>
-                <dd className="font-display text-lg md:text-xl text-navy-deep/90 leading-relaxed">
+                <dd className="font-display text-xl md:text-2xl text-navy-deep/90 leading-relaxed">
                   {spec.value}
                 </dd>
               </div>
@@ -491,7 +491,7 @@ function CollectionDetailPage() {
                 <AccordionTrigger className="font-display text-xl md:text-2xl text-navy-deep hover:no-underline hover:text-gold-shimmer py-6 text-left [&>svg]:text-gold [&>svg]:h-5 [&>svg]:w-5">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-base md:text-lg text-navy-deep/75 leading-relaxed font-display font-light pb-8 pr-8">
+                <AccordionContent className="text-xl md:text-2xl text-navy-deep/75 leading-relaxed font-display pb-8 pr-8">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>

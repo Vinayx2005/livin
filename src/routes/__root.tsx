@@ -22,7 +22,7 @@ function NotFoundComponent() {
         <h2 className="mt-6 font-display text-2xl text-navy-deep">
           A page beyond our house
         </h2>
-        <p className="mt-3 text-sm text-navy-deep/60 font-display font-light">
+        <p className="mt-3 text-xl md:text-2xl text-navy-deep/60 font-display leading-relaxed">
           The reveal you seek does not exist within these walls.
         </p>
         <div className="mt-8">
@@ -51,7 +51,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <h1 className="font-display text-3xl text-navy-deep italic">
           A moment of silence
         </h1>
-        <p className="mt-3 text-sm text-navy-deep/60 font-display font-light">
+        <p className="mt-3 text-xl md:text-2xl text-navy-deep/60 font-display leading-relaxed">
           Something disturbed the reveal. Please try again.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">

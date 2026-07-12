@@ -62,7 +62,7 @@ export function SiteNav() {
             alt="Livin'"
             width={280}
             height={90}
-            className="h-8 md:h-9 lg:h-10 w-auto"
+            className="h-5 md:h-6 lg:h-7 w-auto"
           />
         </Link>
 
