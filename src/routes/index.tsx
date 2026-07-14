@@ -79,7 +79,7 @@ function Home() {
             <Reveal delay={0.15}>
               <div className="relative aspect-[4/3] md:aspect-auto md:h-full md:min-h-[620px] w-full md:-ml-24 lg:-ml-32 md:w-[calc(100%+6rem)] lg:w-[calc(100%+8rem)]">
                 <img
-                  src="/livin-bottle-box.jpg"
+                  src="/hero-image.avif"
                   alt="LIVIN' Oud Royale bottle presented in its navy velvet box with a hand-written gift note"
                   className="hero-image-mask absolute inset-0 h-full w-full object-cover object-center"
                 />
@@ -129,9 +129,6 @@ function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-center">
           <div>
             <Reveal>
-              <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
-                Our Craft
-              </p>
               <h2 className="font-display italic text-4xl md:text-6xl text-navy-deep leading-[1.05] mb-14">
                 The Livin' Experience
               </h2>
@@ -196,9 +193,6 @@ function Home() {
           <Reveal>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
               <div>
-                <p className="text-[10px] uppercase tracking-[0.4em] text-gold mb-4">
-                  The Collection
-                </p>
                 <h3 className="font-display text-4xl md:text-6xl italic text-navy-deep">
                   Featured Collections
                 </h3>
@@ -233,12 +227,9 @@ function Home() {
                     />
                   </div>
                   <div>
-                    <h4 className="font-display text-3xl text-navy-deep mb-2">
+                    <h4 className="font-display text-3xl text-navy-deep mb-5">
                       {c.name}
                     </h4>
-                    <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-5">
-                      {c.tag}
-                    </p>
                     <div className="text-sm text-navy-deep/70 space-y-1 font-display font-light mb-6">
                       <p>
                         <span className="text-gold/70">Top —</span>{" "}

@@ -45,9 +45,6 @@ function GiftingPage() {
       <section className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <Reveal>
           <div>
-            <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
-              The Ritual
-            </p>
             <h1 className="font-display text-6xl md:text-7xl italic text-navy-deep leading-[0.95] mb-8">
               The Art of Gifting
             </h1>

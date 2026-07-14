@@ -49,9 +49,9 @@ function ContactPage() {
                 Our team is here to help.
               </p>
             </div>
-            <div className="space-y-6 text-sm text-navy-deep/80 font-display font-light">
+            <div className="space-y-7 text-lg md:text-xl text-navy-deep/85 font-display">
               <div>
-                <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-2">
+                <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-gold mb-3">
                   Email
                 </p>
                 <a
@@ -62,7 +62,7 @@ function ContactPage() {
                 </a>
               </div>
               <div>
-                <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-2">
+                <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-gold mb-3">
                   WhatsApp
                 </p>
                 <a
@@ -75,7 +75,7 @@ function ContactPage() {
                 </a>
               </div>
               <div>
-                <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-3">
+                <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-gold mb-4">
                   Social
                 </p>
                 <div className="flex items-center gap-4">
@@ -84,9 +84,9 @@ function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Livin' on Instagram"
-                    className="inline-flex items-center justify-center size-10 rounded-full border border-gold/30 text-gold/80 hover:text-gold hover:border-gold hover:bg-gold/5 transition-colors"
+                    className="inline-flex items-center justify-center size-11 rounded-full border border-gold/30 text-gold/80 hover:text-gold hover:border-gold hover:bg-gold/5 transition-colors"
                   >
-                    <Instagram size={18} strokeWidth={1.25} />
+                    <Instagram size={20} strokeWidth={1.25} />
                   </a>
                 </div>
               </div>
@@ -123,17 +123,17 @@ function ContactPage() {
                   placeholder="+91 —"
                 />
                 <div>
-                  <label className="text-[10px] uppercase tracking-[0.3em] text-gold block mb-3">
+                  <label className="text-xs md:text-sm uppercase tracking-[0.3em] text-gold block mb-3">
                     Message
                   </label>
                   <textarea
                     rows={5}
-                    className="w-full bg-transparent border-b border-gold/25 focus:border-gold text-navy-deep pb-3 outline-none transition-colors font-light"
+                    className="w-full bg-transparent border-b border-gold/25 focus:border-gold text-navy-deep text-lg md:text-xl pb-3 outline-none transition-colors font-display leading-relaxed"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="mt-4 w-full py-4 bg-navy-deep text-white text-[10px] uppercase tracking-[0.4em] hover:bg-navy transition-colors"
+                  className="mt-4 w-full py-4 bg-navy-deep text-white text-xs md:text-sm uppercase tracking-[0.4em] hover:bg-navy transition-colors"
                 >
                   Send Message
                 </button>
@@ -155,9 +155,6 @@ function ContactPage() {
       {/* FAQ */}
       <section className="max-w-3xl mx-auto px-6 md:px-10">
         <Reveal>
-          <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6 text-center">
-            Answers
-          </p>
           <h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-14 text-center">
             Frequently Asked Questions
           </h2>
@@ -219,7 +216,7 @@ function Field({
     <div>
       <label
         htmlFor={name}
-        className="text-[10px] uppercase tracking-[0.3em] text-gold block mb-3"
+        className="text-xs md:text-sm uppercase tracking-[0.3em] text-gold block mb-3"
       >
         {label}
       </label>
@@ -228,7 +225,7 @@ function Field({
         name={name}
         type={type}
         placeholder={placeholder}
-        className="w-full bg-transparent border-b border-gold/25 focus:border-gold text-navy-deep pb-3 outline-none transition-colors font-light placeholder:text-navy-deep/30"
+        className="w-full bg-transparent border-b border-gold/25 focus:border-gold text-navy-deep text-lg md:text-xl pb-3 outline-none transition-colors font-display placeholder:text-navy-deep/30"
       />
     </div>
   );

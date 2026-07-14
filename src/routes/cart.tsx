@@ -28,9 +28,6 @@ function CartPage() {
     <main className="pt-[calc(5rem+50px)] pb-40 min-h-screen">
       <section className="max-w-4xl mx-auto px-6 md:px-10">
         <Reveal>
-          <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6 text-center">
-            Your Bag
-          </p>
           <h1 className="font-display italic text-5xl md:text-7xl text-navy-deep leading-[0.95] mb-16 text-center">
             A Quiet Ceremony
           </h1>

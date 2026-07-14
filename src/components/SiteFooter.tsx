@@ -13,11 +13,11 @@ export function SiteFooter() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-14 md:gap-20 items-start">
         <div>
           <img
-            src="/livin-logo.png"
+            src="/livin-logo-mark.png"
             alt="Livin'"
-            width={280}
-            height={90}
-            className="h-10 md:h-12 w-auto mb-6"
+            width={900}
+            height={900}
+            className="w-28 md:w-32 h-auto mb-6"
           />
           <p className="max-w-md text-ivory/70 text-xl md:text-2xl leading-relaxed font-display">
             Made with love, for those who wish to become part of the memories
@@ -25,11 +25,11 @@ export function SiteFooter() {
           </p>
         </div>
 
-        <nav aria-label="Footer" className="md:justify-self-end">
-          <h4 className="text-[10px] uppercase tracking-[0.35em] text-gold mb-5">
+        <nav aria-label="Footer">
+          <h4 className="font-display text-xl md:text-2xl text-gold mb-5">
             Explore
           </h4>
-          <ul className="space-y-3 text-sm md:text-base text-ivory/80 font-display">
+          <ul className="space-y-3 text-xl md:text-2xl text-ivory/80 font-display">
             {links.map((l) => (
               <li key={l.to}>
                 <Link

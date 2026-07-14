@@ -64,11 +64,6 @@ function StoryPage() {
       {/* Hero */}
       <section className="max-w-4xl mx-auto px-6 text-center pb-24">
         <Reveal>
-          <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-8">
-            Livin' Story
-          </p>
-        </Reveal>
-        <Reveal delay={0.1}>
           <h1 className="font-display italic text-4xl md:text-6xl lg:text-7xl text-navy-deep leading-[1.05] mb-12">
             Every Great Story Begins with a Feeling
           </h1>
@@ -222,11 +217,8 @@ function StoryPage() {
       {/* A Letter from the Founder */}
       <section className="max-w-3xl mx-auto px-6 md:px-10 text-center">
         <Reveal>
-          <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
-            A Letter from the Founder
-          </p>
           <h2 className="font-display italic text-3xl md:text-5xl text-navy-deep leading-tight mb-14">
-            To the one who is thinking of someone.
+            A Letter from the Founder
           </h2>
         </Reveal>
         <Reveal delay={0.1}>

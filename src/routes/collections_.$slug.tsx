@@ -129,9 +129,6 @@ function CollectionDetailPage() {
           </Reveal>
           <Reveal delay={0.15}>
             <div>
-              <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
-                {item.tag}
-              </p>
               <h1 className="font-display italic text-5xl md:text-7xl text-navy-deep leading-[0.95] mb-8">
                 {item.name}
               </h1>
@@ -210,12 +207,7 @@ function CollectionDetailPage() {
 
           <div>
             <Reveal>
-              {item.whatsIncluded.eyebrow && (
-                <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
-                  {item.whatsIncluded.eyebrow}
-                </p>
-              )}
-              <h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-8">
+<h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-8">
                 {item.whatsIncluded.heading}
               </h2>
             </Reveal>
@@ -225,9 +217,6 @@ function CollectionDetailPage() {
               </p>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="text-[10px] uppercase tracking-[0.4em] text-gold/80 mb-5">
-                {item.whatsIncluded.listLabel}
-              </p>
               <ul className="space-y-4 mb-10">
                 {item.whatsIncluded.items
                   .filter((it) => it && it.trim().length > 0)
@@ -261,12 +250,7 @@ function CollectionDetailPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           <div className="md:order-2">
             <Reveal>
-              {item.makeItPersonal.eyebrow && (
-                <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
-                  {item.makeItPersonal.eyebrow}
-                </p>
-              )}
-              <h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-10">
+<h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-10">
                 {item.makeItPersonal.heading}
               </h2>
             </Reveal>
@@ -325,12 +309,7 @@ function CollectionDetailPage() {
       {/* Fragrance Details */}
       <section className="max-w-4xl mx-auto px-6 md:px-10 pb-40">
         <Reveal>
-          {item.fragranceDetails.eyebrow && (
-            <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6 text-center">
-              {item.fragranceDetails.eyebrow}
-            </p>
-          )}
-          <h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-10 text-center">
+<h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-10 text-center">
             {item.fragranceDetails.heading}
           </h2>
         </Reveal>
@@ -378,12 +357,7 @@ function CollectionDetailPage() {
       {/* The Livin' Experience */}
       <section className="max-w-3xl mx-auto px-6 md:px-10 pb-40 text-center">
         <Reveal>
-          {item.livinExperience.eyebrow && (
-            <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
-              {item.livinExperience.eyebrow}
-            </p>
-          )}
-          <h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-14">
+<h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-14">
             {item.livinExperience.heading}
           </h2>
         </Reveal>
@@ -412,10 +386,7 @@ function CollectionDetailPage() {
         <>
           <section className="max-w-3xl mx-auto px-6 md:px-10 pb-40">
             <Reveal>
-              <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6 text-center">
-                Answers
-              </p>
-              <h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-14 text-center">
+<h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-14 text-center">
                 Frequently Asked Questions
               </h2>
             </Reveal>
@@ -487,10 +458,7 @@ function CollectionDetailPage() {
       {others.length > 0 && (
         <section className="max-w-7xl mx-auto px-6 md:px-10 pt-16 border-t border-gold/10">
           <Reveal>
-            <p className="text-[10px] uppercase tracking-[0.4em] text-gold mb-4 text-center">
-              Also of the House
-            </p>
-            <h2 className="font-display italic text-3xl md:text-5xl text-navy-deep text-center mb-16">
+<h2 className="font-display italic text-3xl md:text-5xl text-navy-deep text-center mb-16">
               Other Signatures
             </h2>
           </Reveal>
@@ -513,12 +481,12 @@ function CollectionDetailPage() {
                     />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-3">
-                      {o.tag}
-                    </p>
-                    <h3 className="font-display italic text-3xl text-navy-deep mb-4">
+                    <h3 className="font-display italic text-3xl text-navy-deep mb-3">
                       {o.name}
                     </h3>
+                    <p className="font-display text-base md:text-lg text-navy-deep/70 leading-snug">
+                      {o.story}
+                    </p>
                     <div className="flex items-center justify-between mt-4 pt-4 border-t border-gold/15">
                       <span className="font-display text-xl text-gold-shimmer">
                         {o.price}
@@ -542,10 +510,7 @@ function NotFoundPage() {
   return (
     <main className="pt-[calc(5rem+50px)] pb-40 min-h-screen">
       <section className="max-w-3xl mx-auto px-6 md:px-10 text-center">
-        <p className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6">
-          Not Found
-        </p>
-        <h1 className="font-display italic text-5xl md:text-7xl text-navy-deep leading-[0.95] mb-8">
+<h1 className="font-display italic text-5xl md:text-7xl text-navy-deep leading-[0.95] mb-8">
           A Silent Vessel
         </h1>
         <p className="font-display text-xl md:text-2xl text-navy-deep/70 leading-relaxed mb-12">

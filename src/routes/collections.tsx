@@ -102,12 +102,12 @@ function CollectionsPage() {
                   />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-3">
-                    {item.tag}
-                  </p>
-                  <h2 className="font-display italic text-3xl md:text-4xl text-navy-deep mb-4">
+                  <h2 className="font-display italic text-3xl md:text-4xl text-navy-deep mb-3">
                     {item.name}
                   </h2>
+                  <p className="font-display text-base md:text-lg text-navy-deep/70 leading-snug">
+                    {item.story}
+                  </p>
                   <div className="flex items-center justify-between mt-6 pt-6 border-t border-gold/15">
                     <span className="font-display text-2xl text-gold-shimmer">
                       {item.price}
