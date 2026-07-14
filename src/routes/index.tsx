@@ -189,7 +189,7 @@ function Home() {
 
       {/* SIGNATURE COLLECTIONS */}
       <section className="px-6 md:px-10 pb-40">
-        <div className="max-w-7xl mx-auto">
+        <div className={`mx-auto ${collections.length <= 2 ? "max-w-5xl" : "max-w-7xl"}`}>
           <Reveal>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
               <div>
@@ -206,17 +206,21 @@ function Home() {
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            className={`grid grid-cols-1 gap-8 ${
+              collections.length <= 2 ? "md:grid-cols-2" : "md:grid-cols-3"
+            }`}
+          >
             {collections.map((c, i) => (
               <Reveal key={c.slug} delay={i * 0.12}>
                 <Link
                   to="/collections/$slug"
                   params={{ slug: c.slug }}
                   className={`group glass-card p-8 flex flex-col gap-8 transition-all duration-500 hover:-translate-y-2 hover:border-gold/40 ${
-                    i === 1 ? "md:mt-16" : ""
+                    collections.length >= 3 && i === 1 ? "md:mt-16" : ""
                   }`}
                 >
-                  <div className="overflow-hidden aspect-[3/4] bg-ivory">
+                  <div className="overflow-hidden aspect-square bg-ivory">
                     <img
                       src={c.image}
                       alt={c.name}

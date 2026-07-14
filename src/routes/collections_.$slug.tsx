@@ -418,7 +418,7 @@ function CollectionDetailPage() {
 
       {/* Ready to Make Someone Smile? */}
       <section className="max-w-6xl mx-auto px-6 md:px-10 pb-40">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
           {/* Image — top on mobile, right on desktop */}
           <Reveal className="md:order-2">
             <div className="overflow-hidden aspect-[4/5] glass-card">
@@ -489,7 +489,7 @@ function CollectionDetailPage() {
                   params={{ slug: o.slug }}
                   className="group glass-card p-6 flex flex-col gap-6 transition-all duration-500 hover:-translate-y-2 hover:border-gold/40"
                 >
-                  <div className="overflow-hidden aspect-[3/4] bg-ivory">
+                  <div className="overflow-hidden aspect-square bg-ivory">
                     <img
                       src={o.image}
                       alt={o.name}

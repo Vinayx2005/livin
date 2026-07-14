@@ -99,7 +99,7 @@ function ContactPage() {
             </div>
             <div className="space-y-7 text-xl md:text-2xl text-navy-deep/85 font-display">
               <div>
-                <p className="text-xl md:text-2xl uppercase tracking-[0.15em] text-gold mb-3">
+                <p className="text-lg md:text-xl uppercase tracking-[0.15em] text-gold mb-3">
                   Email
                 </p>
                 <a
@@ -110,7 +110,7 @@ function ContactPage() {
                 </a>
               </div>
               <div>
-                <p className="text-xl md:text-2xl uppercase tracking-[0.15em] text-gold mb-3">
+                <p className="text-lg md:text-xl uppercase tracking-[0.15em] text-gold mb-3">
                   WhatsApp
                 </p>
                 <a
@@ -123,7 +123,7 @@ function ContactPage() {
                 </a>
               </div>
               <div>
-                <p className="text-xl md:text-2xl uppercase tracking-[0.15em] text-gold mb-4">
+                <p className="text-lg md:text-xl uppercase tracking-[0.15em] text-gold mb-4">
                   Social
                 </p>
                 <div className="flex items-center gap-4">

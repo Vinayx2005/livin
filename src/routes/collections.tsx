@@ -28,7 +28,7 @@ function CollectionsPage() {
   return (
     <main className="pt-[calc(5rem+50px)] pb-40">
       <section className="max-w-7xl mx-auto px-6 md:px-10 pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
           {/* Left — copy */}
           <div>
             <Reveal>
@@ -100,7 +100,7 @@ function CollectionsPage() {
                   collections.length >= 3 && i === 1 ? "md:mt-14" : ""
                 }`}
               >
-                <div className="overflow-hidden aspect-[3/4] bg-ivory">
+                <div className="overflow-hidden aspect-square bg-ivory">
                   <img
                     src={item.image}
                     alt={item.name}
