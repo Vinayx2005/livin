@@ -7,13 +7,13 @@ import { formatPrice } from "@/data/collections";
 export const Route = createFileRoute("/cart")({
   head: () => ({
     meta: [
-      { title: "Your Bag — LIVIN' Oud Royale" },
+      { title: "Your Bag — LIVIN'" },
       {
         name: "description",
         content:
           "Review your LIVIN' selection — bespoke fragrance gifts prepared with intention.",
       },
-      { property: "og:title", content: "Your Bag — LIVIN' Oud Royale" },
+      { property: "og:title", content: "Your Bag — LIVIN'" },
       { property: "og:url", content: "/cart" },
     ],
     links: [{ rel: "canonical", href: "/cart" }],

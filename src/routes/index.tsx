@@ -19,7 +19,7 @@ function Home() {
       >
         <div className="relative grid grid-cols-1 md:grid-cols-[minmax(0,44%)_minmax(0,56%)] items-stretch">
           {/* Left — copy */}
-          <div className="flex items-center order-2 md:order-1 pt-12 md:pt-40 pb-16 md:pb-20 pl-[calc(1.5rem+20px)] md:pl-[calc(2.5rem+20px)] pr-6">
+          <div className="flex items-center order-2 md:order-1 pt-12 md:pt-40 pb-16 md:pb-20 pl-4 md:pl-[calc(2.5rem+20px)] pr-6">
             <div className="w-full max-w-xl">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -80,7 +80,7 @@ function Home() {
               <div className="relative aspect-[4/3] md:aspect-auto md:h-full md:min-h-[620px] w-full md:-ml-24 lg:-ml-32 md:w-[calc(100%+6rem)] lg:w-[calc(100%+8rem)]">
                 <img
                   src="/hero-image.avif"
-                  alt="LIVIN' Oud Royale bottle presented in its navy velvet box with a hand-written gift note"
+                  alt="LIVIN' bottle presented in its navy velvet box with a hand-written gift note"
                   className="hero-image-mask absolute inset-0 h-full w-full object-cover object-center"
                 />
               </div>
@@ -230,7 +230,7 @@ function Home() {
                     <h4 className="font-display text-3xl text-navy-deep mb-5">
                       {c.name}
                     </h4>
-                    <div className="text-sm text-navy-deep/70 space-y-1 font-display font-light mb-6">
+                    <div className="text-xl md:text-2xl text-navy-deep/70 space-y-1 font-display mb-6">
                       <p>
                         <span className="text-gold/70">Top —</span>{" "}
                         {c.layers.top}

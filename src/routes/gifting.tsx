@@ -5,13 +5,13 @@ import gifting from "@/assets/gifting-ritual.jpg";
 export const Route = createFileRoute("/gifting")({
   head: () => ({
     meta: [
-      { title: "Bespoke Gifting — LIVIN' Oud Royale" },
+      { title: "Bespoke Gifting — LIVIN'" },
       {
         name: "description",
         content:
-          "Corporate and personal gifting from LIVIN' Oud Royale. Hand-tied silk ribbons, wax-sealed notes and concierge personalization.",
+          "Corporate and personal gifting from LIVIN'. Hand-tied silk ribbons, wax-sealed notes and concierge personalization.",
       },
-      { property: "og:title", content: "Bespoke Gifting — LIVIN' Oud Royale" },
+      { property: "og:title", content: "Bespoke Gifting — LIVIN'" },
       {
         property: "og:description",
         content:

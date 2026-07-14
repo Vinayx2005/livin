@@ -55,6 +55,7 @@ export type ReadyToMakeSmile = {
   heading: string;
   paragraphs: string[];
   closer: string;
+  photo: string;
 };
 
 export type Collection = {
@@ -151,6 +152,7 @@ export function newCollectionTemplate(slug: string): Collection {
       heading: "Ready to Make Someone Smile?",
       paragraphs: ["", ""],
       closer: "",
+      photo: "/livin-gift-box.jpg",
     },
   };
 }

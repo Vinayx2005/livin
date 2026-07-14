@@ -81,19 +81,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "LIVIN' Oud Royale — Luxury Fragrance Gifting" },
+      { title: "Livin' - Home" },
       {
         name: "description",
         content:
-          "LIVIN' Oud Royale — a house of rare oud fragrances and bespoke gifting. Cinematic reveals, hand-crafted flacons, curated for the connoisseur.",
+          "LIVIN' — a house of rare oud fragrances and bespoke gifting. Cinematic reveals, hand-crafted flacons, curated for the connoisseur.",
       },
-      { name: "author", content: "LIVIN' Oud Royale" },
+      { name: "author", content: "LIVIN'" },
       { name: "theme-color", content: "#ffffff" },
-      { property: "og:site_name", content: "LIVIN' Oud Royale" },
+      { property: "og:site_name", content: "LIVIN'" },
       { property: "og:type", content: "website" },
       {
         property: "og:title",
-        content: "LIVIN' Oud Royale — Luxury Fragrance Gifting",
+        content: "LIVIN' — Luxury Fragrance Gifting",
       },
       {
         property: "og:description",
@@ -103,7 +103,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "LIVIN' Oud Royale — Luxury Fragrance Gifting",
+        content: "LIVIN' — Luxury Fragrance Gifting",
       },
       {
         name: "twitter:description",

@@ -156,14 +156,6 @@ export function SiteNav() {
                 </motion.li>
               ))}
             </ul>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-[10px] uppercase tracking-[0.4em] text-gold/60"
-            >
-              Est. MMXXIV
-            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

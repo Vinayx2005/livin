@@ -97,9 +97,9 @@ function ContactPage() {
                 Our team is here to help.
               </p>
             </div>
-            <div className="space-y-7 text-lg md:text-xl text-navy-deep/85 font-display">
+            <div className="space-y-7 text-xl md:text-2xl text-navy-deep/85 font-display">
               <div>
-                <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-gold mb-3">
+                <p className="text-xl md:text-2xl uppercase tracking-[0.15em] text-gold mb-3">
                   Email
                 </p>
                 <a
@@ -110,7 +110,7 @@ function ContactPage() {
                 </a>
               </div>
               <div>
-                <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-gold mb-3">
+                <p className="text-xl md:text-2xl uppercase tracking-[0.15em] text-gold mb-3">
                   WhatsApp
                 </p>
                 <a
@@ -123,12 +123,12 @@ function ContactPage() {
                 </a>
               </div>
               <div>
-                <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-gold mb-4">
+                <p className="text-xl md:text-2xl uppercase tracking-[0.15em] text-gold mb-4">
                   Social
                 </p>
                 <div className="flex items-center gap-4">
                   <a
-                    href="https://instagram.com/livin.gifting"
+                    href="https://www.instagram.com/livingifts?igsh=OTllYWk3MXY0OTlw&utm_source=website"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Livin' on Instagram"

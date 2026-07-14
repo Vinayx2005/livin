@@ -23,9 +23,9 @@ export const Route = createFileRoute("/collections_/$slug")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Not found — LIVIN' Oud Royale" }] };
+      return { meta: [{ title: "Not found — LIVIN'" }] };
     }
-    const title = `${loaderData.name} — LIVIN' Oud Royale`;
+    const title = `${loaderData.name} — LIVIN'`;
     return {
       meta: [
         { title },
@@ -417,41 +417,60 @@ function CollectionDetailPage() {
       )}
 
       {/* Ready to Make Someone Smile? */}
-      <section className="max-w-3xl mx-auto px-6 md:px-10 pb-40 text-center">
-        <Reveal>
-          <h2 className="font-display italic text-4xl md:text-6xl text-gold-shimmer leading-[1.05] mb-12">
-            {item.readyToMakeSmile.heading}
-          </h2>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <div className="space-y-6 font-display text-xl md:text-2xl text-navy-deep/80 leading-relaxed text-pretty mb-14">
-            {item.readyToMakeSmile.paragraphs
-              .filter((p) => p && p.trim().length > 0)
-              .map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-            {item.readyToMakeSmile.closer && (
-              <p className="italic text-gold-shimmer">
-                {item.readyToMakeSmile.closer}
-              </p>
-            )}
+      <section className="max-w-6xl mx-auto px-6 md:px-10 pb-40">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+          {/* Image — top on mobile, right on desktop */}
+          <Reveal className="md:order-2">
+            <div className="overflow-hidden aspect-[4/5] glass-card">
+              <img
+                src={item.readyToMakeSmile.photo}
+                alt={`${item.name} — Ready to make someone smile`}
+                width={1200}
+                height={1500}
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </Reveal>
+
+          {/* Text — bottom on mobile, left on desktop */}
+          <div className="md:order-1 text-left">
+            <Reveal>
+              <h2 className="font-display italic text-4xl md:text-6xl text-gold-shimmer leading-[1.05] mb-10">
+                {item.readyToMakeSmile.heading}
+              </h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div className="space-y-6 font-display text-xl md:text-2xl text-navy-deep/80 leading-relaxed text-pretty mb-12">
+                {item.readyToMakeSmile.paragraphs
+                  .filter((p) => p && p.trim().length > 0)
+                  .map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
+                {item.readyToMakeSmile.closer && (
+                  <p className="italic text-gold-shimmer">
+                    {item.readyToMakeSmile.closer}
+                  </p>
+                )}
+              </div>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <button
+                type="button"
+                onClick={handleAdd}
+                className="inline-flex items-center gap-2 px-12 py-5 bg-navy-deep text-white text-[11px] uppercase tracking-[0.4em] hover:bg-navy transition-colors"
+              >
+                {justAdded ? (
+                  <>
+                    <Check size={16} strokeWidth={1.5} /> Added
+                  </>
+                ) : (
+                  "Add to Cart"
+                )}
+              </button>
+            </Reveal>
           </div>
-        </Reveal>
-        <Reveal delay={0.2}>
-          <button
-            type="button"
-            onClick={handleAdd}
-            className="inline-flex items-center gap-2 px-12 py-5 bg-navy-deep text-white text-[11px] uppercase tracking-[0.4em] hover:bg-navy transition-colors"
-          >
-            {justAdded ? (
-              <>
-                <Check size={16} strokeWidth={1.5} /> Added
-              </>
-            ) : (
-              "Add to Cart"
-            )}
-          </button>
-        </Reveal>
+        </div>
       </section>
 
       {/* Other signatures */}
@@ -484,7 +503,7 @@ function CollectionDetailPage() {
                     <h3 className="font-display italic text-3xl text-navy-deep mb-3">
                       {o.name}
                     </h3>
-                    <p className="font-display text-base md:text-lg text-navy-deep/70 leading-snug">
+                    <p className="font-display text-xl md:text-2xl text-navy-deep/70 leading-snug">
                       {o.story}
                     </p>
                     <div className="flex items-center justify-between mt-4 pt-4 border-t border-gold/15">

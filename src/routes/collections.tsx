@@ -5,13 +5,13 @@ import { collections } from "@/data/collections";
 export const Route = createFileRoute("/collections")({
   head: () => ({
     meta: [
-      { title: "Collections — LIVIN' Oud Royale" },
+      { title: "Collections — LIVIN'" },
       {
         name: "description",
         content:
-          "Explore the LIVIN' Oud Royale signature collection — Midnight Cambodi, Imperial Gold, Noir Royale and more rare oud compositions.",
+          "Explore the LIVIN' signature collection — Midnight Cambodi, Imperial Gold, Noir Royale and more rare oud compositions.",
       },
-      { property: "og:title", content: "Collections — LIVIN' Oud Royale" },
+      { property: "og:title", content: "Collections — LIVIN'" },
       {
         property: "og:description",
         content:
@@ -114,7 +114,7 @@ function CollectionsPage() {
                   <h2 className="font-display italic text-3xl md:text-4xl text-navy-deep mb-3">
                     {item.name}
                   </h2>
-                  <p className="font-display text-base md:text-lg text-navy-deep/70 leading-snug">
+                  <p className="font-display text-xl md:text-2xl text-navy-deep/70 leading-snug">
                     {item.story}
                   </p>
                   <div className="flex items-center justify-between mt-6 pt-6 border-t border-gold/15">
