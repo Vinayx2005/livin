@@ -80,15 +80,24 @@ function CollectionsPage() {
         </Reveal>
       </section>
 
-      <div id="collection-grid" className="max-w-7xl mx-auto px-6 md:px-10 scroll-mt-32">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+      <div
+        id="collection-grid"
+        className={`mx-auto px-6 md:px-10 scroll-mt-32 ${
+          collections.length <= 2 ? "max-w-5xl" : "max-w-7xl"
+        }`}
+      >
+        <div
+          className={`grid grid-cols-1 gap-8 md:gap-10 ${
+            collections.length <= 2 ? "md:grid-cols-2" : "md:grid-cols-3"
+          }`}
+        >
           {collections.map((item, i) => (
             <Reveal key={item.slug} delay={i * 0.1}>
               <Link
                 to="/collections/$slug"
                 params={{ slug: item.slug }}
                 className={`group glass-card p-6 flex flex-col gap-6 transition-all duration-500 hover:-translate-y-2 hover:border-gold/40 ${
-                  i === 1 ? "md:mt-14" : ""
+                  collections.length >= 3 && i === 1 ? "md:mt-14" : ""
                 }`}
               >
                 <div className="overflow-hidden aspect-[3/4] bg-ivory">

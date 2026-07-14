@@ -146,8 +146,13 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-weight: 300;
+    font-weight: 500;
     -webkit-font-smoothing: antialiased;
+  }
+  /* Keep serif display text at its lighter editorial weight,
+     even though the sans default is now bolder. */
+  .font-display {
+    font-weight: 400;
   }
   ::selection {
     background: color-mix(in oklab, var(--gold) 40%, transparent);

@@ -32,7 +32,55 @@ export const Route = createFileRoute("/contact")({
 });
 
 function ContactPage() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "sent" | "error"
+  >("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    if (!accessKey || accessKey === "your-web3forms-access-key") {
+      setStatus("error");
+      setErrorMsg(
+        "Form is not configured yet. Please set VITE_WEB3FORMS_ACCESS_KEY.",
+      );
+      return;
+    }
+
+    data.set("access_key", accessKey);
+    data.set("subject", "New enquiry from the Livin' website");
+    data.set("from_name", "Livin' Website");
+    // Deliver to both inboxes via CC. One of these is also the primary
+    // recipient on the Web3Forms key — that one gets a duplicate, which is
+    // fine and guarantees both inboxes receive every submission regardless
+    // of which address the key was registered with.
+    data.set("cc", "sailikithabetha@gmail.com,vinayteja23@gmail.com");
+
+    setStatus("sending");
+    setErrorMsg(null);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: data,
+      });
+      const json = await res.json();
+      if (res.ok && json.success) {
+        setStatus("sent");
+        form.reset();
+      } else {
+        setStatus("error");
+        setErrorMsg(json.message || "Something went wrong. Please try again.");
+      }
+    } catch {
+      setStatus("error");
+      setErrorMsg("Network error. Please try again.");
+    }
+  };
+
   return (
     <main className="pt-[calc(5rem+50px)] pb-40">
       <section className="max-w-6xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-20">
@@ -96,13 +144,10 @@ function ContactPage() {
 
         <Reveal delay={0.2}>
           <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              setSent(true);
-            }}
+            onSubmit={handleSubmit}
             className="glass-card p-8 md:p-10 space-y-6"
           >
-            {sent ? (
+            {status === "sent" ? (
               <div className="py-16 text-center">
                 <div className="text-gold text-4xl mb-6">◆</div>
                 <h3 className="font-display italic text-3xl text-navy-deep mb-4">
@@ -114,8 +159,8 @@ function ContactPage() {
               </div>
             ) : (
               <>
-                <Field label="Full Name" name="name" />
-                <Field label="Email" name="email" type="email" />
+                <Field label="Full Name" name="name" required />
+                <Field label="Email" name="email" type="email" required />
                 <Field
                   label="Contact Number"
                   name="phone"
@@ -123,19 +168,31 @@ function ContactPage() {
                   placeholder="+91 —"
                 />
                 <div>
-                  <label className="text-xs md:text-sm uppercase tracking-[0.3em] text-gold block mb-3">
+                  <label
+                    htmlFor="message"
+                    className="text-xs md:text-sm uppercase tracking-[0.3em] text-gold block mb-3"
+                  >
                     Message
                   </label>
                   <textarea
+                    id="message"
+                    name="message"
                     rows={5}
+                    required
                     className="w-full bg-transparent border-b border-gold/25 focus:border-gold text-navy-deep text-lg md:text-xl pb-3 outline-none transition-colors font-display leading-relaxed"
                   />
                 </div>
+                {status === "error" && errorMsg && (
+                  <p className="text-sm text-red-600 font-display">
+                    {errorMsg}
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="mt-4 w-full py-4 bg-navy-deep text-white text-xs md:text-sm uppercase tracking-[0.4em] hover:bg-navy transition-colors"
+                  disabled={status === "sending"}
+                  className="mt-4 w-full py-4 bg-navy-deep text-white text-xs md:text-sm uppercase tracking-[0.4em] hover:bg-navy disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
                 >
-                  Send Message
+                  {status === "sending" ? "Sending…" : "Send Message"}
                 </button>
               </>
             )}
@@ -206,11 +263,13 @@ function Field({
   name,
   type = "text",
   placeholder,
+  required,
 }: {
   label: string;
   name: string;
   type?: string;
   placeholder?: string;
+  required?: boolean;
 }) {
   return (
     <div>
@@ -225,6 +284,7 @@ function Field({
         name={name}
         type={type}
         placeholder={placeholder}
+        required={required}
         className="w-full bg-transparent border-b border-gold/25 focus:border-gold text-navy-deep text-lg md:text-xl pb-3 outline-none transition-colors font-display placeholder:text-navy-deep/30"
       />
     </div>
