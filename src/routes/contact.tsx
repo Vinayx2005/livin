@@ -12,17 +12,22 @@ import {
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — LIVIN'" },
+      { title: "Contact Livin'" },
       {
         name: "description",
         content:
-          "Reach the Livin' team — about an order, delivery, or one of our collections.",
+          "Have a question about our gifting experiences or collections? Contact Livin'. We'd love to help you create meaningful moments for the people you care about.",
       },
-      { property: "og:title", content: "Contact — LIVIN'" },
+      {
+        name: "keywords",
+        content:
+          "Contact Livin, Customer support, Luxury gifts, Luxury gifting, Gift support, Gift assistance, Premium gifting, Livin India",
+      },
+      { property: "og:title", content: "Contact Livin'" },
       {
         property: "og:description",
         content:
-          "Get in touch with the Livin' team by email or WhatsApp.",
+          "Have a question about our gifting experiences or collections? Contact Livin'. We'd love to help you create meaningful moments for the people you care about.",
       },
       { property: "og:url", content: "/contact" },
     ],

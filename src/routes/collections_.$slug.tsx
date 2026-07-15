@@ -25,13 +25,16 @@ export const Route = createFileRoute("/collections_/$slug")({
     if (!loaderData) {
       return { meta: [{ title: "Not found — LIVIN'" }] };
     }
-    const title = `${loaderData.name} — LIVIN'`;
+    const title = `${loaderData.name} | Gifting Collection by Livin'`;
+    const description = `Experience the ${loaderData.name} gifting collection by Livin'. Thoughtfully curated with luxury fragrance, personalized notes, and elegant presentation to create unforgettable moments.`;
+    const keywords = `${loaderData.name}, Luxury gift, Luxury perfume, Luxury gift box, Gift for her, Gift for him, Premium gifting, Personalized gift, Luxury fragrance, Curated gift, Livin`;
     return {
       meta: [
         { title },
-        { name: "description", content: loaderData.story },
+        { name: "description", content: description },
+        { name: "keywords", content: keywords },
         { property: "og:title", content: title },
-        { property: "og:description", content: loaderData.story },
+        { property: "og:description", content: description },
         { property: "og:url", content: `/collections/${loaderData.slug}` },
       ],
       links: [{ rel: "canonical", href: `/collections/${loaderData.slug}` }],

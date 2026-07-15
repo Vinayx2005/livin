@@ -5,17 +5,25 @@ import { collections } from "@/data/collections";
 export const Route = createFileRoute("/collections")({
   head: () => ({
     meta: [
-      { title: "Collections — LIVIN'" },
+      { title: "Gifting Collections | Thoughtfully Curated by Livin'" },
       {
         name: "description",
         content:
-          "Explore the LIVIN' signature collection — Midnight Cambodi, Imperial Gold, Noir Royale and more rare oud compositions.",
+          "Explore Livin's thoughtfully curated gifting collections featuring luxury fragrances, personalized notes, and premium presentation for every meaningful occasion.",
       },
-      { property: "og:title", content: "Collections — LIVIN'" },
+      {
+        name: "keywords",
+        content:
+          "Luxury gift collections, Premium gifting, Gift collections, Luxury perfume gift, Personalized gifting, Birthday gift, Anniversary gift, Luxury fragrance, Luxury gift box, Meaningful gifts, Curated gifts, Livin collections",
+      },
+      {
+        property: "og:title",
+        content: "Gifting Collections | Thoughtfully Curated by Livin'",
+      },
       {
         property: "og:description",
         content:
-          "Rare oud compositions, hand-blended and cellar-aged for the connoisseur.",
+          "Explore Livin's thoughtfully curated gifting collections featuring luxury fragrances, personalized notes, and premium presentation for every meaningful occasion.",
       },
       { property: "og:url", content: "/collections" },
     ],

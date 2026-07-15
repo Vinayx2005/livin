@@ -85,30 +85,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "LIVIN' — a house of rare oud fragrances and bespoke gifting. Cinematic reveals, hand-crafted flacons, curated for the connoisseur.",
+          "Discover thoughtfully curated luxury gifting experiences with personalized notes, premium fragrances, and elegant presentation. Create unforgettable moments with the people who matter most.",
+      },
+      {
+        name: "keywords",
+        content:
+          "Livin, Livin gifting, Luxury gifts, Luxury gifting, Premium gifting, Luxury perfume gifts, Personalized gifts, Gift box, Luxury gift box, Gift for loved ones, Birthday gifts, Anniversary gifts, Luxury fragrances, Meaningful gifts, Gift experiences, Luxury gifts India, Premium gifts India",
       },
       { name: "author", content: "LIVIN'" },
       { name: "theme-color", content: "#ffffff" },
       { property: "og:site_name", content: "LIVIN'" },
       { property: "og:type", content: "website" },
-      {
-        property: "og:title",
-        content: "LIVIN' — Luxury Fragrance Gifting",
-      },
+      { property: "og:title", content: "Livin' - Home" },
       {
         property: "og:description",
         content:
-          "Rare oud, cinematic reveals, and bespoke gifting from the House of LIVIN'.",
+          "Discover thoughtfully curated luxury gifting experiences with personalized notes, premium fragrances, and elegant presentation. Create unforgettable moments with the people who matter most.",
       },
       { name: "twitter:card", content: "summary_large_image" },
-      {
-        name: "twitter:title",
-        content: "LIVIN' — Luxury Fragrance Gifting",
-      },
+      { name: "twitter:title", content: "Livin' - Home" },
       {
         name: "twitter:description",
         content:
-          "Rare oud, cinematic reveals, and bespoke gifting from the House of LIVIN'.",
+          "Discover thoughtfully curated luxury gifting experiences with personalized notes, premium fragrances, and elegant presentation. Create unforgettable moments with the people who matter most.",
       },
     ],
     links: [

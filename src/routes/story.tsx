@@ -4,17 +4,22 @@ import { Reveal } from "@/components/Reveal";
 export const Route = createFileRoute("/story")({
   head: () => ({
     meta: [
-      { title: "Our Story — LIVIN'" },
+      { title: "Our Story | Why Livin' Exists" },
       {
         name: "description",
         content:
-          "Livin' wasn't born in a boardroom. It started with a feeling that stayed long after a gift had been given — a founder's story.",
+          "Learn the story behind Livin' and discover why we believe every meaningful relationship deserves more than a gift, it deserves an unforgettable experience.",
       },
-      { property: "og:title", content: "Our Story — LIVIN'" },
+      {
+        name: "keywords",
+        content:
+          "Livin story, About Livin, Luxury gifting, Founder story, Meaningful gifting, Luxury gift experience, Gifting philosophy, Premium gifting, Luxury fragrance, Brand story",
+      },
+      { property: "og:title", content: "Our Story | Why Livin' Exists" },
       {
         property: "og:description",
         content:
-          "The story behind Livin' — a founder's belief that every meaningful relationship deserves more than just a gift.",
+          "Learn the story behind Livin' and discover why we believe every meaningful relationship deserves more than a gift, it deserves an unforgettable experience.",
       },
       { property: "og:url", content: "/story" },
     ],
