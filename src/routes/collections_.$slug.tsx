@@ -9,25 +9,28 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
-  collections,
-  getCollection,
-  getOtherCollections,
+  getCollectionFn,
+  getOtherCollectionsFn,
 } from "@/data/collections";
 import { useCart } from "@/lib/cart";
 
 export const Route = createFileRoute("/collections_/$slug")({
-  loader: ({ params }) => {
-    const collection = getCollection(params.slug);
-    if (!collection) throw notFound();
-    return collection;
+  loader: async ({ params }) => {
+    const [item, others] = await Promise.all([
+      getCollectionFn({ data: params.slug }),
+      getOtherCollectionsFn({ data: params.slug }),
+    ]);
+    if (!item) throw notFound();
+    return { item, others };
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
       return { meta: [{ title: "Not found — LIVIN'" }] };
     }
-    const title = `${loaderData.name} | Gifting Collection by Livin'`;
-    const description = `Experience the ${loaderData.name} gifting collection by Livin'. Thoughtfully curated with luxury fragrance, personalized notes, and elegant presentation to create unforgettable moments.`;
-    const keywords = `${loaderData.name}, Luxury gift, Luxury perfume, Luxury gift box, Gift for her, Gift for him, Premium gifting, Personalized gift, Luxury fragrance, Curated gift, Livin`;
+    const { item } = loaderData;
+    const title = `${item.name} | Gifting Collection by Livin'`;
+    const description = `Experience the ${item.name} gifting collection by Livin'. Thoughtfully curated with luxury fragrance, personalized notes, and elegant presentation to create unforgettable moments.`;
+    const keywords = `${item.name}, Luxury gift, Luxury perfume, Luxury gift box, Gift for her, Gift for him, Premium gifting, Personalized gift, Luxury fragrance, Curated gift, Livin`;
     return {
       meta: [
         { title },
@@ -35,9 +38,9 @@ export const Route = createFileRoute("/collections_/$slug")({
         { name: "keywords", content: keywords },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
-        { property: "og:url", content: `/collections/${loaderData.slug}` },
+        { property: "og:url", content: `/collections/${item.slug}` },
       ],
-      links: [{ rel: "canonical", href: `/collections/${loaderData.slug}` }],
+      links: [{ rel: "canonical", href: `/collections/${item.slug}` }],
     };
   },
   component: CollectionDetailPage,
@@ -82,20 +85,19 @@ function Paragraphs({
 }
 
 function CollectionDetailPage() {
-  const item = Route.useLoaderData();
-  const others = getOtherCollections(item.slug);
+  const { item, others } = Route.useLoaderData();
   const { add } = useCart();
   const navigate = useNavigate();
   const [justAdded, setJustAdded] = useState(false);
 
   const handleAdd = () => {
-    add(item.slug);
+    add(item);
     setJustAdded(true);
     window.setTimeout(() => setJustAdded(false), 1800);
   };
 
   const handleBuy = () => {
-    add(item.slug);
+    add(item);
     // buyNowUrl can be an internal path or an external URL
     if (item.buyNowUrl.startsWith("http")) {
       window.location.href = item.buyNowUrl;
@@ -548,6 +550,3 @@ function NotFoundPage() {
     </main>
   );
 }
-
-// Silence unused-import warning; used implicitly via loader/data.
-void collections;

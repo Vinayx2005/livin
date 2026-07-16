@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { adminLoginFn, adminTokenStorage } from "@/lib/admin-auth";
+import { supabaseBrowser } from "@/lib/supabase";
 
 export const Route = createFileRoute("/admin/login")({
   head: () => ({
@@ -14,15 +14,21 @@ export const Route = createFileRoute("/admin/login")({
 
 function AdminLoginPage() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
-  // If we already have a token, jump straight to /admin.
+  // If we already have a Supabase session, jump straight to /admin.
   useEffect(() => {
-    if (adminTokenStorage.get()) {
-      navigate({ to: "/admin" });
-    }
+    let cancelled = false;
+    (async () => {
+      const { data } = await supabaseBrowser.auth.getSession();
+      if (!cancelled && data.session) navigate({ to: "/admin" });
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, [navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -30,8 +36,11 @@ function AdminLoginPage() {
     setError(null);
     setSubmitting(true);
     try {
-      const result = await adminLoginFn({ data: { password } });
-      adminTokenStorage.set(result.token);
+      const { error: authErr } = await supabaseBrowser.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (authErr) throw authErr;
       navigate({ to: "/admin" });
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Unable to sign in.";
@@ -62,6 +71,24 @@ function AdminLoginPage() {
         >
           <div>
             <label
+              htmlFor="email"
+              className="text-[10px] uppercase tracking-[0.3em] text-gold block mb-3"
+            >
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoFocus
+              autoComplete="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full bg-transparent border-b border-gold/25 focus:border-gold text-navy-deep pb-3 outline-none transition-colors font-display text-lg"
+            />
+          </div>
+          <div>
+            <label
               htmlFor="password"
               className="text-[10px] uppercase tracking-[0.3em] text-gold block mb-3"
             >
@@ -71,7 +98,6 @@ function AdminLoginPage() {
               id="password"
               name="password"
               type="password"
-              autoFocus
               autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -85,7 +111,7 @@ function AdminLoginPage() {
           )}
           <button
             type="submit"
-            disabled={submitting || !password}
+            disabled={submitting || !email || !password}
             className="w-full py-4 bg-navy-deep text-white text-[10px] uppercase tracking-[0.4em] hover:bg-navy disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {submitting ? "Signing in…" : "Sign in"}

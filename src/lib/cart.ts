@@ -1,10 +1,34 @@
 import { useEffect, useState } from "react";
-import { collections, type Collection } from "@/data/collections";
+import type { Collection } from "@/data/collections";
 
 const STORAGE_KEY = "livin:cart";
 const CART_EVENT = "livin:cart:change";
 
-export type CartItem = { slug: string; qty: number };
+/**
+ * Cart lines are self-contained — each item snapshots the product info it
+ * needs to render (name/image/price). That way the cart page doesn't need
+ * a runtime lookup into the collections table.
+ */
+export type CartItem = {
+  slug: string;
+  qty: number;
+  name: string;
+  tag: string;
+  image: string;
+  price: string;
+  priceValue: number;
+};
+
+function snapshot(product: Collection): Omit<CartItem, "qty"> {
+  return {
+    slug: product.slug,
+    name: product.name,
+    tag: product.tag,
+    image: product.image,
+    price: product.price,
+    priceValue: product.priceValue,
+  };
+}
 
 function loadCart(): CartItem[] {
   if (typeof window === "undefined") return [];
@@ -18,7 +42,9 @@ function loadCart(): CartItem[] {
         typeof i === "object" &&
         i !== null &&
         typeof (i as CartItem).slug === "string" &&
-        typeof (i as CartItem).qty === "number",
+        typeof (i as CartItem).qty === "number" &&
+        typeof (i as CartItem).name === "string" &&
+        typeof (i as CartItem).priceValue === "number",
     );
   } catch {
     return [];
@@ -51,12 +77,15 @@ export function useCart() {
     };
   }, []);
 
-  const add = (slug: string) => {
+  const add = (product: Collection) => {
     const cur = loadCart();
-    const existing = cur.find((i) => i.slug === slug);
+    const existing = cur.find((i) => i.slug === product.slug);
+    const snap = snapshot(product);
     const next = existing
-      ? cur.map((i) => (i.slug === slug ? { ...i, qty: i.qty + 1 } : i))
-      : [...cur, { slug, qty: 1 }];
+      ? cur.map((i) =>
+          i.slug === product.slug ? { ...snap, qty: i.qty + 1 } : i,
+        )
+      : [...cur, { ...snap, qty: 1 }];
     saveCart(next);
   };
 
@@ -89,20 +118,7 @@ export function useCart() {
   const clear = () => saveCart([]);
 
   const count = items.reduce((s, i) => s + i.qty, 0);
+  const subtotal = items.reduce((s, i) => s + i.priceValue * i.qty, 0);
 
-  const lines = items
-    .map((i) => {
-      const product = collections.find((c) => c.slug === i.slug);
-      return product ? { item: i, product } : null;
-    })
-    .filter(
-      (l): l is { item: CartItem; product: Collection } => l !== null,
-    );
-
-  const subtotal = lines.reduce(
-    (s, l) => s + l.product.priceValue * l.item.qty,
-    0,
-  );
-
-  return { items, lines, count, subtotal, add, remove, setQty, bump, clear, hydrated };
+  return { items, count, subtotal, add, remove, setQty, bump, clear, hydrated };
 }

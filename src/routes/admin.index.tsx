@@ -1,8 +1,8 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Plus, LogOut, Pencil } from "lucide-react";
-import { adminTokenStorage } from "@/lib/admin-auth";
-import { collections } from "@/data/collections";
+import { supabaseBrowser } from "@/lib/supabase";
+import { getCollectionsFn, type Collection } from "@/data/collections";
 
 export const Route = createFileRoute("/admin/")({
   head: () => ({
@@ -17,17 +17,38 @@ export const Route = createFileRoute("/admin/")({
 function AdminDashboardPage() {
   const navigate = useNavigate();
   const [ready, setReady] = useState(false);
+  const [collections, setCollections] = useState<Collection[]>([]);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!adminTokenStorage.get()) {
-      navigate({ to: "/admin/login" });
-      return;
-    }
-    setReady(true);
+    let cancelled = false;
+    (async () => {
+      const { data } = await supabaseBrowser.auth.getSession();
+      if (cancelled) return;
+      if (!data.session) {
+        navigate({ to: "/admin/login" });
+        return;
+      }
+      try {
+        const rows = await getCollectionsFn();
+        if (!cancelled) setCollections(rows);
+      } catch (err) {
+        if (!cancelled) {
+          setLoadError(
+            err instanceof Error ? err.message : "Failed to load collections.",
+          );
+        }
+      } finally {
+        if (!cancelled) setReady(true);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, [navigate]);
 
-  const handleLogout = () => {
-    adminTokenStorage.clear();
+  const handleLogout = async () => {
+    await supabaseBrowser.auth.signOut();
     navigate({ to: "/admin/login" });
   };
 
@@ -66,8 +87,7 @@ function AdminDashboardPage() {
               Gifting Collection
             </h1>
             <p className="mt-4 font-display text-navy-deep/70 text-lg max-w-xl">
-              Edit any collection or add a new one. Saves commit to GitHub;
-              Vercel redeploys automatically.
+              Edit any collection or add a new one. Changes go live instantly.
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -87,6 +107,12 @@ function AdminDashboardPage() {
             </button>
           </div>
         </header>
+
+        {loadError && (
+          <p className="mb-8 text-sm text-red-800 bg-red-50 border border-red-200 px-4 py-3 rounded">
+            {loadError}
+          </p>
+        )}
 
         <ul className="divide-y divide-gold/15 border-y border-gold/15">
           {collections.map((c) => (
@@ -120,7 +146,7 @@ function AdminDashboardPage() {
           ))}
         </ul>
 
-        {collections.length === 0 && (
+        {collections.length === 0 && !loadError && (
           <p className="text-center text-navy-deep/60 py-16">
             No collections yet. Click "New collection" to add the first one.
           </p>

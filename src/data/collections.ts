@@ -1,11 +1,11 @@
-// Content is loaded from ../../content/collections/*.json. Each file is fully
-// editable through the /admin UI, which commits the JSON back to the repo via
-// the GitHub API. Vite watches these globs so changes hot-reload in dev.
+// Collection types + Supabase-backed loaders.
+//
+// Content lives in the Supabase `collections` table (one row per collection,
+// slug PK, `data` JSONB column holding the shape below). Public routes call
+// the server functions here from their loader; the admin editor mutates via
+// src/lib/admin-supabase.ts.
 
-const collectionModules = import.meta.glob<{ default: Collection }>(
-  "../../content/collections/*.json",
-  { eager: true },
-);
+import { createServerFn } from "@tanstack/react-start";
 
 export type Spec = { label: string; value: string };
 export type FaqEntry = { q: string; a: string };
@@ -157,15 +157,60 @@ export function newCollectionTemplate(slug: string): Collection {
   };
 }
 
-// Sort collections by name so ordering is stable regardless of file-system order.
-export const collections: Collection[] = Object.values(collectionModules)
-  .map((m) => m.default)
-  .sort((a, b) => a.name.localeCompare(b.name));
+/* -------------------------------------------------------------------------- */
+/* Server functions — hit Supabase                                             */
+/* -------------------------------------------------------------------------- */
 
-export function getCollection(slug: string): Collection | undefined {
-  return collections.find((c) => c.slug === slug);
-}
+type Row = { data: Collection };
 
-export function getOtherCollections(slug: string): Collection[] {
-  return collections.filter((c) => c.slug !== slug);
-}
+/** All collections, sorted by name. Used by home + collections index. */
+export const getCollectionsFn = createServerFn({ method: "GET" }).handler(
+  async () => {
+    const { createSupabaseServer } = await import("../lib/supabase");
+    const client = createSupabaseServer();
+    const { data, error } = await client
+      .from("collections")
+      .select("data")
+      .order("data->>name", { ascending: true });
+    if (error) throw new Error(`Failed to load collections: ${error.message}`);
+    return (data ?? []).map((r: Row) => r.data);
+  },
+);
+
+/** Single collection by slug (nullable — returns null when not found). */
+export const getCollectionFn = createServerFn({ method: "GET" })
+  .validator((slug: unknown) => {
+    if (typeof slug !== "string" || !slug) {
+      throw new Error("slug must be a non-empty string");
+    }
+    return slug;
+  })
+  .handler(async ({ data: slug }) => {
+    const { createSupabaseServer } = await import("../lib/supabase");
+    const client = createSupabaseServer();
+    const { data, error } = await client
+      .from("collections")
+      .select("data")
+      .eq("slug", slug)
+      .maybeSingle();
+    if (error) throw new Error(`Failed to load collection: ${error.message}`);
+    return (data as Row | null)?.data ?? null;
+  });
+
+/** Every collection except the given slug — used for "Also of the House". */
+export const getOtherCollectionsFn = createServerFn({ method: "GET" })
+  .validator((slug: unknown) => {
+    if (typeof slug !== "string") throw new Error("slug must be a string");
+    return slug;
+  })
+  .handler(async ({ data: slug }) => {
+    const { createSupabaseServer } = await import("../lib/supabase");
+    const client = createSupabaseServer();
+    const { data, error } = await client
+      .from("collections")
+      .select("data")
+      .neq("slug", slug)
+      .order("data->>name", { ascending: true });
+    if (error) throw new Error(`Failed to load collections: ${error.message}`);
+    return (data ?? []).map((r: Row) => r.data);
+  });

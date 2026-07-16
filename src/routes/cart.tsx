@@ -22,7 +22,7 @@ export const Route = createFileRoute("/cart")({
 });
 
 function CartPage() {
-  const { lines, subtotal, bump, remove, hydrated } = useCart();
+  const { items, subtotal, bump, remove, hydrated } = useCart();
 
   return (
     <main className="pt-[calc(5rem+50px)] pb-40 min-h-screen">
@@ -33,40 +33,40 @@ function CartPage() {
           </h1>
         </Reveal>
 
-        {hydrated && lines.length === 0 ? (
+        {hydrated && items.length === 0 ? (
           <EmptyBag />
         ) : (
           <Reveal delay={0.1}>
             <div className="divide-y divide-gold/10 border-y border-gold/10">
-              {lines.map(({ item, product }) => (
+              {items.map((item) => (
                 <div
                   key={item.slug}
                   className="grid grid-cols-[80px_1fr_auto] md:grid-cols-[120px_1fr_auto_auto] gap-4 md:gap-8 py-8 items-center"
                 >
                   <Link
                     to="/collections/$slug"
-                    params={{ slug: product.slug }}
+                    params={{ slug: item.slug }}
                     className="block overflow-hidden aspect-square bg-ivory border border-gold/15"
                   >
                     <img
-                      src={product.image}
-                      alt={product.name}
+                      src={item.image}
+                      alt={item.name}
                       className="w-full h-full object-cover"
                     />
                   </Link>
                   <div className="min-w-0">
                     <Link
                       to="/collections/$slug"
-                      params={{ slug: product.slug }}
+                      params={{ slug: item.slug }}
                       className="font-display italic text-xl md:text-2xl text-navy-deep hover:text-gold-shimmer transition-colors block truncate"
                     >
-                      {product.name}
+                      {item.name}
                     </Link>
                     <p className="text-[10px] uppercase tracking-[0.3em] text-gold/80 mt-1">
-                      {product.tag}
+                      {item.tag}
                     </p>
                     <p className="font-display text-lg text-gold-shimmer mt-3 md:hidden">
-                      {formatPrice(product.priceValue * item.qty)}
+                      {formatPrice(item.priceValue * item.qty)}
                     </p>
                   </div>
                   <div className="col-start-3 flex items-center gap-2 md:gap-3 border border-gold/25 rounded-full px-1 py-1 self-center">
@@ -92,11 +92,11 @@ function CartPage() {
                   </div>
                   <div className="hidden md:flex md:col-start-4 items-center gap-6">
                     <span className="font-display text-2xl text-gold-shimmer tabular-nums">
-                      {formatPrice(product.priceValue * item.qty)}
+                      {formatPrice(item.priceValue * item.qty)}
                     </span>
                     <button
                       type="button"
-                      aria-label={`Remove ${product.name}`}
+                      aria-label={`Remove ${item.name}`}
                       onClick={() => remove(item.slug)}
                       className="text-navy-deep/50 hover:text-navy-deep transition-colors"
                     >
@@ -105,7 +105,7 @@ function CartPage() {
                   </div>
                   <button
                     type="button"
-                    aria-label={`Remove ${product.name}`}
+                    aria-label={`Remove ${item.name}`}
                     onClick={() => remove(item.slug)}
                     className="md:hidden col-start-3 mt-3 text-[10px] uppercase tracking-[0.3em] text-navy-deep/60 hover:text-navy-deep text-right"
                   >

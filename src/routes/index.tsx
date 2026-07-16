@@ -2,14 +2,16 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
-import { collections } from "@/data/collections";
+import { getCollectionsFn } from "@/data/collections";
 
 
 export const Route = createFileRoute("/")({
+  loader: () => getCollectionsFn(),
   component: Home,
 });
 
 function Home() {
+  const collections = Route.useLoaderData();
   return (
     <main>
       {/* HERO — editorial composition with a soft slanted feather */}

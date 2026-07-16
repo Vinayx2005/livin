@@ -3,15 +3,15 @@ import {
   Link,
   useNavigate,
 } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowLeft, Plus, Trash2, Save } from "lucide-react";
-import { adminTokenStorage } from "@/lib/admin-auth";
-import { saveCollectionFn } from "@/lib/admin-github";
+import { supabaseBrowser } from "@/lib/supabase";
+import { saveCollectionFn } from "@/lib/admin-supabase";
 import {
   Collection,
   Spec,
   FaqEntry,
-  getCollection,
+  getCollectionFn,
   newCollectionTemplate,
 } from "@/data/collections";
 
@@ -330,44 +330,73 @@ function FaqList({
 function AdminEditPage() {
   const { slug } = Route.useParams();
   const navigate = useNavigate();
-  const existing = useMemo(() => getCollection(slug), [slug]);
-  const isNew = !existing;
 
   const [ready, setReady] = useState(false);
-  useEffect(() => {
-    if (!adminTokenStorage.get()) {
-      navigate({ to: "/admin/login" });
-      return;
-    }
-    setReady(true);
-  }, [navigate]);
-
-  const [data, setData] = useState<Collection>(
-    existing ?? newCollectionTemplate(slug),
-  );
+  const [isNew, setIsNew] = useState(false);
+  const [data, setData] = useState<Collection>(newCollectionTemplate(slug));
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<{
     tone: "ok" | "err";
     text: string;
   } | null>(null);
 
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const { data: session } = await supabaseBrowser.auth.getSession();
+      if (cancelled) return;
+      if (!session.session) {
+        navigate({ to: "/admin/login" });
+        return;
+      }
+      try {
+        const existing = await getCollectionFn({ data: slug });
+        if (cancelled) return;
+        if (existing) {
+          setData(existing);
+          setIsNew(false);
+        } else {
+          setData(newCollectionTemplate(slug));
+          setIsNew(true);
+        }
+      } catch (err) {
+        if (!cancelled) {
+          setMessage({
+            tone: "err",
+            text:
+              err instanceof Error
+                ? `Failed to load collection: ${err.message}`
+                : "Failed to load collection.",
+          });
+        }
+      } finally {
+        if (!cancelled) setReady(true);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [navigate, slug]);
+
   const handleSave = async () => {
     setSaving(true);
     setMessage(null);
-    const token = adminTokenStorage.get();
-    if (!token) {
+    const { data: session } = await supabaseBrowser.auth.getSession();
+    const accessToken = session.session?.access_token;
+    if (!accessToken) {
       navigate({ to: "/admin/login" });
       return;
     }
     try {
       const result = await saveCollectionFn({
         data: {
-          token,
+          accessToken,
           collection: data as unknown as Record<string, unknown>,
           isNew,
         },
       });
       setMessage({ tone: "ok", text: result.message });
+      if (isNew) setIsNew(false);
     } catch (err) {
       setMessage({
         tone: "err",

@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
-import { collections } from "@/data/collections";
+import { getCollectionsFn } from "@/data/collections";
 
 export const Route = createFileRoute("/collections")({
+  loader: () => getCollectionsFn(),
   head: () => ({
     meta: [
       { title: "Gifting Collections | Thoughtfully Curated by Livin'" },
@@ -33,6 +34,7 @@ export const Route = createFileRoute("/collections")({
 });
 
 function CollectionsPage() {
+  const collections = Route.useLoaderData();
   return (
     <main className="pt-[calc(5rem+50px)] pb-40">
       <section className="max-w-7xl mx-auto px-6 md:px-10 pb-24">
