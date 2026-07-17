@@ -166,8 +166,8 @@ type Row = { data: Collection };
 /** All collections, sorted by name. Used by home + collections index. */
 export const getCollectionsFn = createServerFn({ method: "GET" }).handler(
   async () => {
-    const { createSupabaseServer } = await import("../lib/supabase");
-    const client = createSupabaseServer();
+    const { createSupabaseServerRead } = await import("../lib/supabase");
+    const client = createSupabaseServerRead();
     const { data, error } = await client
       .from("collections")
       .select("data")
@@ -186,8 +186,8 @@ export const getCollectionFn = createServerFn({ method: "GET" })
     return slug;
   })
   .handler(async ({ data: slug }) => {
-    const { createSupabaseServer } = await import("../lib/supabase");
-    const client = createSupabaseServer();
+    const { createSupabaseServerRead } = await import("../lib/supabase");
+    const client = createSupabaseServerRead();
     const { data, error } = await client
       .from("collections")
       .select("data")
@@ -204,8 +204,8 @@ export const getOtherCollectionsFn = createServerFn({ method: "GET" })
     return slug;
   })
   .handler(async ({ data: slug }) => {
-    const { createSupabaseServer } = await import("../lib/supabase");
-    const client = createSupabaseServer();
+    const { createSupabaseServerRead } = await import("../lib/supabase");
+    const client = createSupabaseServerRead();
     const { data, error } = await client
       .from("collections")
       .select("data")

@@ -14,11 +14,22 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 // back to process.env at runtime on the server.
 function readEnv(name: string): string | undefined {
   const fromVite = (import.meta.env as Record<string, string | undefined>)[name];
-  if (fromVite) return fromVite.trim();
-  if (typeof process !== "undefined" && process.env && process.env[name]) {
-    return process.env[name]?.trim();
+  const raw =
+    fromVite ||
+    (typeof process !== "undefined" && process.env
+      ? process.env[name]
+      : undefined);
+  if (!raw) return undefined;
+  // Strip any non-ASCII characters (defends against invisible chars — e.g. a
+  // stray bullet — that Vercel's paste UI has been known to inject and that
+  // would otherwise blow up as "Cannot convert argument to a ByteString").
+  const cleaned = raw.trim().replace(/[^\x20-\x7E]/g, "");
+  if (cleaned !== raw.trim()) {
+    console.warn(
+      `[supabase] Stripped non-ASCII characters from env var "${name}".`,
+    );
   }
-  return undefined;
+  return cleaned || undefined;
 }
 
 const SUPABASE_URL = readEnv("VITE_SUPABASE_URL");
@@ -59,12 +70,24 @@ export const supabaseBrowser: SupabaseClient = new Proxy({} as SupabaseClient, {
 });
 
 /**
- * Build a server client. Called inside server functions. Uses
- * SUPABASE_SERVICE_ROLE_KEY (server-only) so mutations bypass RLS.
+ * Server-side READ client — uses the anon key, so it only sees rows that
+ * RLS allows the anon role to select. Public loaders should use this.
+ */
+export function createSupabaseServerRead(): SupabaseClient {
+  const { url, anon } = requireUrlAndAnon();
+  return createClient(url, anon, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
+}
+
+/**
+ * Server-side ADMIN client — uses SUPABASE_SERVICE_ROLE_KEY and bypasses
+ * RLS. Only call this from server functions that have already verified
+ * the caller is authenticated.
  */
 export function createSupabaseServer(): SupabaseClient {
   const { url } = requireUrlAndAnon();
-  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
+  const serviceKey = readEnv("SUPABASE_SERVICE_ROLE_KEY");
   if (!serviceKey) {
     throw new Error(
       "SUPABASE_SERVICE_ROLE_KEY is not configured on the server.",
