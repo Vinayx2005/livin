@@ -213,55 +213,68 @@ function Home() {
               collections.length <= 2 ? "md:grid-cols-2" : "md:grid-cols-3"
             }`}
           >
-            {collections.map((c, i) => (
-              <Reveal key={c.slug} delay={i * 0.12}>
-                <Link
-                  to="/collections/$slug"
-                  params={{ slug: c.slug }}
-                  className={`group glass-card p-8 flex flex-col gap-8 transition-all duration-500 hover:-translate-y-2 hover:border-gold/40 ${
-                    collections.length >= 3 && i === 1 ? "md:mt-16" : ""
-                  }`}
-                >
-                  <div className="overflow-hidden aspect-square bg-ivory">
-                    <img
-                      src={c.image}
-                      alt={c.name}
-                      width={800}
-                      height={1000}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-display text-3xl text-navy-deep mb-5">
-                      {c.name}
-                    </h4>
-                    <div className="text-xl md:text-2xl text-navy-deep/70 space-y-1 font-display mb-6">
-                      <p>
-                        <span className="text-gold/70">Top —</span>{" "}
-                        {c.layers.top}
-                      </p>
-                      <p>
-                        <span className="text-gold/70">Heart —</span>{" "}
-                        {c.layers.heart}
-                      </p>
-                      <p>
-                        <span className="text-gold/70">Base —</span>{" "}
-                        {c.layers.base}
-                      </p>
+            {collections.map((c, i) => {
+              const disabled = c.slug === "noir-royale";
+              return (
+                <Reveal key={c.slug} delay={i * 0.12}>
+                  <article
+                    className={`glass-card p-8 flex flex-col gap-8 ${
+                      collections.length >= 3 && i === 1 ? "md:mt-16" : ""
+                    }`}
+                  >
+                    <div className="overflow-hidden aspect-square bg-ivory">
+                      <img
+                        src={c.image}
+                        alt={c.name}
+                        width={800}
+                        height={1000}
+                        loading="lazy"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
-                    <div className="flex items-center justify-between pt-4 border-t border-gold/15">
-                      <span className="font-display text-xl text-gold-shimmer">
-                        {c.price}
-                      </span>
-                      <span className="text-[10px] uppercase tracking-[0.3em] text-gold/80 group-hover:text-gold transition-colors">
-                        Discover →
-                      </span>
+                    <div>
+                      <h4 className="font-display text-3xl text-navy-deep mb-5">
+                        {disabled ? (
+                          <span
+                            aria-disabled="true"
+                            className="cursor-not-allowed"
+                          >
+                            {c.name}
+                          </span>
+                        ) : (
+                          <Link
+                            to="/collections/$slug"
+                            params={{ slug: c.slug }}
+                            className="hover:text-gold-shimmer transition-colors"
+                          >
+                            {c.name}
+                          </Link>
+                        )}
+                      </h4>
+                      <div className="text-xl md:text-2xl text-navy-deep/70 space-y-1 font-display mb-6">
+                        <p>
+                          <span className="text-gold/70">Top —</span>{" "}
+                          {c.layers.top}
+                        </p>
+                        <p>
+                          <span className="text-gold/70">Heart —</span>{" "}
+                          {c.layers.heart}
+                        </p>
+                        <p>
+                          <span className="text-gold/70">Base —</span>{" "}
+                          {c.layers.base}
+                        </p>
+                      </div>
+                      <div className="flex items-center justify-between pt-4 border-t border-gold/15">
+                        <span className="font-display text-xl text-gold-shimmer">
+                          {c.price}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
+                  </article>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>

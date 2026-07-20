@@ -11,7 +11,6 @@ export type Spec = { label: string; value: string };
 export type FaqEntry = { q: string; a: string };
 
 export type StoryBehind = {
-  eyebrow?: string;
   heading: string;
   paragraphs: string[];
   /** 0-based paragraph index rendered in italic gold accent */
@@ -19,17 +18,14 @@ export type StoryBehind = {
 };
 
 export type WhatsIncluded = {
-  eyebrow?: string;
   heading: string;
   intro: string;
-  listLabel: string;
   items: string[];
   closer: string;
   photo: string;
 };
 
 export type MakeItPersonal = {
-  eyebrow?: string;
   heading: string;
   paragraphs: string[];
   highlightIndex?: number;
@@ -38,14 +34,12 @@ export type MakeItPersonal = {
 };
 
 export type FragranceDetails = {
-  eyebrow?: string;
   heading: string;
   paragraphs: string[];
   specs: Spec[];
 };
 
 export type LivinExperience = {
-  eyebrow?: string;
   heading: string;
   paragraphs: string[];
   closer: string;
@@ -66,8 +60,6 @@ export type Collection = {
   priceValue: number;
   image: string;
   story: string;
-  origin: string;
-  notes: string[];
   layers: {
     top: string;
     heart: string;
@@ -99,27 +91,21 @@ export function newCollectionTemplate(slug: string): Collection {
     priceValue: 0,
     image: "/livin-bottle-box.jpg",
     story: "",
-    origin: "",
-    notes: [],
     layers: { top: "", heart: "", base: "" },
     buyNowUrl: "/cart",
     storyBehind: {
-      eyebrow: "The Ritual",
       heading: "The Story Behind This Collection",
       paragraphs: ["", "", ""],
       highlightIndex: 1,
     },
     whatsIncluded: {
-      eyebrow: "The Experience",
       heading: "What's Included",
       intro: "",
-      listLabel: "Inside you'll find",
       items: [""],
       closer: "",
       photo: "/livin-flatlay.jpg",
     },
     makeItPersonal: {
-      eyebrow: "Your Words",
       heading: "Make It Personal",
       paragraphs: ["", "", ""],
       highlightIndex: 2,
@@ -127,7 +113,6 @@ export function newCollectionTemplate(slug: string): Collection {
       noteRecipient: "Someone dear",
     },
     fragranceDetails: {
-      eyebrow: "Specifications",
       heading: "Fragrance Details",
       paragraphs: ["", "", ""],
       specs: [
@@ -142,7 +127,6 @@ export function newCollectionTemplate(slug: string): Collection {
       ],
     },
     livinExperience: {
-      eyebrow: "The Ritual",
       heading: "The Livin' Experience",
       paragraphs: ["", "", ""],
       closer: "",

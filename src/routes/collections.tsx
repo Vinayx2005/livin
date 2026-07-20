@@ -101,44 +101,57 @@ function CollectionsPage() {
             collections.length <= 2 ? "md:grid-cols-2" : "md:grid-cols-3"
           }`}
         >
-          {collections.map((item, i) => (
-            <Reveal key={item.slug} delay={i * 0.1}>
-              <Link
-                to="/collections/$slug"
-                params={{ slug: item.slug }}
-                className={`group glass-card p-6 flex flex-col gap-6 transition-all duration-500 hover:-translate-y-2 hover:border-gold/40 ${
-                  collections.length >= 3 && i === 1 ? "md:mt-14" : ""
-                }`}
-              >
-                <div className="overflow-hidden aspect-square bg-ivory">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    width={800}
-                    height={1000}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                  />
-                </div>
-                <div>
-                  <h2 className="font-display italic text-3xl md:text-4xl text-navy-deep mb-3">
-                    {item.name}
-                  </h2>
-                  <p className="font-display text-xl md:text-2xl text-navy-deep/70 leading-snug">
-                    {item.story}
-                  </p>
-                  <div className="flex items-center justify-between mt-6 pt-6 border-t border-gold/15">
-                    <span className="font-display text-2xl text-gold-shimmer">
-                      {item.price}
-                    </span>
-                    <span className="text-[10px] uppercase tracking-[0.3em] text-gold/80 group-hover:text-gold transition-colors">
-                      Discover →
-                    </span>
+          {collections.map((item, i) => {
+            const disabled = item.slug === "noir-royale";
+            return (
+              <Reveal key={item.slug} delay={i * 0.1}>
+                <article
+                  className={`glass-card p-6 flex flex-col gap-6 ${
+                    collections.length >= 3 && i === 1 ? "md:mt-14" : ""
+                  }`}
+                >
+                  <div className="overflow-hidden aspect-square bg-ivory">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      width={800}
+                      height={1000}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                </div>
-              </Link>
-            </Reveal>
-          ))}
+                  <div>
+                    <h2 className="font-display italic text-3xl md:text-4xl text-navy-deep mb-3">
+                      {disabled ? (
+                        <span
+                          aria-disabled="true"
+                          className="cursor-not-allowed"
+                        >
+                          {item.name}
+                        </span>
+                      ) : (
+                        <Link
+                          to="/collections/$slug"
+                          params={{ slug: item.slug }}
+                          className="hover:text-gold-shimmer transition-colors"
+                        >
+                          {item.name}
+                        </Link>
+                      )}
+                    </h2>
+                    <p className="font-display text-xl md:text-2xl text-navy-deep/70 leading-snug">
+                      {item.story}
+                    </p>
+                    <div className="flex items-center justify-between mt-6 pt-6 border-t border-gold/15">
+                      <span className="font-display text-2xl text-gold-shimmer">
+                        {item.price}
+                      </span>
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </main>

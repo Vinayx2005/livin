@@ -481,12 +481,6 @@ function AdminEditPage() {
               onChange={(v) => patch({ story: v })}
               rows={3}
             />
-            <TextArea
-              label="Origin"
-              value={data.origin}
-              onChange={(v) => patch({ origin: v })}
-              rows={3}
-            />
             <TextInput
               label="Buy Now button URL"
               value={data.buyNowUrl}
@@ -495,14 +489,8 @@ function AdminEditPage() {
             />
           </Section>
 
-          {/* Notes & layers */}
-          <Section title="Notes & layers" hint="Fragrance notes used in the header + spec grid.">
-            <StringList
-              label="Notes (chips)"
-              values={data.notes}
-              onChange={(next) => patch({ notes: next })}
-              placeholder="e.g. Saffron"
-            />
+          {/* Layers */}
+          <Section title="Layers" hint="Fragrance layers shown on the home Featured Collections cards.">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <TextInput
                 label="Top layer"
@@ -563,15 +551,6 @@ function AdminEditPage() {
           {/* What's Included */}
           <Section title="What's Included">
             <TextInput
-              label="Eyebrow (small label above heading)"
-              value={data.whatsIncluded.eyebrow ?? ""}
-              onChange={(v) =>
-                patch({
-                  whatsIncluded: { ...data.whatsIncluded, eyebrow: v },
-                })
-              }
-            />
-            <TextInput
               label="Heading"
               value={data.whatsIncluded.heading}
               onChange={(v) =>
@@ -587,15 +566,6 @@ function AdminEditPage() {
                 patch({ whatsIncluded: { ...data.whatsIncluded, intro: v } })
               }
               rows={3}
-            />
-            <TextInput
-              label="List label (e.g. 'Inside you'll find')"
-              value={data.whatsIncluded.listLabel}
-              onChange={(v) =>
-                patch({
-                  whatsIncluded: { ...data.whatsIncluded, listLabel: v },
-                })
-              }
             />
             <StringList
               label="Included items"
@@ -635,15 +605,6 @@ function AdminEditPage() {
 
           {/* Make It Personal */}
           <Section title="Make It Personal">
-            <TextInput
-              label="Eyebrow"
-              value={data.makeItPersonal.eyebrow ?? ""}
-              onChange={(v) =>
-                patch({
-                  makeItPersonal: { ...data.makeItPersonal, eyebrow: v },
-                })
-              }
-            />
             <TextInput
               label="Heading"
               value={data.makeItPersonal.heading}
@@ -708,18 +669,6 @@ function AdminEditPage() {
           {/* Fragrance Details */}
           <Section title="Fragrance Details">
             <TextInput
-              label="Eyebrow"
-              value={data.fragranceDetails.eyebrow ?? ""}
-              onChange={(v) =>
-                patch({
-                  fragranceDetails: {
-                    ...data.fragranceDetails,
-                    eyebrow: v,
-                  },
-                })
-              }
-            />
-            <TextInput
               label="Heading"
               value={data.fragranceDetails.heading}
               onChange={(v) =>
@@ -759,15 +708,6 @@ function AdminEditPage() {
 
           {/* Livin' Experience */}
           <Section title="The Livin' Experience">
-            <TextInput
-              label="Eyebrow"
-              value={data.livinExperience.eyebrow ?? ""}
-              onChange={(v) =>
-                patch({
-                  livinExperience: { ...data.livinExperience, eyebrow: v },
-                })
-              }
-            />
             <TextInput
               label="Heading"
               value={data.livinExperience.heading}

@@ -487,13 +487,11 @@ function CollectionDetailPage() {
             </h2>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-            {others.map((o, i) => (
+            {others.map((o, i) => {
+              const disabled = o.slug === "noir-royale";
+              return (
               <Reveal key={o.slug} delay={i * 0.1}>
-                <Link
-                  to="/collections/$slug"
-                  params={{ slug: o.slug }}
-                  className="group glass-card p-6 flex flex-col gap-6 transition-all duration-500 hover:-translate-y-2 hover:border-gold/40"
-                >
+                <article className="glass-card p-6 flex flex-col gap-6">
                   <div className="overflow-hidden aspect-square bg-ivory">
                     <img
                       src={o.image}
@@ -501,28 +499,41 @@ function CollectionDetailPage() {
                       width={800}
                       height={1000}
                       loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   <div>
                     <h3 className="font-display italic text-3xl text-navy-deep mb-3">
-                      {o.name}
+                      {disabled ? (
+                        <span
+                          aria-disabled="true"
+                          className="cursor-not-allowed"
+                        >
+                          {o.name}
+                        </span>
+                      ) : (
+                        <Link
+                          to="/collections/$slug"
+                          params={{ slug: o.slug }}
+                          className="hover:text-gold-shimmer transition-colors"
+                        >
+                          {o.name}
+                        </Link>
+                      )}
                     </h3>
                     <p className="font-display text-xl md:text-2xl text-navy-deep/70 leading-snug">
                       {o.story}
                     </p>
-                    <div className="flex items-center justify-between mt-4 pt-4 border-t border-gold/15">
+                    <div className="mt-4 pt-4 border-t border-gold/15">
                       <span className="font-display text-xl text-gold-shimmer">
                         {o.price}
                       </span>
-                      <span className="text-[10px] uppercase tracking-[0.3em] text-gold/80 group-hover:text-gold transition-colors">
-                        Discover →
-                      </span>
                     </div>
                   </div>
-                </Link>
+                </article>
               </Reveal>
-            ))}
+              );
+            })}
           </div>
         </section>
       )}
