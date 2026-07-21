@@ -49,7 +49,7 @@ export const Route = createFileRoute("/collections_/$slug")({
 
 function OrnamentalDivider() {
   return (
-    <div className="pb-24 flex items-center justify-center px-12">
+    <div className="pb-10 md:pb-24 flex items-center justify-center px-12">
       <div className="ornament-line flex-1 opacity-30" />
       <div className="mx-8 text-gold">
         <div className="size-2 rotate-45 border border-gold" />
@@ -107,7 +107,7 @@ function CollectionDetailPage() {
   };
 
   return (
-    <main className="pt-[calc(5rem+50px)] pb-40">
+    <main className="pt-[calc(5rem+50px)] pb-16 md:pb-40">
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-6 md:px-10 mb-12">
         <Link
@@ -122,7 +122,7 @@ function CollectionDetailPage() {
       <section className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
           <Reveal>
-            <div className="overflow-hidden aspect-[4/5] glass-card p-4">
+            <div className="overflow-hidden aspect-square glass-card">
               <img
                 src={item.image}
                 alt={item.name}
@@ -172,11 +172,11 @@ function CollectionDetailPage() {
         </div>
       </section>
 
-      <div className="py-24" />
+      <div className="md:py-24" />
       <OrnamentalDivider />
 
       {/* The Story Behind This Collection */}
-      <section className="max-w-3xl mx-auto px-6 md:px-10 text-center pb-24">
+      <section className="max-w-3xl mx-auto px-6 md:px-10 text-center pb-10 md:pb-24">
         <Reveal>
           <h2 className="font-display italic text-3xl md:text-5xl text-navy-deep leading-tight mb-12">
             {item.storyBehind.heading}
@@ -195,7 +195,7 @@ function CollectionDetailPage() {
       <OrnamentalDivider />
 
       {/* What's Included */}
-      <section className="max-w-6xl mx-auto px-6 md:px-10 pb-40">
+      <section className="max-w-6xl mx-auto px-6 md:px-10 pb-16 md:pb-40">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           <Reveal>
             <div className="relative overflow-hidden aspect-[4/5] glass-card">
@@ -251,7 +251,7 @@ function CollectionDetailPage() {
       <OrnamentalDivider />
 
       {/* Make It Personal */}
-      <section className="max-w-6xl mx-auto px-6 md:px-10 pb-40">
+      <section className="max-w-6xl mx-auto px-6 md:px-10 pb-16 md:pb-40">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           <div className="md:order-2">
             <Reveal>
@@ -312,14 +312,14 @@ function CollectionDetailPage() {
       <OrnamentalDivider />
 
       {/* Fragrance Details */}
-      <section className="max-w-4xl mx-auto px-6 md:px-10 pb-40">
+      <section className="max-w-4xl mx-auto px-6 md:px-10 pb-16 md:pb-40">
         <Reveal>
 <h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-10 text-center">
             {item.fragranceDetails.heading}
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
-          <div className="max-w-2xl mx-auto space-y-6 font-display text-xl md:text-2xl text-navy-deep/80 leading-relaxed text-pretty text-center mb-14">
+          <div className="max-w-2xl mx-auto space-y-6 font-display text-xl md:text-2xl text-navy-deep/80 leading-relaxed text-pretty text-center mb-8 md:mb-14">
             {item.fragranceDetails.paragraphs
               .filter((p) => p && p.trim().length > 0)
               .map((p, i, arr) => (
@@ -360,9 +360,9 @@ function CollectionDetailPage() {
       <OrnamentalDivider />
 
       {/* The Livin' Experience */}
-      <section className="max-w-3xl mx-auto px-6 md:px-10 pb-40 text-center">
+      <section className="max-w-3xl mx-auto px-6 md:px-10 pb-16 md:pb-40 text-center">
         <Reveal>
-<h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-14">
+<h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-8 md:mb-14">
             {item.livinExperience.heading}
           </h2>
         </Reveal>
@@ -389,9 +389,9 @@ function CollectionDetailPage() {
       {/* Frequently Asked Questions */}
       {item.faq.filter((f) => f.q && f.a).length > 0 && (
         <>
-          <section className="max-w-3xl mx-auto px-6 md:px-10 pb-40">
+          <section className="max-w-3xl mx-auto px-6 md:px-10 pb-16 md:pb-40">
             <Reveal>
-<h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-14 text-center">
+<h2 className="font-display italic text-4xl md:text-5xl text-navy-deep leading-tight mb-8 md:mb-14 text-center">
                 Frequently Asked Questions
               </h2>
             </Reveal>
@@ -422,7 +422,7 @@ function CollectionDetailPage() {
       )}
 
       {/* Ready to Make Someone Smile? */}
-      <section className="max-w-6xl mx-auto px-6 md:px-10 pb-40">
+      <section className="max-w-6xl mx-auto px-6 md:px-10 pb-16 md:pb-40">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
           {/* Image — top on mobile, right on desktop */}
           <Reveal className="md:order-2">
@@ -482,7 +482,7 @@ function CollectionDetailPage() {
       {others.length > 0 && (
         <section className="max-w-7xl mx-auto px-6 md:px-10 pt-16 border-t border-gold/10">
           <Reveal>
-<h2 className="font-display italic text-3xl md:text-5xl text-navy-deep text-center mb-16">
+<h2 className="font-display italic text-3xl md:text-5xl text-navy-deep text-center mb-10 md:mb-16">
               Other Signatures
             </h2>
           </Reveal>
@@ -543,7 +543,7 @@ function CollectionDetailPage() {
 
 function NotFoundPage() {
   return (
-    <main className="pt-[calc(5rem+50px)] pb-40 min-h-screen">
+    <main className="pt-[calc(5rem+50px)] pb-16 md:pb-40 min-h-screen">
       <section className="max-w-3xl mx-auto px-6 md:px-10 text-center">
 <h1 className="font-display italic text-5xl md:text-7xl text-navy-deep leading-[0.95] mb-8">
           A Silent Vessel

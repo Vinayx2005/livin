@@ -3,8 +3,8 @@ import {
   Link,
   useNavigate,
 } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { ArrowLeft, Plus, Trash2, Save } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowLeft, Plus, Trash2, Save, Upload } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase";
 import { saveCollectionFn } from "@/lib/admin-supabase";
 import {
@@ -138,6 +138,94 @@ function TextArea({
         placeholder={placeholder}
         className="w-full bg-white border border-gold/25 focus:border-gold rounded px-3 py-2 text-navy-deep font-display outline-none transition-colors leading-relaxed"
       />
+    </div>
+  );
+}
+
+/**
+ * Image field. Accepts a URL pasted directly (external URL or a path under
+ * /public/) OR an upload — the file goes to the `livin-images` Supabase
+ * Storage bucket and its public URL is written into `value`.
+ */
+function ImageInput({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  const fileRef = useRef<HTMLInputElement>(null);
+  const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleFile = async (file: File) => {
+    setUploading(true);
+    setError(null);
+    try {
+      const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
+      const stamp = Math.floor(Math.random() * 1_000_000_000).toString(36);
+      const path = `${stamp}.${ext}`;
+      const { error: uploadErr } = await supabaseBrowser.storage
+        .from("livin-images")
+        .upload(path, file, { cacheControl: "31536000", upsert: false });
+      if (uploadErr) throw uploadErr;
+      const { data } = supabaseBrowser.storage
+        .from("livin-images")
+        .getPublicUrl(path);
+      onChange(data.publicUrl);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Upload failed.");
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  return (
+    <div>
+      <Label>{label}</Label>
+      <div className="flex flex-wrap items-stretch gap-2">
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder="/path.jpg or https://…"
+          className="flex-1 min-w-0 bg-white border border-gold/25 focus:border-gold rounded px-3 py-2 text-navy-deep font-display outline-none transition-colors"
+        />
+        <input
+          ref={fileRef}
+          type="file"
+          accept="image/*"
+          hidden
+          onChange={(e) => {
+            const f = e.target.files?.[0];
+            if (f) void handleFile(f);
+            e.target.value = "";
+          }}
+        />
+        <button
+          type="button"
+          onClick={() => fileRef.current?.click()}
+          disabled={uploading}
+          className="inline-flex items-center gap-2 px-4 py-2 border border-navy-deep/30 text-navy-deep text-[11px] uppercase tracking-[0.3em] hover:bg-navy-deep hover:text-white disabled:opacity-50 transition-colors"
+        >
+          <Upload size={14} strokeWidth={1.5} />
+          {uploading ? "Uploading…" : "Upload"}
+        </button>
+      </div>
+      {error && (
+        <p className="mt-2 text-sm text-red-700 bg-red-50 border border-red-200 px-3 py-2 rounded">
+          {error}
+        </p>
+      )}
+      {value && (
+        <img
+          src={value}
+          alt=""
+          className="mt-3 max-h-40 rounded border border-gold/15"
+        />
+      )}
     </div>
   );
 }
@@ -462,19 +550,11 @@ function AdminEditPage() {
                 placeholder="42000"
               />
             </div>
-            <TextInput
-              label="Hero image URL"
+            <ImageInput
+              label="Hero image"
               value={data.image}
               onChange={(v) => patch({ image: v })}
-              placeholder="/livin-bottle-box.jpg"
             />
-            {data.image && (
-              <img
-                src={data.image}
-                alt=""
-                className="max-h-40 rounded border border-gold/15"
-              />
-            )}
             <TextArea
               label="Story (hero paragraph)"
               value={data.story}
@@ -587,20 +667,13 @@ function AdminEditPage() {
               }
               rows={3}
             />
-            <TextInput
-              label="Photo URL"
+            <ImageInput
+              label="Photo"
               value={data.whatsIncluded.photo}
               onChange={(v) =>
                 patch({ whatsIncluded: { ...data.whatsIncluded, photo: v } })
               }
             />
-            {data.whatsIncluded.photo && (
-              <img
-                src={data.whatsIncluded.photo}
-                alt=""
-                className="max-h-40 rounded border border-gold/15"
-              />
-            )}
           </Section>
 
           {/* Make It Personal */}
@@ -789,6 +862,18 @@ function AdminEditPage() {
                 })
               }
               rows={2}
+            />
+            <ImageInput
+              label="Photo"
+              value={data.readyToMakeSmile.photo}
+              onChange={(v) =>
+                patch({
+                  readyToMakeSmile: {
+                    ...data.readyToMakeSmile,
+                    photo: v,
+                  },
+                })
+              }
             />
           </Section>
         </div>
