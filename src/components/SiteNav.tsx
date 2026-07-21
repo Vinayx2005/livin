@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, ShoppingBag, X } from "lucide-react";
 import { useCart } from "@/lib/cart";
+import { CART_ENABLED } from "@/lib/features";
 
 const links = [
   { to: "/", label: "Home" },
@@ -79,36 +80,40 @@ export function SiteNav() {
               {l.label}
             </Link>
           ))}
-          <Link
-            to="/cart"
-            aria-label={count > 0 ? `Cart (${count})` : "Cart"}
-            className="relative text-navy-deep/80 hover:text-gold transition-colors duration-300"
-            activeProps={{ className: "text-gold" }}
-          >
-            <ShoppingBag size={18} strokeWidth={1.25} />
-            {count > 0 && (
-              <span className="absolute -top-2 -right-2 min-w-[16px] h-[16px] px-1 rounded-full bg-gold text-navy-deep text-[9px] font-medium tracking-normal flex items-center justify-center leading-none">
-                {count}
-              </span>
-            )}
-          </Link>
+          {CART_ENABLED && (
+            <Link
+              to="/cart"
+              aria-label={count > 0 ? `Cart (${count})` : "Cart"}
+              className="relative text-navy-deep/80 hover:text-gold transition-colors duration-300"
+              activeProps={{ className: "text-gold" }}
+            >
+              <ShoppingBag size={18} strokeWidth={1.25} />
+              {count > 0 && (
+                <span className="absolute -top-2 -right-2 min-w-[16px] h-[16px] px-1 rounded-full bg-gold text-navy-deep text-[9px] font-medium tracking-normal flex items-center justify-center leading-none">
+                  {count}
+                </span>
+              )}
+            </Link>
+          )}
         </div>
 
         {/* Mobile: cart + hamburger */}
         <div className="md:hidden flex items-center gap-4">
-          <Link
-            to="/cart"
-            aria-label={count > 0 ? `Cart (${count})` : "Cart"}
-            onClick={() => setOpen(false)}
-            className="relative text-gold/90 hover:text-gold p-1"
-          >
-            <ShoppingBag size={20} strokeWidth={1.25} />
-            {count > 0 && (
-              <span className="absolute top-0 right-0 min-w-[16px] h-[16px] px-1 rounded-full bg-gold text-navy-deep text-[9px] font-medium tracking-normal flex items-center justify-center leading-none">
-                {count}
-              </span>
-            )}
-          </Link>
+          {CART_ENABLED && (
+            <Link
+              to="/cart"
+              aria-label={count > 0 ? `Cart (${count})` : "Cart"}
+              onClick={() => setOpen(false)}
+              className="relative text-gold/90 hover:text-gold p-1"
+            >
+              <ShoppingBag size={20} strokeWidth={1.25} />
+              {count > 0 && (
+                <span className="absolute top-0 right-0 min-w-[16px] h-[16px] px-1 rounded-full bg-gold text-navy-deep text-[9px] font-medium tracking-normal flex items-center justify-center leading-none">
+                  {count}
+                </span>
+              )}
+            </Link>
+          )}
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}

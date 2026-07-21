@@ -13,6 +13,7 @@ import {
   getOtherCollectionsFn,
 } from "@/data/collections";
 import { useCart } from "@/lib/cart";
+import { CART_ENABLED } from "@/lib/features";
 
 export const Route = createFileRoute("/collections_/$slug")({
   loader: async ({ params }) => {
@@ -152,19 +153,21 @@ function CollectionDetailPage() {
                   >
                     Buy Now
                   </button>
-                  <button
-                    type="button"
-                    onClick={handleAdd}
-                    className="flex-1 px-8 py-4 border border-navy-deep/40 text-navy-deep text-[10px] uppercase tracking-[0.3em] hover:bg-navy-deep hover:text-white transition-colors flex items-center justify-center gap-2"
-                  >
-                    {justAdded ? (
-                      <>
-                        <Check size={14} strokeWidth={1.5} /> Added
-                      </>
-                    ) : (
-                      "Add to Cart"
-                    )}
-                  </button>
+                  {CART_ENABLED && (
+                    <button
+                      type="button"
+                      onClick={handleAdd}
+                      className="flex-1 px-8 py-4 border border-navy-deep/40 text-navy-deep text-[10px] uppercase tracking-[0.3em] hover:bg-navy-deep hover:text-white transition-colors flex items-center justify-center gap-2"
+                    >
+                      {justAdded ? (
+                        <>
+                          <Check size={14} strokeWidth={1.5} /> Added
+                        </>
+                      ) : (
+                        "Add to Cart"
+                      )}
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -434,21 +437,23 @@ function CollectionDetailPage() {
                 )}
               </div>
             </Reveal>
-            <Reveal delay={0.2}>
-              <button
-                type="button"
-                onClick={handleAdd}
-                className="inline-flex items-center gap-2 px-12 py-5 bg-navy-deep text-white text-[11px] uppercase tracking-[0.4em] hover:bg-navy transition-colors"
-              >
-                {justAdded ? (
-                  <>
-                    <Check size={16} strokeWidth={1.5} /> Added
-                  </>
-                ) : (
-                  "Add to Cart"
-                )}
-              </button>
-            </Reveal>
+            {CART_ENABLED && (
+              <Reveal delay={0.2}>
+                <button
+                  type="button"
+                  onClick={handleAdd}
+                  className="inline-flex items-center gap-2 px-12 py-5 bg-navy-deep text-white text-[11px] uppercase tracking-[0.4em] hover:bg-navy transition-colors"
+                >
+                  {justAdded ? (
+                    <>
+                      <Check size={16} strokeWidth={1.5} /> Added
+                    </>
+                  ) : (
+                    "Add to Cart"
+                  )}
+                </button>
+              </Reveal>
+            )}
           </div>
         </div>
       </section>
