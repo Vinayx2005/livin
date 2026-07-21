@@ -29,8 +29,7 @@ export type MakeItPersonal = {
   heading: string;
   paragraphs: string[];
   highlightIndex?: number;
-  notePreview: string;
-  noteRecipient: string;
+  photo: string;
 };
 
 export type FragranceDetails = {
@@ -109,8 +108,7 @@ export function newCollectionTemplate(slug: string): Collection {
       heading: "Make It Personal",
       paragraphs: ["", "", ""],
       highlightIndex: 2,
-      notePreview: "",
-      noteRecipient: "Someone dear",
+      photo: "/livin-flatlay.jpg",
     },
     fragranceDetails: {
       heading: "Fragrance Details",

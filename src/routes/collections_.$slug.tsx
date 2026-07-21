@@ -270,40 +270,15 @@ function CollectionDetailPage() {
           </div>
 
           <Reveal>
-            <div className="md:order-1 relative">
-              <div
-                className="relative overflow-hidden aspect-[4/5] p-8 md:p-10"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #ffffff 0%, #f5eedc 100%)",
-                  border: "1px solid rgba(201,162,76,0.25)",
-                }}
-              >
-                <div className="h-full flex flex-col">
-                  <p className="text-[9px] uppercase tracking-[0.5em] text-gold/70 mb-6">
-                    A note from you
-                  </p>
-                  <div className="flex-1 space-y-4 font-display italic text-navy-deep/40 text-lg md:text-xl leading-loose">
-                    <p>&ldquo;{item.makeItPersonal.notePreview}&rdquo;</p>
-                    <p className="text-navy-deep/30">
-                      — your handwritten words —
-                    </p>
-                  </div>
-                  <div className="mt-8 pt-6 border-t border-gold/15 flex items-center justify-between">
-                    <p className="text-[9px] uppercase tracking-[0.4em] text-gold/60">
-                      Sealed for
-                    </p>
-                    <p className="font-display italic text-navy-deep/60 text-lg">
-                      {item.makeItPersonal.noteRecipient}
-                    </p>
-                  </div>
-                </div>
-                <div className="absolute -bottom-4 -right-4 size-16 rounded-full bg-gold/80 flex items-center justify-center shadow-[0_6px_20px_rgba(201,162,76,0.35)]">
-                  <span className="font-display italic text-navy-deep text-2xl">
-                    L
-                  </span>
-                </div>
-              </div>
+            <div className="md:order-1 overflow-hidden aspect-square glass-card">
+              <img
+                src={item.makeItPersonal.photo || "/livin-flatlay.jpg"}
+                alt={`${item.name} — Make it personal`}
+                width={1200}
+                height={1200}
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
             </div>
           </Reveal>
         </div>

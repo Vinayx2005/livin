@@ -712,27 +712,14 @@ function AdminEditPage() {
                 })
               }
             />
-            <TextArea
-              label="Note-card preview text"
-              value={data.makeItPersonal.notePreview}
+            <ImageInput
+              label="Photo"
+              value={data.makeItPersonal.photo}
               onChange={(v) =>
                 patch({
                   makeItPersonal: {
                     ...data.makeItPersonal,
-                    notePreview: v,
-                  },
-                })
-              }
-              rows={2}
-            />
-            <TextInput
-              label="Note recipient (e.g. 'Someone dear')"
-              value={data.makeItPersonal.noteRecipient}
-              onChange={(v) =>
-                patch({
-                  makeItPersonal: {
-                    ...data.makeItPersonal,
-                    noteRecipient: v,
+                    photo: v,
                   },
                 })
               }
